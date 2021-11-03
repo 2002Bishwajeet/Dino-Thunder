@@ -1,24 +1,39 @@
 #include <SFML/Graphics.hpp>
 
-using namespace sf;
+//  Avoid using namespace at all
 
 int main()
 {
-    RenderWindow window(VideoMode(800, 640), "SFML works!");
-    CircleShape shape(100.f);
-    shape.setFillColor(Color::Green);
+    // Creating a render window
+    //  We are gonna keep the main window in 720p i.e 1280x720 px and in Windowed mode
+    // Here window is an object of class RenderWindow and constructor called
 
+    sf::RenderWindow window(sf::VideoMode(1280, 720), "Dinosour Game", sf::Style::Close);
+    // We will set the framerate to 60 for the current application
+    window.setFramerateLimit(60);
+    window.setVerticalSyncEnabled(true);
+    sf::CircleShape circle(100.f);
+
+    //  Now we will use this object to imply certain conditions
     while (window.isOpen())
     {
-        Event event;
+        //  Event handling
+        sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == Event::Closed)
+            //  Close window
+            if (event.type == sf::Event::Closed)
+                window.close();
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape)
                 window.close();
         }
 
+        //  Clear the window
         window.clear();
-        window.draw(shape);
+
+        // Draw Stuffs here
+
+        //  Display the window
         window.display();
     }
 
