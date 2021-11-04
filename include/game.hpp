@@ -33,11 +33,3 @@ public:
 
     void Run();
 };
-
-Game::Game(/* args */)
-{
-}
-
-Game::~Game()
-{
-}

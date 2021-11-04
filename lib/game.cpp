@@ -1,6 +1,7 @@
 #include "game.hpp"
 
-#include <SFML/Graphics.hpp>
+#include <SFML/Graphics/CircleShape.hpp>
+#include <SFML/Window/Event.hpp>
 
 Game::Game() : m_context(std::make_shared<Context>())
 

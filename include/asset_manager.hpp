@@ -20,8 +20,8 @@ namespace engine
         void loadTexture(int id, const std::string &filename, bool wantRepeated = false);
         void loadFont(int id, const std::string &filename);
 
-        const sf::Texture &getTexture() const;
-        const sf::Font &getFont() const;
+        const sf::Texture &getTexture(int id) const;
+        const sf::Font &getFont(int id) const;
     };
 
 } // namespace engine

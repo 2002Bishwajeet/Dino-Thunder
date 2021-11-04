@@ -8,7 +8,7 @@ engine::StateManager::~StateManager()
 {
 }
 
-void engine::StateManager::AddState(std::unique_ptr<State> state, bool replace = false)
+void engine::StateManager::AddState(std::unique_ptr<State> state, bool replace)
 {
     m_add = true;
     m_newState = std::move(state);

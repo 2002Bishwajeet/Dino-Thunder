@@ -1,8 +1,36 @@
-all: compile link
+CXX		  := g++
+CXX_FLAGS := -Wall -Wextra -Wno-unused-parameter -std=c++17 -ggdb
+
+BIN := bin
+EXECUTABLE	:= main
+MKDIR_P = mkdir 
+
+all: directories compile  link
+
+LIB :=lib
+INCLUDE :=include
+
+LIBRARIES	:= -lsfml-graphics -lsfml-window -lsfml-system
+
+directories: ${BIN}
+
+${BIN}:
+	${MKDIR_P} ${BIN}
+
+run: clean all
+	clear
+	./$(BIN)/$(EXECUTABLE)
 
 compile:
-	g++ -Isrc/include  -Ilib -c main.cpp 
+
+# TODO: Find a method to add all the objects in the bin folder
+	
+	g++ -Isrc/include -Iinclude  -Ilib -c main.cpp $(LIB)/*.cpp 
+	
 
 link:
-	g++ main.o -o main -Lsrc/lib -lsfml-graphics -lsfml-window -lsfml-system
+	$(CXX) main.o game.o asset_manager.o state_manager.o  -I$(INCLUDE) -Isrc/include -o main -Lsrc/lib $(LIBRARIES)
+
+clean:
+	-rm $(BIN)/*
 	

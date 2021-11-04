@@ -8,7 +8,7 @@ engine::AssetManager::~AssetManager()
 {
 }
 
-void engine::AssetManager::loadTexture(int id, const std::string &filename, bool wantRepeated = false)
+void engine::AssetManager::loadTexture(int id, const std::string &filename, bool wantRepeated)
 {
     auto texture = std::make_unique<sf::Texture>();
 
@@ -33,10 +33,11 @@ void engine::AssetManager::loadFont(int id, const std::string &filename)
     }
 }
 
-const sf::Texture &engine::AssetManager::getTexture() const {
+const sf::Texture &engine::AssetManager::getTexture(int id) const
+{
     return *(m_textures.at(id)).get();
 }
-const sf::Font &engine::AssetManager::getFont() const
+const sf::Font &engine::AssetManager::getFont(int id) const
 {
     return *(m_fonts.at(id)).get();
 }
