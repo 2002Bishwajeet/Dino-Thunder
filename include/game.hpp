@@ -7,6 +7,11 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 
+enum AssetID
+{
+    MAIN_FONT
+};
+
 struct Context
 {
     std::unique_ptr<engine::AssetManager> m_assets;
