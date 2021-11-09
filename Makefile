@@ -5,7 +5,7 @@ BIN := bin
 EXECUTABLE	:= main
 MKDIR_P = mkdir 
 
-all: directories compile  link
+all: compile  link
 
 LIB :=lib
 INCLUDE :=include
