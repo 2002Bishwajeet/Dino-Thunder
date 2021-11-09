@@ -9,7 +9,8 @@
 
 enum AssetID
 {
-    MAIN_FONT
+    MAIN_FONT,
+    SECONDARY_FONT
 };
 
 struct Context
