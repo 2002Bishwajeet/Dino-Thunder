@@ -21,3 +21,5 @@ If it doesn't happen add the following lines in your `c_cpp_properties.json` fil
 ],
 }
 ```
+
+Additionally you need to copy paste the `.dll` files in your workspace folder.

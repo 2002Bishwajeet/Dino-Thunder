@@ -1,26 +1,12 @@
 #include <SFML/Graphics.hpp>
-
-using namespace sf;
+#include "game.hpp"
+//  Avoid using namespace at all
 
 int main()
 {
-    RenderWindow window(VideoMode(800, 640), "SFML works!");
-    CircleShape shape(100.f);
-    shape.setFillColor(Color::Green);
+    Game game;
 
-    while (window.isOpen())
-    {
-        Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
+    game.Run();
 
     return 0;
 }
