@@ -14,8 +14,8 @@ MainMenu::~MainMenu()
 
 void MainMenu::Init()
 {
-    m_context->m_assets->loadFont(MAIN_FONT, "assets/fonts/orangejuice.ttf");
-    m_context->m_assets->loadFont(SECONDARY_FONT, "assets/fonts/BLACKBUBBLE.ttf");
+    m_context->m_assets->loadFont(MAIN_FONT, "assets/fonts/8bitOperatorPlus8-Bold.ttf");
+    m_context->m_assets->loadFont(SECONDARY_FONT, "assets/fonts/8bitOperatorPlusSC-Bold.ttf");
     
 
     // TITLE
@@ -106,6 +106,7 @@ void MainMenu::ProcessInput()
         }
     }
 }
+
 void MainMenu::Update(sf::Time deltaTime) {
    if(m_isPlayButtonSelected)
     {
