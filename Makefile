@@ -10,7 +10,7 @@ all: compile  link
 LIB :=lib
 INCLUDE :=include
 
-LIBRARIES	:= -lsfml-graphics -lsfml-window -lsfml-system
+LIBRARIES	:= -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 directories: ${BIN}
 
@@ -34,3 +34,9 @@ link:
 clean:
 	-rm $(BIN)/*
 	
+
+
+# temp: 
+# 	g++ -Isrc/include -c temp.cpp 
+
+# 	$(CXX) temp.o game.o asset_manager.o main_menu.o  state_manager.o -I$(INCLUDE) -Isrc/include -o temp -Lsrc/lib $(LIBRARIES)

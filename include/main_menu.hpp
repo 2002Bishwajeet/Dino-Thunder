@@ -3,6 +3,7 @@
 #include <memory>
 
 #include <SFML/Graphics/Text.hpp>
+#include <SFML/Audio.hpp>
 #include "State.hpp"
 #include "game.hpp"
 
@@ -18,6 +19,9 @@ private:
     sf::Text m_gametitle;
     sf::Text m_playButton;
     sf::Text m_exitButton;
+
+    //  Music
+    sf::Music m_music;
 
 
     bool m_isPlayButtonSelected;

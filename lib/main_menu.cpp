@@ -1,6 +1,7 @@
 #include "main_menu.hpp"
 
 #include <SFML/Window/Event.hpp>
+#include<SFML/Audio.hpp>
 
 // Initialize the main menu Constructor with all the default values
 MainMenu::MainMenu(std::shared_ptr<Context> &context) : m_context(context) , m_isPlayButtonSelected(true),
@@ -20,7 +21,15 @@ void MainMenu::Init()
     //  MAIN_FONT and SECONDARY_FONT are the enums for the fonts which will used to identify
     m_context->m_assets->loadFont(MAIN_FONT, "assets/fonts/8bitOperatorPlus8-Bold.ttf");
     m_context->m_assets->loadFont(SECONDARY_FONT, "assets/fonts/8bitOperatorPlusSC-Bold.ttf");
+    m_context->m_assets->loadSound(MAIN_MENU_MUSIC, "assets/music/mainmenu.ogg");
     
+
+  m_music.openFromFile("assets/music/mainmenu.ogg");
+   m_music.setLoop(true);
+
+// Never call the play method inside the loop
+//  It will restart again and again
+   m_music.play();
 
     //  Applying the fonts to the text objects
 
@@ -79,8 +88,11 @@ void MainMenu::ProcessInput()
     {
         //  Close window
         if (event.type == sf::Event::Closed)
-            m_context->m_window->close();
-            
+         {   m_context->m_window->close();
+           m_music.stop();
+        m_music.~Music();
+       
+         }  
          else if (event.type == sf::Event::KeyPressed)
         {
             switch (event.key.code)
@@ -149,12 +161,19 @@ void MainMenu::Update(sf::Time deltaTime) {
     else if(m_isExitButtonPressed)
     {
         m_context->m_window->close();
+        m_music.stop();
+        m_music.~Music();
+
     }
 }
 void MainMenu::Draw()
 {
+   
     //  Clear the window
     m_context->m_window->clear();
+  
+ 
+  
 
     // Draw Stuffs here
     m_context->m_window->draw(m_gametitle);
