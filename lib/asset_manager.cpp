@@ -41,6 +41,20 @@ void engine::AssetManager::loadFont(int id, const std::string &filename)
     }
 }
 
+void engine::AssetManager::loadSound(int id, const std::string &filename)
+{
+    //  At first we create a variable of type sf::SoundBuffer and then we load the SoundBuffer from the file.
+    //  If the SoundBuffer is loaded successfully, we store it in the map using the id as a key.
+    //  Std::unique_ptr is used to ensure that the memory is freed when the object is destroyed.
+    //  std::move is used to move the unique_ptr into the map. 
+    auto music = std::make_unique<sf::Music>();
+
+    if (music->openFromFile(filename))
+    {
+        m_sounds[id] = std::move(music);
+    }
+}
+
 //  These function will return the reference to the texture stored in the map
 const sf::Texture &engine::AssetManager::getTexture(int id) const
 {
@@ -50,4 +64,9 @@ const sf::Texture &engine::AssetManager::getTexture(int id) const
 const sf::Font &engine::AssetManager::getFont(int id) const
 {
     return *(m_fonts.at(id)).get();
+}
+
+const sf::Music &engine::AssetManager::getSound(int id) const
+{
+    return *(m_sounds.at(id)).get();
 }
