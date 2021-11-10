@@ -24,6 +24,7 @@ void MainMenu::Init()
     m_context->m_assets->loadSound(MAIN_MENU_MUSIC, "assets/music/mainmenu.ogg");
     
 
+//  TODO: Figure out a way to use the music object from assets
   m_music.openFromFile("assets/music/mainmenu.ogg");
    m_music.setLoop(true);
 
