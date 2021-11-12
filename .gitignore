@@ -34,3 +34,6 @@
 # VsCode
 .vscode
 .vs
+
+# Temp Files
+temp.cpp

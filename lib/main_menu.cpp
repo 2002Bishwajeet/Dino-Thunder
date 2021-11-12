@@ -25,8 +25,9 @@ void MainMenu::Init()
     
 
 //  TODO: Figure out a way to use the music object from assets
-  m_music.openFromFile("assets/music/mainmenu.ogg");
+   m_music.openFromFile("assets/music/mainmenu.ogg");
    m_music.setLoop(true);
+   m_music.setVolume(75);
 
 // Never call the play method inside the loop
 //  It will restart again and again
@@ -128,6 +129,8 @@ void MainMenu::ProcessInput()
                 else
                 {
                     m_isExitButtonPressed = true;
+                      m_music.stop();
+                    m_music.~Music();
                 }
 
                 break;
@@ -147,12 +150,13 @@ void MainMenu::Update(sf::Time deltaTime) {
    if(m_isPlayButtonSelected)
     {
         m_playButton.setFillColor(sf::Color::Red);
-        m_exitButton.setFillColor(sf::Color::White);
+        m_exitButton.setFillColor(sf::Color(192,192,192));
     }
     else
     {
         m_exitButton.setFillColor(sf::Color::Red);
-        m_playButton.setFillColor(sf::Color::White);
+        //  Grey Shade
+        m_playButton.setFillColor(sf::Color(192,192,192));
     }
     
     if(m_isPlayButtonPressed)
@@ -171,7 +175,10 @@ void MainMenu::Draw()
 {
    
     //  Clear the window
-    m_context->m_window->clear();
+    m_context->m_window->clear(
+        //  White Shade
+        sf::Color(254,255,254)
+    );
   
  
   

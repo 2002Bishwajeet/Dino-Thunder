@@ -35,7 +35,7 @@ clean:
 	-rm $(BIN)/*
 	
 
-
+#  Make sure to comment this before pushing it to github
 # temp: 
 # 	g++ -Isrc/include -c temp.cpp 
 
