@@ -3,12 +3,14 @@
 #include "State.hpp"
 #include "Game.hpp"
 #include<memory>
-
+#include<SFML/Graphics/Sprite.hpp>
 
 class GamePlay : public engine::State {
 
     private:
         std::shared_ptr<Context> m_context;
+        sf::Sprite m_cloud;
+        sf::Sprite m_dino;
 
     public:
     

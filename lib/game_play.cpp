@@ -39,6 +39,7 @@ GamePlay::~GamePlay()
  void GamePlay::Draw() {
 
      m_context->m_window->clear();
+     m_context->m_window->display();
      
  }
  void GamePlay::Pause() {

@@ -11,7 +11,13 @@ enum AssetID
 {
     MAIN_FONT,
     SECONDARY_FONT,
-    MAIN_MENU_MUSIC
+    MAIN_MENU_MUSIC,
+    CLOUD,
+    DINO,
+    OBSTACLES,
+    BACKGROUND,
+    MOUNTAINS,
+    TREES,
 };
 
 

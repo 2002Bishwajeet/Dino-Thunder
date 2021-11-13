@@ -39,4 +39,4 @@ clean:
 # temp: 
 # 	g++ -Isrc/include -c temp.cpp 
 
-# 	$(CXX) temp.o game.o asset_manager.o main_menu.o  state_manager.o -I$(INCLUDE) -Isrc/include -o temp -Lsrc/lib $(LIBRARIES)
+# 	$(CXX) temp.o  -I$(INCLUDE) -Isrc/include -o temp -Lsrc/lib $(LIBRARIES)
