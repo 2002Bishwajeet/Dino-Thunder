@@ -1,0 +1,1 @@
+each frame 16x16 size

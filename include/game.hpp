@@ -10,13 +10,17 @@
 enum AssetID
 {
     MAIN_FONT,
-    SECONDARY_FONT
+    SECONDARY_FONT,
+    MAIN_MENU_MUSIC,
+    CLOUD,
+    DINO,
+    OBSTACLES,
+    BACKGROUND,
+    MOUNTAINS,
+    TREES,
 };
 
-enum MusicID
-{
-    MAIN_MENU_MUSIC
-};
+
 
 //  Context Struct
 //  Holds all the data needed to run the game

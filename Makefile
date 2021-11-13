@@ -29,14 +29,14 @@ compile:
 	
 
 link:
-	$(CXX) main.o game.o asset_manager.o main_menu.o  state_manager.o -I$(INCLUDE) -Isrc/include -o main -Lsrc/lib $(LIBRARIES)
+	$(CXX) main.o game.o asset_manager.o main_menu.o  state_manager.o game_play.o -I$(INCLUDE) -Isrc/include -o main -Lsrc/lib $(LIBRARIES)
 
 clean:
 	-rm $(BIN)/*
 	
 
-
+#  Make sure to comment this before pushing it to github
 # temp: 
 # 	g++ -Isrc/include -c temp.cpp 
 
-# 	$(CXX) temp.o game.o asset_manager.o main_menu.o  state_manager.o -I$(INCLUDE) -Isrc/include -o temp -Lsrc/lib $(LIBRARIES)
+# 	$(CXX) temp.o  -I$(INCLUDE) -Isrc/include -o temp -Lsrc/lib $(LIBRARIES)

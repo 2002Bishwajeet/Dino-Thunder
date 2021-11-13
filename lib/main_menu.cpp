@@ -1,5 +1,5 @@
 #include "main_menu.hpp"
-
+#include "game_play.hpp"
 #include <SFML/Window/Event.hpp>
 #include<SFML/Audio.hpp>
 
@@ -23,10 +23,51 @@ void MainMenu::Init()
     m_context->m_assets->loadFont(SECONDARY_FONT, "assets/fonts/8bitOperatorPlusSC-Bold.ttf");
     m_context->m_assets->loadSound(MAIN_MENU_MUSIC, "assets/music/mainmenu.ogg");
     
+    // Code for creating a cloud - by @oceanofamisha
+    m_cloud.setFillColor(sf::Color(221,231,238));
+    m_cloud.setOutlineColor(sf::Color(129,165,186));
+
+    m_cloud.setPointCount(29);
+
+    m_cloud.setOrigin(m_context->m_window->getSize().x/2, m_context->m_window->getSize().y/2);
+
+    m_cloud.setPoint(0, sf::Vector2f(300.f, 500.f));
+    m_cloud.setPoint(1, sf::Vector2f(305.f, 490.f));
+    m_cloud.setPoint(2, sf::Vector2f(310.f, 480.f));
+    m_cloud.setPoint(3, sf::Vector2f(315.f, 470.f));
+    m_cloud.setPoint(4, sf::Vector2f(320.f, 460.f));
+    m_cloud.setPoint(5, sf::Vector2f(325.f, 455.f));
+    m_cloud.setPoint(6, sf::Vector2f(330.f, 450.f));
+    m_cloud.setPoint(7, sf::Vector2f(335.f, 445.f));
+    m_cloud.setPoint(8, sf::Vector2f(340.f, 440.f));
+    m_cloud.setPoint(9, sf::Vector2f(390.f, 435.f));
+    m_cloud.setPoint(10, sf::Vector2f(400.f, 430.f));
+    m_cloud.setPoint(11, sf::Vector2f(420.f, 420.f));
+    m_cloud.setPoint(12, sf::Vector2f(450.f, 415.f));
+    m_cloud.setPoint(13, sf::Vector2f(475.f, 410.f));
+    m_cloud.setPoint(14, sf::Vector2f(500.f, 390.f));
+    m_cloud.setPoint(15, sf::Vector2f(525.f, 385.f));
+    m_cloud.setPoint(16, sf::Vector2f(550.f, 370.f));
+    m_cloud.setPoint(17, sf::Vector2f(600.f, 350.f)); 
+    m_cloud.setPoint(18, sf::Vector2f(640.f, 355.f));
+    m_cloud.setPoint(19, sf::Vector2f(675.f, 360.f));
+    m_cloud.setPoint(20, sf::Vector2f(685.f, 370.f));
+    m_cloud.setPoint(21, sf::Vector2f(700.f, 375.f));
+    m_cloud.setPoint(22, sf::Vector2f(710.f, 400.f));
+    m_cloud.setPoint(23, sf::Vector2f(755.f, 440.f));
+    m_cloud.setPoint(24, sf::Vector2f(760.f, 465.f));
+    m_cloud.setPoint(25, sf::Vector2f(780.f, 470.f));
+    m_cloud.setPoint(26, sf::Vector2f(795.f, 485.f));
+    m_cloud.setPoint(27, sf::Vector2f(800.f, 490.f));
+    m_cloud.setPoint(28, sf::Vector2f(800.f, 500.f));
+    
+    m_cloud.setScale(0.5f, 0.5f);   
+     m_cloud.setPosition( 350, 30);
 
 //  TODO: Figure out a way to use the music object from assets
-  m_music.openFromFile("assets/music/mainmenu.ogg");
+   m_music.openFromFile("assets/music/mainmenu.ogg");
    m_music.setLoop(true);
+   m_music.setVolume(75);
 
 // Never call the play method inside the loop
 //  It will restart again and again
@@ -89,9 +130,11 @@ void MainMenu::ProcessInput()
     {
         //  Close window
         if (event.type == sf::Event::Closed)
-         {   m_context->m_window->close();
-           m_music.stop();
-        m_music.~Music();
+         {  
+              m_music.stop();
+           m_music.~Music();
+              m_context->m_window->close();
+          
        
          }  
          else if (event.type == sf::Event::KeyPressed)
@@ -128,6 +171,8 @@ void MainMenu::ProcessInput()
                 else
                 {
                     m_isExitButtonPressed = true;
+                      m_music.stop();
+                    m_music.~Music();
                 }
 
                 break;
@@ -147,17 +192,18 @@ void MainMenu::Update(sf::Time deltaTime) {
    if(m_isPlayButtonSelected)
     {
         m_playButton.setFillColor(sf::Color::Red);
-        m_exitButton.setFillColor(sf::Color::White);
+        m_exitButton.setFillColor(sf::Color(192,192,192));
     }
     else
     {
         m_exitButton.setFillColor(sf::Color::Red);
-        m_playButton.setFillColor(sf::Color::White);
+        //  Grey Shade
+        m_playButton.setFillColor(sf::Color(192,192,192));
     }
     
     if(m_isPlayButtonPressed)
     {
-        // m_context->m_states->Add(std::make_unique<GamePlay>(m_context), true);
+        m_context->m_state->AddState(std::make_unique<GamePlay>(m_context), true);
     }
     else if(m_isExitButtonPressed)
     {
@@ -166,19 +212,31 @@ void MainMenu::Update(sf::Time deltaTime) {
         m_music.~Music();
 
     }
+
+    // TODO: Reset the position of the cloud when it reaches the end of the screen
+   m_cloud.move(0.2f,0.f);
 }
 void MainMenu::Draw()
 {
    
     //  Clear the window
-    m_context->m_window->clear();
-  
- 
+    m_context->m_window->clear(
+        //  White Shade
+        sf::Color(254,255,254)
+    );
   
 
     // Draw Stuffs here
+
+    // Drawing Clouds
+    m_context->m_window->draw(m_cloud);
+
+
+    //  Drawing Main Menu Text
     m_context->m_window->draw(m_gametitle);
+    // Drawing Play Button
       m_context->m_window->draw(m_playButton);
+    //   Drawing Exit Button
         m_context->m_window->draw(m_exitButton);
     //  Display the window
     m_context->m_window->display();
