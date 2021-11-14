@@ -11,17 +11,26 @@ GamePlay::~GamePlay()
 
 
  void GamePlay::Init() {
-     m_context->m_assets->loadTexture(BACKGROUND, "assets/sprites/background/layers/parallax-mountain-bg.png");
-     m_context->m_assets->loadTexture(MOUNTAINS, "assets/sprites/background/layers/parallax-mountain-mountains.png");
 
-     m_background.setTexture(m_context->m_assets->getTexture(BACKGROUND));
+     m_context->m_assets->loadTexture(BACKGROUND, "assets/sprites/background/layers/parallax-mountain.png");
+     m_context->m_assets->loadTexture(FLOOR, "assets/sprites/floor/Wasteland-Files.png");
+
+    m_background.setTexture(m_context->m_assets->getTexture(BACKGROUND));
     m_background.setScale(5.f, 5.f);
 
+    m_floor.setTexture(m_context->m_assets->getTexture(FLOOR));
+    m_floor.setTextureRect(sf::IntRect(100, 128, 16, 16));
+    m_floor.setScale(5.f, 4.f);
+    
+    for (int i = 0; i < 24; i++)
+    {
 
-     m_mountains.setTexture(m_context->m_assets->getTexture(MOUNTAINS));
-   m_mountains.setOrigin(m_mountains.getLocalBounds().width/2, m_mountains.getLocalBounds().height/2 );
-    m_mountains.setPosition(m_context->m_window->getSize().x/2, m_context->m_window->getSize().y-80);
-    m_mountains.setScale(3.f, 2.f);
+    m_floor.setPosition(i*62.f, m_context->m_window->getSize().y-64 );
+    m_floors.push_back(m_floor);
+        /* code */
+    }
+    
+
     
      
  }
@@ -52,7 +61,12 @@ GamePlay::~GamePlay()
 
      m_context->m_window->clear();
      m_context->m_window->draw(m_background);
-     m_context->m_window->draw(m_mountains);
+     for (auto &floor : m_floors)
+     {
+         m_context->m_window->draw(floor);
+     }
+     
+    //  m_context->m_window->draw(m_floor);
      m_context->m_window->display();
      
  }
