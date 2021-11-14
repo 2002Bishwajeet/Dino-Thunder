@@ -1,3 +1,6 @@
 Dino Characters changes
 - 2017-10-08
 Added a crouch and a walk animation for it.
+
+
+You can use these for what ever you'd like, but be sure to tag my twitter @ScissorMarks and credit me properly.

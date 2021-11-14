@@ -19,6 +19,7 @@ class GamePlay : public engine::State {
         sf::Sound m_jumpSound;
         sf::Sound m_dieSound;
         std::vector<sf::Sprite> m_floors;
+        sf::IntRect m_dinoRect;
 
     public:
     
