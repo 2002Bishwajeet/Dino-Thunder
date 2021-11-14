@@ -21,6 +21,9 @@ class GamePlay : public engine::State {
         std::vector<sf::Sprite> m_floors;
         sf::IntRect m_dinoRect;
 
+        bool m_isPaused;
+        bool m_isJumping;
+
     public:
     
     GamePlay(std::shared_ptr<Context> &context);

@@ -1,7 +1,7 @@
 #include "game_play.hpp"
 #include <SFML/Window/Event.hpp>
 
-GamePlay::GamePlay(std::shared_ptr<Context> &context) : m_context(context)
+GamePlay::GamePlay(std::shared_ptr<Context> &context) : m_context(context),m_isJumping(false)
 {
 }
 
@@ -53,6 +53,18 @@ GamePlay::~GamePlay()
      
  }
  void GamePlay::Update(sf::Time deltaTime) {
+
+     if(m_isJumping)
+     {
+         m_dino.move(0,-120);
+
+     }
+         if (m_dino.getPosition().y < m_context->m_window->getSize().y - m_floor.getGlobalBounds().height-(22*4))
+               {
+                   m_dino.move(0,3);
+                   m_isJumping = false;
+               }
+      
      
  }
  void GamePlay::ProcessInput() {
@@ -71,6 +83,15 @@ GamePlay::~GamePlay()
          }  
          else if (event.type == sf::Event::KeyPressed)
         {
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+            {
+               m_isJumping = true;
+              
+               
+                   /* code */
+               
+               
+            }
            
         }
     }
@@ -81,6 +102,7 @@ GamePlay::~GamePlay()
      m_context->m_window->clear();
      m_context->m_window->draw(m_background);
      m_context->m_window->draw(m_dino);
+
      for (auto &floor : m_floors)
      {
          m_context->m_window->draw(floor);
@@ -91,8 +113,10 @@ GamePlay::~GamePlay()
      
  }
  void GamePlay::Pause() {
+     m_isPaused = true;
      m_gameMusic.pause();
  }
  void GamePlay::Start() {
+        m_isPaused = false;
      m_gameMusic.play();
  }
