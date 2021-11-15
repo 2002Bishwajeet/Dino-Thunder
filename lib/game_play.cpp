@@ -56,11 +56,15 @@ GamePlay::~GamePlay()
 
     
     if(y < m_context->m_window->getSize().y - m_floor.getGlobalBounds().height-(22*4))                  //If you are above ground
-        velocityY += gravity;    //Add gravity
+      {  velocityY += gravity;  
+      m_isJumping = true;
+      }
+        //Add gravity
     else if(y > m_context->m_window->getSize().y - m_floor.getGlobalBounds().height-(22*4))             //If you are below ground
         y = m_context->m_window->getSize().y - m_floor.getGlobalBounds().height-(22*4);                 //That's not supposed to happen, put him back up
 
-    
+    if(y == m_context->m_window->getSize().y - m_floor.getGlobalBounds().height-(22*4))
+    m_isJumping = false;
   
     m_dino.setPosition(x,y);
     y += velocityY;
@@ -84,8 +88,12 @@ GamePlay::~GamePlay()
          else if (event.type == sf::Event::KeyPressed)
         {
             if(event.key.code == sf::Keyboard::Space || event.key.code == sf::Keyboard::Up) 
-            {
-               velocityY = -m_jumpSpeed;
+            { if(!m_isJumping)
+                {
+                    velocityY = -m_jumpSpeed;
+                    m_isJumping = true;
+                }
+               
             }
            
         }
