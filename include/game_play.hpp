@@ -20,6 +20,7 @@ class GamePlay : public engine::State {
         sf::Sound m_dieSound;
         std::vector<sf::Sprite> m_floors;
         sf::IntRect m_dinoRect;
+        sf::Clock clock;
 
         bool m_isPaused;
         bool m_isJumping;
