@@ -1,7 +1,7 @@
 #include "game_play.hpp"
 #include <SFML/Window/Event.hpp>
 
-GamePlay::GamePlay(std::shared_ptr<Context> &context) : m_context(context),m_isJumping(false),m_jumpSpeed(25.0)
+GamePlay::GamePlay(std::shared_ptr<Context> &context) : m_context(context),m_isJumping(false),m_jumpSpeed(25.0),m_playJumpSound(false)
 {
 }
 
@@ -16,8 +16,13 @@ GamePlay::~GamePlay()
      m_context->m_assets->loadTexture(BACKGROUND, "assets/sprites/background/layers/parallax-mountain.png");
      m_context->m_assets->loadTexture(FLOOR, "assets/sprites/floor/Wasteland-Files.png");
      m_context->m_assets->loadTexture(DINO, "assets/sprites/Dino/sheets/DinoSprites-tard.png");
+     m_context->m_assets->loadSound(JUMP_SOUND, "assets/sounds/jump.wav");
      m_gameMusic.openFromFile("assets/music/game_music.ogg");
 
+
+    //Jump Sound Setup
+     m_jumpSound.setBuffer(m_context->m_assets->getSound(JUMP_SOUND));
+    
     //  In Game Music Setup
      m_gameMusic.setLoop(true);
      m_gameMusic.setVolume(50);
@@ -54,12 +59,16 @@ GamePlay::~GamePlay()
  }
  void GamePlay::Update(sf::Time deltaTime) {
 
-    
+    //  Jumping Mechanics
+    ////////
+    //////////
+    //////////
+    /////////
+    /////////
     if(y < m_context->m_window->getSize().y - m_floor.getGlobalBounds().height-(22*4))                  //If you are above ground
-      {  velocityY += gravity;  
-      m_isJumping = true;
+      {  velocityY += gravity;     //Add gravity
+          m_isJumping = true;
       }
-        //Add gravity
     else if(y > m_context->m_window->getSize().y - m_floor.getGlobalBounds().height-(22*4))             //If you are below ground
         y = m_context->m_window->getSize().y - m_floor.getGlobalBounds().height-(22*4);                 //That's not supposed to happen, put him back up
 
@@ -68,6 +77,16 @@ GamePlay::~GamePlay()
   
     m_dino.setPosition(x,y);
     y += velocityY;
+    // End of Jumping Mechanics Code
+    ////
+    ///////
+    ////////
+
+    if(m_playJumpSound)
+    {
+        m_jumpSound.play();
+        m_playJumpSound = false;
+    }
      
  }
  void GamePlay::ProcessInput() {
@@ -92,6 +111,7 @@ GamePlay::~GamePlay()
                 {
                     velocityY = -m_jumpSpeed;
                     m_isJumping = true;
+                    m_playJumpSound = true;
                 }
                
             }

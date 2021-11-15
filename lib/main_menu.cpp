@@ -21,7 +21,6 @@ void MainMenu::Init()
     //  MAIN_FONT and SECONDARY_FONT are the enums for the fonts which will used to identify
     m_context->m_assets->loadFont(MAIN_FONT, "assets/fonts/8bitOperatorPlus8-Bold.ttf");
     m_context->m_assets->loadFont(SECONDARY_FONT, "assets/fonts/8bitOperatorPlusSC-Bold.ttf");
-    m_context->m_assets->loadSound(MAIN_MENU_MUSIC, "assets/music/mainmenu.ogg");
     
     // Code for creating a cloud - by @oceanofamisha
     m_cloud.setFillColor(sf::Color(221,231,238));
@@ -64,7 +63,7 @@ void MainMenu::Init()
     m_cloud.setScale(0.5f, 0.5f);   
      m_cloud.setPosition( 350, 30);
 
-//  TODO: Figure out a way to use the music object from assets
+
    m_music.openFromFile("assets/music/mainmenu.ogg");
    m_music.setLoop(true);
    m_music.setVolume(75);

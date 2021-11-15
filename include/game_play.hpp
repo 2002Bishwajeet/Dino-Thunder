@@ -23,15 +23,12 @@ class GamePlay : public engine::State {
 
         bool m_isPaused;
         bool m_isJumping;
+        bool m_playJumpSound;
        float m_jumpSpeed;
        float x = 0; 
-    //    Will use these commented variables later
         float y = 0;
-        // float velocityX = 0;
         float velocityY = 0;
-        // float accelerationX = 0;
         float accelerationY = 0;
-
         float gravity = 2;
 
     public:

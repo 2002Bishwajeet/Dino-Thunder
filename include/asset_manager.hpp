@@ -4,7 +4,7 @@
 #include <memory>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Font.hpp>
-#include<SFML/Audio/Music.hpp>
+#include<SFML/Audio/SoundBuffer.hpp>
 
 //  This is a singleton class that manages all the assets
 namespace engine
@@ -22,7 +22,7 @@ namespace engine
     
         std::map<int, std::unique_ptr<sf::Texture>> m_textures;
         std::map<int, std::unique_ptr<sf::Font>> m_fonts;
-        std::map<int,std::unique_ptr<sf::Music>> m_sounds;
+        std::map<int,std::unique_ptr<sf::SoundBuffer>> m_sounds;
 
     public:
         AssetManager();
@@ -40,7 +40,7 @@ namespace engine
         //  We will be using a smart pointer to return the asset
         const sf::Texture &getTexture(int id) const;
         const sf::Font &getFont(int id) const;
-        const sf::Music &getSound(int id) const;
+        const sf::SoundBuffer &getSound(int id) const;
     };
 
 } // namespace engine
