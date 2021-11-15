@@ -58,6 +58,7 @@ GamePlay::~GamePlay()
      
  }
  void GamePlay::Update(sf::Time deltaTime) {
+    
 
     //  Jumping Mechanics
     ////////
@@ -87,6 +88,23 @@ GamePlay::~GamePlay()
         m_jumpSound.play();
         m_playJumpSound = false;
     }
+
+
+    // UPDATE THE DINO ANIMATION
+    ////
+    /////
+    /////
+    //////
+
+   if (clock.getElapsedTime().asSeconds() > 0.08f && !m_isJumping){
+      if (m_dinoRect.left == 240)
+        m_dinoRect.left = 120;
+      else
+        m_dinoRect.left += 24;
+
+      m_dino.setTextureRect(m_dinoRect);
+      clock.restart();
+    }
      
  }
  void GamePlay::ProcessInput() {
@@ -112,6 +130,8 @@ GamePlay::~GamePlay()
                     velocityY = -m_jumpSpeed;
                     m_isJumping = true;
                     m_playJumpSound = true;
+                    m_dinoRect.left = 0;
+                    m_dino.setTextureRect(m_dinoRect);
                 }
                
             }
