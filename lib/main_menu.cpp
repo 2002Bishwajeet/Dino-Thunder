@@ -212,8 +212,12 @@ void MainMenu::Update(sf::Time deltaTime) {
 
     }
 
-    // TODO: Reset the position of the cloud when it reaches the end of the screen
    m_cloud.move(0.2f,0.f);
+   if(m_cloud.getPosition().x > m_context->m_window->getSize().x+20)
+   {
+       m_cloud.setPosition(0.f, m_cloud.getPosition().y);
+   }
+
 }
 void MainMenu::Draw()
 {
