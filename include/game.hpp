@@ -16,8 +16,8 @@ enum AssetID
     DINO,
     OBSTACLES,
     BACKGROUND,
-    MOUNTAINS,
-    TREES,
+    FLOOR
+
 };
 
 
