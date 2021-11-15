@@ -47,11 +47,11 @@ void engine::AssetManager::loadSound(int id, const std::string &filename)
     //  If the SoundBuffer is loaded successfully, we store it in the map using the id as a key.
     //  Std::unique_ptr is used to ensure that the memory is freed when the object is destroyed.
     //  std::move is used to move the unique_ptr into the map. 
-    auto music = std::make_unique<sf::Music>();
+    auto sound = std::make_unique<sf::SoundBuffer>();
 
-    if (music->openFromFile(filename))
+    if (sound->loadFromFile(filename))
     {
-        m_sounds[id] = std::move(music);
+        m_sounds[id] = std::move(sound);
     }
 }
 
@@ -66,7 +66,7 @@ const sf::Font &engine::AssetManager::getFont(int id) const
     return *(m_fonts.at(id)).get();
 }
 
-const sf::Music &engine::AssetManager::getSound(int id) const
+const sf::SoundBuffer &engine::AssetManager::getSound(int id) const
 {
     return *(m_sounds.at(id)).get();
 }
