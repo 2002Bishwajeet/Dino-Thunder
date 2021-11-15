@@ -22,6 +22,7 @@ Game::Game() : m_context(std::make_shared<Context>()) // Make sure to initalise 
     //  We will set the VSync to true for the current application to avoid the screen tearing
     m_context->m_window->setVerticalSyncEnabled(true);
    
+    m_context->m_window->setKeyRepeatEnabled(false);
     
 }
 

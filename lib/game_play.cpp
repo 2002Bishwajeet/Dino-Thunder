@@ -1,7 +1,7 @@
 #include "game_play.hpp"
 #include <SFML/Window/Event.hpp>
 
-GamePlay::GamePlay(std::shared_ptr<Context> &context) : m_context(context),m_isJumping(false)
+GamePlay::GamePlay(std::shared_ptr<Context> &context) : m_context(context),m_isJumping(false),m_jumpSpeed(25.0)
 {
 }
 
@@ -46,7 +46,7 @@ GamePlay::~GamePlay()
     m_dinoRect = sf::IntRect(0,0,24,24);
     m_dino.setTexture(m_context->m_assets->getTexture(DINO));
     m_dino.setTextureRect(m_dinoRect);
-    m_dino.setPosition(0, m_context->m_window->getSize().y - m_floor.getGlobalBounds().height-(22*4));
+    // m_dino.setPosition(0, m_context->m_window->getSize().y - m_floor.getGlobalBounds().height-(24*4));
     m_dino.scale(4.f,4.f);
 
     
@@ -54,22 +54,22 @@ GamePlay::~GamePlay()
  }
  void GamePlay::Update(sf::Time deltaTime) {
 
-     if(m_isJumping)
-     {
-         m_dino.move(0,-120);
+    
+    if(y < m_context->m_window->getSize().y - m_floor.getGlobalBounds().height-(22*4))                  //If you are above ground
+        velocityY += gravity;    //Add gravity
+    else if(y > m_context->m_window->getSize().y - m_floor.getGlobalBounds().height-(22*4))             //If you are below ground
+        y = m_context->m_window->getSize().y - m_floor.getGlobalBounds().height-(22*4);                 //That's not supposed to happen, put him back up
 
-     }
-         if (m_dino.getPosition().y < m_context->m_window->getSize().y - m_floor.getGlobalBounds().height-(22*4))
-               {
-                   m_dino.move(0,3);
-                   m_isJumping = false;
-               }
-      
+    
+  
+    m_dino.setPosition(x,y);
+    y += velocityY;
      
  }
  void GamePlay::ProcessInput() {
      //  Event handling
     sf::Event event;
+    
     while (m_context->m_window->pollEvent(event))
     {
         //  Close window
@@ -83,17 +83,13 @@ GamePlay::~GamePlay()
          }  
          else if (event.type == sf::Event::KeyPressed)
         {
-            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+            if(event.key.code == sf::Keyboard::Space || event.key.code == sf::Keyboard::Up) 
             {
-               m_isJumping = true;
-              
-               
-                   /* code */
-               
-               
+               velocityY = -m_jumpSpeed;
             }
            
         }
+     
     }
      
  }
@@ -108,7 +104,7 @@ GamePlay::~GamePlay()
          m_context->m_window->draw(floor);
      }
      
-    //  m_context->m_window->draw(m_floor);
+   
      m_context->m_window->display();
      
  }
