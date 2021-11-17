@@ -90,7 +90,7 @@ Then all was left to implement `GameOver` state and `Pause Game` state.
 ## Creators
 
 | Author | About | Github username |
-| ------ | --- | ---------------- |
+| ----------------- | --- | ---------------- |
 | Bishwajeet Parhi| Bishwajeet Parhi is currently a second year undergrad student  Computer Science student at the Indraprastha University. He is a passionate programmer and a gamer. He is also an active Open Source Contributor | [@2002Bishwajeet](https://github.com/2002bishwajeet) |
 | Akshat Gupta | Akshat Gupta is also currently a second year undergrad student Computer Science student at the Indraprastha University. He is new to programming and stuffs. He is enthusiastic and its his first project to work together as a team | [@AKG2506](https://github.com/AKG2506)
 | Amisha Sagar | Amisha Sagar is also currently a second year undergrad student Computer Science student at the Indraprastha University. she is also a passionate programmer and loves to build new stuffs. She is more keen and interested in Game Development. She knows Unity and had experimented a lots of things in game dev | [@oceanofamisha](https://github.com/oceanofamisha)
