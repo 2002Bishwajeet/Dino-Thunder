@@ -34,7 +34,6 @@ Game::~Game()
 void Game::Run()
 {
 
-    sf::CircleShape circle(100.f);
     sf::Clock clock;
     sf::Time timeSinceLastUpdate = sf::Time::Zero;
 

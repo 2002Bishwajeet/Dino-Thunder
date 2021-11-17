@@ -7,6 +7,7 @@
 #include<SFML/Audio/Sound.hpp>
 #include<SFML/Audio/Music.hpp>
 #include<vector>
+#include<array>
 
 class GamePlay : public engine::State {
 
@@ -19,18 +20,22 @@ class GamePlay : public engine::State {
         sf::Sound m_jumpSound;
         sf::Sound m_dieSound;
         std::vector<sf::Sprite> m_floors;
+        std::array<sf::Sprite, 5> m_obstacles;
         sf::IntRect m_dinoRect;
         sf::Clock clock;
 
         bool m_isPaused;
         bool m_isJumping;
         bool m_playJumpSound;
-       float m_jumpSpeed;
-       float x = 0; 
+        float m_jumpSpeed;
+        float x = 0; 
         float y = 0;
         float velocityY = 0;
         float accelerationY = 0;
-        float gravity = 2;
+        float velocityX = 0;
+        float accelerationX = 0;
+        float gravity = 1;
+        float score = 0;
 
     public:
     

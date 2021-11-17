@@ -34,7 +34,7 @@ namespace engine
     //  we will add this only after the previous state is complete
         std::unique_ptr<State> m_newState;
 
-    //  These memebers will be modified by add and popcurrent Methods
+    //  These members will be modified by add and popcurrent Methods
     //  and depending on the values the processStateChange will make modifications
     //  to the state stack.
         bool m_add;

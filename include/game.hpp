@@ -13,7 +13,12 @@ enum AssetID
     SECONDARY_FONT,
     CLOUD,
     DINO,
-    OBSTACLES,
+    OBSTACLE_1,
+    OBSTACLE_2,
+    OBSTACLE_3,
+    OBSTACLE_4,
+    OBSTACLE_5,
+    BIRD,
     BACKGROUND,
     FLOOR,
     JUMP_SOUND
