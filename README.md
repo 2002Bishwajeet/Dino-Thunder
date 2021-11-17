@@ -4,7 +4,7 @@ This is an attempt to make a chrome dinosaur game using SFML - a wrapper for Ope
 
 ## Why SFML?
 
-Honestly when we decided to make this game for our college project, we were told to make this in 20yr old `<graphics>` library. I really didn't wanted to make a game using an Old library, also some of the functionalites were too limited in that library. For instance you only create a **640x480 window**, you can't change the size of the window, you can't change the color of the window, you can't change the title of the window, also you would need DOS to run the game and the graphics were horrible and you can't use sprites.
+Honestly when we decided to make this game for our college project, we were told to make this in 20 yr old `<graphics>` library. I really didn't wanted to make a game using an Old library, also some of the functionalites were too limited in that library. For instance you only create a **640x480 window**, you can't change the size of the window, you can't change the color of the window, you can't change the title of the window, also you would need DOS to run the game and the graphics were horrible and you can't use sprites.
 
 Then the quest for a graphic library began. I was amazed to see different libraries written in C++. OpenGL - the library used to create and render graphics, that's something which had a lot of learning curve and there were endless tutorials which were quite intriguing.
 
@@ -55,3 +55,34 @@ And lastly you would need [GNU Make](http://gnuwin32.sourceforge.net/packages/ma
 2. Type `make`
 
 That's it you would have a `main.exe` file in the directory. type `.\main.exe` to run the game
+
+## Roadmap
+
+Since we were a big nooble in game development, honestly we didn't knew at start how to begin making a game. That's when we started watching random YouTube tutorials to get to know the basics of SFML. We binged watch a lot of tutorials read the docs and start experimenting on some Stuffs. Now since we were in confident in our using the library, then came a major concern. How to oraganize the code and make it easy to read and understand. We had to implement the game engine to ensure smooth flow of the Game states. [SFML WIKI](https://github.com/SFML/SFML/wiki/Sources) had a lots of resources for the same. It also had many game examples as well some of the **FAQs** .
+
+We would like to give a huge shoutout to [DevKage](https://www.youtube.com/watch?v=xtZHJxYA6q8&list=PLiZZKL9HLmWMF8PlzvZu2WOC9kjs1zzhm) for his awesome C++ SFML tutorials. This tutorial actually helped us build a basic game engine for this Dino Game. Rest we all had to implement our own game logic, assets and states.
+
+#### Main Menu
+
+Every game must have a main menu state. We decided to keep it simple and sober. We would display the tile of the game in pixelated font. we would have two buttons then - `Play` and `Exit`. These are self explanatory. On the we decided to keep a scenary which would be used in main game state too. To add something more funky, we decided to add some clouds which would move to display realism. Also we decided to add Dino in the main screen which could be moved by right and left arrow keys. Since we have added a music in the main menu, it would be great if a user wants to listen to that song while goofing around with dinosaur.
+
+#### Game Play State
+
+This was the state where the actual magic happens. In the game play state we actually had to work on small small parts to not be overwhelmed.
+
+**We Started with the following first**
+
+* Adding Background to the Gameplay State
+* Adding Floor sprite
+* Adding Dino Sprite
+* Adding ingame music
+* Moving Dino Animation
+* Jumping Physics on Dino
+* Jumping Sound Dino
+* Obstacle Swapning
+* Parallax Effect (though not properly done)
+* Random Obstacle swapning and movement
+* Calculating Score
+* Moving to Pause Game and Game Over states
+
+Then all was left to implement `GameOver` state and `Pause Game` state.
