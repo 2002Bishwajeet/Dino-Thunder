@@ -94,3 +94,18 @@ Then all was left to implement `GameOver` state and `Pause Game` state.
 | Bishwajeet Parhi| Bishwajeet Parhi is currently a second year undergrad student  Computer Science student at the Indraprastha University. He is a passionate programmer and a gamer. He is also an active Open Source Contributor | [@2002Bishwajeet](https://github.com/2002bishwajeet) |
 | Akshat Gupta | Akshat Gupta is also currently a second year undergrad student Computer Science student at the Indraprastha University. He is new to programming and stuffs. He is enthusiastic and its his first project to work together as a team | [@AKG2506](https://github.com/AKG2506)
 | Amisha Sagar | Amisha Sagar is also currently a second year undergrad student Computer Science student at the Indraprastha University. she is also a passionate programmer and loves to build new stuffs. She is more keen and interested in Game Development. She knows Unity and had experimented a lots of things in game dev | [@oceanofamisha](https://github.com/oceanofamisha)
+
+## What's next?
+
+Since the main aim of this project was to learn **SFML** and more importantly it was basically for our college project, we would seldomly update the game and fix unknown bugs. But if you want to contribute to this project or if you want to make a new feature, please feel free to do so. Make sure you have read the [Code of Conduct](CODE_OF_CONDUCT.md) and [Contributing.md](CONTRIBUTING.md) file before making your first PR in this repo.
+
+## License 
+
+This project is licensed under the MIT license. All the sprites and textures have been taken from <https://www.itch.io>.  All of the sprites are free and open for commercial use. I am sorry as I couldn't credit the authors of the sprites. If I have used your sprite, feel free to point me so that I can credit you.
+
+**As for the Music and sounds**
+ The original Copyright(s) is (are) solely owned by the Companies/Original-Artist(s)/Record-label(s).
+All the contents are strictly done for a promotional purpose
+
+**DISCLAIMER**: As per 3rd Section of Fair use guidelines borrowing small bits of material from an original work is more likely to be considered fair use. Copyright Disclaimer under Section 107 of the Copyright Act 1976, allowance is made for fair use
+
