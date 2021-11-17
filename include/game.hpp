@@ -21,7 +21,8 @@ enum AssetID
     BIRD,
     BACKGROUND,
     FLOOR,
-    JUMP_SOUND
+    JUMP_SOUND,
+    GAME_OVER_SOUND
 
 };
 

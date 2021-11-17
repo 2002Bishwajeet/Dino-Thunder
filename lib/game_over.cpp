@@ -17,10 +17,19 @@ GameOver::~GameOver()
 
 void GameOver::Init()
 {
+    m_context->m_assets->loadSound(GAME_OVER_SOUND,"assets/sounds/game_over.ogg");
+
+    m_gameOverSound.setBuffer(m_context->m_assets->getSound(GAME_OVER_SOUND));
+
+
+    m_gameOverSound.setVolume(40);
+    m_gameOverSound.play();
+    m_gameOverSound.setLoop(true);
     
     // Title
     m_gameOverTitle.setFont(m_context->m_assets->getFont(MAIN_FONT));
     m_gameOverTitle.setString("Game Over");
+     m_gameOverTitle.setFillColor(sf::Color(245,171,53,255));
     m_gameOverTitle.setOrigin(m_gameOverTitle.getLocalBounds().width / 2,
                               m_gameOverTitle.getLocalBounds().height / 2);
     m_gameOverTitle.setPosition(m_context->m_window->getSize().x / 2-177.f,
@@ -51,13 +60,13 @@ void GameOver::Update(sf::Time deltaTime)
 {
        if (m_isRetryButtonSelected)
     {
-        m_retryButton.setFillColor(sf::Color::Black);
-        m_exitButton.setFillColor(sf::Color::White);
+        m_retryButton.setFillColor(sf::Color::Red);
+        m_exitButton.setFillColor(sf::Color(192,192,192));
     }
     else
     {
-        m_exitButton.setFillColor(sf::Color::Black);
-        m_retryButton.setFillColor(sf::Color::White);
+        m_exitButton.setFillColor(sf::Color::Red);
+        m_retryButton.setFillColor(sf::Color(192,192,192));
     }
 
     if (m_isRetryButtonPressed)

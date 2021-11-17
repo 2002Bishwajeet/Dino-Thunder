@@ -36,7 +36,7 @@ GamePlay::~GamePlay()
     // m_obstacles[0].setColor(sf::Color(169,65,6));
     for (size_t i = 0; i < 5; i++)
     { 
-         m_obstacles[i].setPosition(m_context->m_window->getSize().x+m_obstacles[i].getGlobalBounds().width,m_context->m_window->getSize().y-64-110);
+         m_obstacles[i].setPosition(0,m_context->m_window->getSize().y + i * m_obstacles[i].getGlobalBounds().height);
         /* code */  m_obstacles[i].setScale(1.5,0.9);
     }
     
@@ -48,10 +48,10 @@ GamePlay::~GamePlay()
     //  In Game Music Setup
      m_gameMusic.setLoop(true);
      m_gameMusic.setVolume(50);
-    //  TODO: Uncomment this
-    //  m_gameMusic.play();
+   
+     m_gameMusic.play();
 
-    // TODO:: ADD PARALLAX BACKGROUND
+    
 
     // Background Setup
     m_background.setTexture(m_context->m_assets->getTexture(BACKGROUND));
@@ -97,9 +97,14 @@ GamePlay::~GamePlay()
     if(y == m_context->m_window->getSize().y - m_floor.getGlobalBounds().height-(22*4))
     m_isJumping = false;
   
+  
+  // This is useless for now, could be used for a better jump mechanic later
+    velocityY += accelerationY;
     m_dino.setPosition(x,y);
     y += velocityY;
+    
     // End of Jumping Mechanics Code
+
 
     // If you are jumping, play the jump sound
     if(m_playJumpSound)
@@ -109,14 +114,12 @@ GamePlay::~GamePlay()
     }
 
     // Random Obstacle Spawning and moving towards the left
-   
-   
     for(int i = 0; i < 5; i++)
     {
         m_obstacles[i].move(-5.f,0.f);
         if(m_obstacles[i].getPosition().x < -m_obstacles[i].getGlobalBounds().width)
         {
-            m_obstacles[i].setPosition(m_context->m_window->getSize().x+m_obstacles[i].getGlobalBounds().width,m_context->m_window->getSize().y-64-110);
+            m_obstacles[i].setPosition(m_context->m_window->getSize().x+m_obstacles[i].getGlobalBounds().width  ,m_context->m_window->getSize().y-64-110);
         }
     }
 
@@ -136,8 +139,10 @@ GamePlay::~GamePlay()
     {
         if(m_dino.getGlobalBounds().intersects(m_obstacles[i].getGlobalBounds()))
         {
-            m_isPaused = true;
+         
+         
            m_context->m_state->AddState(std::make_unique<GameOver>(m_context),false);
+            m_isPaused = true;
         }
     }
 
