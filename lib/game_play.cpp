@@ -1,5 +1,6 @@
 #include "game_play.hpp"
 #include <SFML/Window/Event.hpp>
+#include "pause_game.hpp"
 
 GamePlay::GamePlay(std::shared_ptr<Context> &context) : m_context(context),m_isJumping(false),m_jumpSpeed(25.0),m_playJumpSound(false)
 {
@@ -58,6 +59,10 @@ GamePlay::~GamePlay()
      
  }
  void GamePlay::Update(sf::Time deltaTime) {
+
+ 
+    if(!m_isPaused)
+    {
     
 
     //  Jumping Mechanics
@@ -105,6 +110,7 @@ GamePlay::~GamePlay()
       m_dino.setTextureRect(m_dinoRect);
       clock.restart();
     }
+    }
      
  }
  void GamePlay::ProcessInput() {
@@ -122,7 +128,7 @@ GamePlay::~GamePlay()
           
        
          }  
-         else if (event.type == sf::Event::KeyPressed)
+        else if (event.type == sf::Event::KeyPressed)
         {
             if(event.key.code == sf::Keyboard::Space || event.key.code == sf::Keyboard::Up) 
             { if(!m_isJumping)
@@ -135,7 +141,11 @@ GamePlay::~GamePlay()
                 }
                
             }
-           
+            if(event.key.code == sf::Keyboard::Escape)
+            {
+                m_context->m_state->AddState(std::make_unique<PauseGame>(m_context));
+                m_isPaused = true;
+            }
         }
      
     }

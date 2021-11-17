@@ -19,8 +19,13 @@ void MainMenu::Init()
 {
     //  Loading the fonts from the file and storing it in the map
     //  MAIN_FONT and SECONDARY_FONT are the enums for the fonts which will used to identify
+    m_context->m_assets->loadTexture(BACKGROUND, "assets/sprites/background/layers/parallax-mountain.png");
     m_context->m_assets->loadFont(MAIN_FONT, "assets/fonts/8bitOperatorPlus8-Bold.ttf");
     m_context->m_assets->loadFont(SECONDARY_FONT, "assets/fonts/8bitOperatorPlusSC-Bold.ttf");
+
+    // Background Setup
+    m_background.setTexture(m_context->m_assets->getTexture(BACKGROUND));
+    m_background.setScale(5.f, 5.f);
     
     // Code for creating a cloud - by @oceanofamisha
     m_cloud.setFillColor(sf::Color(221,231,238));
@@ -231,9 +236,11 @@ void MainMenu::Draw()
 
     // Draw Stuffs here
 
+    // Drawing Background
+    m_context->m_window->draw(m_background);
+
     // Drawing Clouds
     m_context->m_window->draw(m_cloud);
-
 
     //  Drawing Main Menu Text
     m_context->m_window->draw(m_gametitle);

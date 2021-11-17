@@ -5,6 +5,7 @@
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/Graphics/ConvexShape.hpp>
 #include <SFML/Audio.hpp>
+#include <SFML/Graphics/Sprite.hpp>
 #include "State.hpp"
 #include "game.hpp"
 
@@ -25,6 +26,8 @@ private:
     //  Music
     sf::Music m_music;
 
+    // Background
+    sf::Sprite m_background;
 
     bool m_isPlayButtonSelected;
     bool m_isPlayButtonPressed;
