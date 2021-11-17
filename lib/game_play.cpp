@@ -41,7 +41,7 @@ GamePlay::~GamePlay()
      m_gameMusic.setLoop(true);
      m_gameMusic.setVolume(50);
    
-    //  m_gameMusic.play();
+     m_gameMusic.play();
 
     
 
