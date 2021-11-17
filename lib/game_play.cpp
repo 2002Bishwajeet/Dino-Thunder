@@ -2,7 +2,7 @@
 #include "game_over.hpp"
 #include <SFML/Window/Event.hpp>
 
-GamePlay::GamePlay(std::shared_ptr<Context> &context) : m_context(context),m_isJumping(false),m_jumpSpeed(23.0),m_playJumpSound(false)
+GamePlay::GamePlay(std::shared_ptr<Context> &context) : m_context(context),m_isJumping(false),m_jumpSpeed(25.0),m_playJumpSound(false),m_gameSpeed(6.5f)
 {
 }
 
@@ -26,20 +26,11 @@ GamePlay::~GamePlay()
      m_gameMusic.openFromFile("assets/music/game_music.ogg");
 
     //  Obstacles Setup
-    m_obstacles[0].setTexture(m_context->m_assets->getTexture(OBSTACLE_1));
-    m_obstacles[1].setTexture(m_context->m_assets->getTexture(OBSTACLE_2));
-    m_obstacles[2].setTexture(m_context->m_assets->getTexture(OBSTACLE_3));
-    m_obstacles[3].setTexture(m_context->m_assets->getTexture(OBSTACLE_4));
-    m_obstacles[4].setTexture(m_context->m_assets->getTexture(OBSTACLE_5));
-
+      m_obstacle.setPosition(0,m_context->m_window->getSize().y +  m_obstacle.getGlobalBounds().height);
+      m_obstacle.setScale(1.5,0.9);
    
-    // m_obstacles[0].setColor(sf::Color(169,65,6));
-    for (size_t i = 0; i < 5; i++)
-    { 
-         m_obstacles[i].setPosition(0,m_context->m_window->getSize().y + i * m_obstacles[i].getGlobalBounds().height);
-        /* code */  m_obstacles[i].setScale(1.5,0.9);
-    }
-    
+
+  
   
     //Jump Sound Setup
      m_jumpSound.setBuffer(m_context->m_assets->getSound(JUMP_SOUND));
@@ -49,7 +40,7 @@ GamePlay::~GamePlay()
      m_gameMusic.setLoop(true);
      m_gameMusic.setVolume(50);
    
-     m_gameMusic.play();
+    //  m_gameMusic.play();
 
     
 
@@ -113,34 +104,43 @@ GamePlay::~GamePlay()
         m_playJumpSound = false;
     }
 
-    // Random Obstacle Spawning and moving towards the left
-    for(int i = 0; i < 5; i++)
-    {
-        m_obstacles[i].move(-5.f,0.f);
-        if(m_obstacles[i].getPosition().x < -m_obstacles[i].getGlobalBounds().width)
+    // Randomly generate obstacles and move them
+   
+        if(m_obstacle.getPosition().x < -m_obstacle.getGlobalBounds().width)
         {
-            m_obstacles[i].setPosition(m_context->m_window->getSize().x+m_obstacles[i].getGlobalBounds().width  ,m_context->m_window->getSize().y-64-110);
+            m_obstacle.setPosition(m_context->m_window->getSize().x +m_obstacle.getGlobalBounds().width, m_context->m_window->getSize().y-64-110);
+            m_obstacle.setTexture(m_context->m_assets->getTexture(OBSTACLE_1 + rand() % 5));
         }
-    }
+        m_obstacle.move(-m_gameSpeed,0.f);
+    
+
+    // Random Obstacle Spawning and moving towards the left
+    // for(int i = 0; i < 5; i++)
+    // {
+    //     m_obstacles[i].move(-6.f,0.f);
+     
+    //     if(m_obstacles[i].getPosition().x < -m_obstacles[i].getGlobalBounds().width)
+    //     {
+    //         m_obstacles[i].setPosition(m_context->m_window->getSize().x +250 ,m_context->m_window->getSize().y-64-110);
+    //     }
+    // }
 
 
     // Move the floors
     for(int i = 0; i < 24; i++)
     {
-        m_floors[i].move(-5.f,0.f);
+        m_floors[i].move(-m_gameSpeed,0.f);
         if(m_floors[i].getPosition().x < -m_floors[i].getGlobalBounds().width)
         {
-            m_floors[i].setPosition(m_context->m_window->getSize().x+m_floors[i].getGlobalBounds().width,m_context->m_window->getSize().y-64);
+            m_floors[i].setPosition(m_context->m_window->getSize().x+m_floors[i].getGlobalBounds().width ,m_context->m_window->getSize().y-64);
         }
     }
   
     //  Collision Detection
     for(int i = 0; i < 5; i++)
     {
-        if(m_dino.getGlobalBounds().intersects(m_obstacles[i].getGlobalBounds()))
-        {
-         
-         
+        if(m_dino.getGlobalBounds().intersects(m_obstacle.getGlobalBounds()))
+        {   
            m_context->m_state->AddState(std::make_unique<GameOver>(m_context),false);
             m_isPaused = true;
         }
@@ -218,17 +218,18 @@ GamePlay::~GamePlay()
      {
          m_context->m_window->draw(floor);
      }
-     for (auto &obstacle : m_obstacles)
-     {
-         m_context->m_window->draw(obstacle);
-     }
+     m_context->m_window->draw(m_obstacle);
+    //  for (auto &obstacle : m_obstacles)
+    //  {
+    //      m_context->m_window->draw(obstacle);
+    //  }
    
    
      m_context->m_window->display();
      
  }
  void GamePlay::Pause() {
-     m_isPaused = true;
+     m_isPaused = !m_isPaused;
      m_gameMusic.pause();
  }
  void GamePlay::Start() {

@@ -18,6 +18,8 @@ class GameOver : public engine::State {
         sf::Text m_exitButton;
         sf::Sound m_gameOverSound;
 
+   
+
     bool m_isRetryButtonSelected;
     bool m_isRetryButtonPressed;
 

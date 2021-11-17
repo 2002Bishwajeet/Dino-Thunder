@@ -19,9 +19,11 @@ class GamePlay : public engine::State {
         sf::Music m_gameMusic;
         sf::Sound m_jumpSound;
         std::vector<sf::Sprite> m_floors;
-        std::array<sf::Sprite, 5> m_obstacles;
+       sf::Sprite m_obstacle;
         sf::IntRect m_dinoRect;
         sf::Clock clock;
+
+
 
         bool m_isPaused;
         bool m_isJumping;
@@ -31,8 +33,10 @@ class GamePlay : public engine::State {
         float y = 0;
         float velocityY = 0;
         float accelerationY = 0;
+
+        float m_gameSpeed = 6.0f;
      
-        float gravity = 1;
+        float gravity = 1.0f;
         float score = 0;
 
     public:
