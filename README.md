@@ -54,4 +54,4 @@ And lastly you would need [GNU Make](http://gnuwin32.sourceforge.net/packages/ma
 1. Open `Terminal`
 2. Type `make`
 
-That's it you would have a `main.exe` file in the main folder. type `.\main.exe` to run the game
+That's it you would have a `main.exe` file in the directory. type `.\main.exe` to run the game

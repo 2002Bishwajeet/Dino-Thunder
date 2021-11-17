@@ -1,6 +1,7 @@
 #include "game_play.hpp"
 #include "game_over.hpp"
 #include <SFML/Window/Event.hpp>
+#include "pause_game.hpp"
 
 GamePlay::GamePlay(std::shared_ptr<Context> &context) : m_context(context),m_isJumping(false),m_jumpSpeed(25.0),m_playJumpSound(false),m_gameSpeed(6.5f)
 {
@@ -74,6 +75,10 @@ GamePlay::~GamePlay()
      
  }
  void GamePlay::Update(sf::Time deltaTime) {
+
+ 
+    if(!m_isPaused)
+    {
     
     if(!m_isPaused)
 {
@@ -166,6 +171,7 @@ GamePlay::~GamePlay()
     }
 }
      
+    }
  }
  void GamePlay::ProcessInput() {
      //  Event handling
@@ -182,7 +188,7 @@ GamePlay::~GamePlay()
           
        
          }  
-         else if (event.type == sf::Event::KeyPressed)
+        else if (event.type == sf::Event::KeyPressed)
         {
             if(event.key.code == sf::Keyboard::Space || event.key.code == sf::Keyboard::Up) 
             { if(!m_isJumping)
@@ -195,14 +201,11 @@ GamePlay::~GamePlay()
                 }
                
             }
-
             if(event.key.code == sf::Keyboard::Escape)
             {
-               
-               m_isPaused = !m_isPaused;
+                m_context->m_state->AddState(std::make_unique<PauseGame>(m_context));
+                m_isPaused = true;
             }
-            
-           
         }
      
     }
