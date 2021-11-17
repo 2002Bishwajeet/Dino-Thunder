@@ -1,0 +1,2 @@
+- name: clang-tidy check
+  uses: muxee/clang-tidy-action@0.0.1-rc1
