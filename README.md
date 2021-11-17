@@ -62,11 +62,11 @@ Since we were a big nooble in game development, honestly we didn't knew at start
 
 We would like to give a huge shoutout to [DevKage](https://www.youtube.com/watch?v=xtZHJxYA6q8&list=PLiZZKL9HLmWMF8PlzvZu2WOC9kjs1zzhm) for his awesome C++ SFML tutorials. This tutorial actually helped us build a basic game engine for this Dino Game. Rest we all had to implement our own game logic, assets and states.
 
-#### Main Menu
+### Main Menu
 
 Every game must have a main menu state. We decided to keep it simple and sober. We would display the tile of the game in pixelated font. we would have two buttons then - `Play` and `Exit`. These are self explanatory. On the we decided to keep a scenary which would be used in main game state too. To add something more funky, we decided to add some clouds which would move to display realism. Also we decided to add Dino in the main screen which could be moved by right and left arrow keys. Since we have added a music in the main menu, it would be great if a user wants to listen to that song while goofing around with dinosaur.
 
-#### Game Play State
+### Game Play State
 
 This was the state where the actual magic happens. In the game play state we actually had to work on small small parts to not be overwhelmed.
 
