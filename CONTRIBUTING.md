@@ -208,22 +208,6 @@ We love to create issues that are good for beginners and label them as `good fir
 ├─ sfml-window-d-2.dll # DLL Files
 ```
 
-### The Monolithic Part
-
-Appwrite's main API container is designed as a monolithic app. This is a decision we made to allow us to develop the project faster while still being a very small team.
-
-Although the Appwrite API is a monolithic app, it has a very clear separation of concern as each internal service or worker is separated by its container, which will allow us as we grow to start breaking services for better maintenance and scalability.
-
-### The Microservice Part
-
-Each container in Appwrite is a microservice on its own. Each service is an independent process that can scale without regard to any of the other services.
-
-Currently, all of the Appwrite microservices are intended to communicate using the TCP protocol over a private network. You should be aware to not expose any of the services to the public-facing network, besides the public port 80 and 443, who, by default, are used to expose the Appwrite HTTP API.
-
-## Ports
-
-Appwrite dev version uses ports 80 and 443 as an entry point to the Appwrite API and console. We also expose multiple ports in the range of 9500-9504 for debugging some of the Appwrite containers on dev mode. If you have any conflicts with the ports running on your system, you can easily replace them by editing Appwrite's docker-compose.yml file and executing `docker-compose up -d` command.
-
 ## Technology Stack
 
 To start helping us to improve the Dino Thunder by submitting code, prior knowledge of Dino Thunder technology stack can help you with getting started.
@@ -232,12 +216,12 @@ Dino Thunder is a game made using the [SFML library](https://www.sfml-dev.org/in
 
 ## Coding Standards
 
-Currently Dino Thunder doesn't use any Coding Standards. If you would like to implement a coding standart
-We use prettier for our JS coding standards and auto-formatting our code.
+Currently Dino Thunder doesn't use any Coding Standards. If you would like to implement a coding standart.
+We use standard C/C++ extension to format the code
 
 ## Introducing New Features
 
-We would 💖 you to contribute to this game, but we would also like to make sure Appwrite is as great as possible and loyal to its vision and mission statement 🙏.
+We would 💖 you to contribute to this game, but we would also like to make sure that this game is as great as possible and simple and easy to play.
 
 For us to find the right balance, please open an issue explaining your ideas before introducing a new pull request.
 
@@ -253,9 +237,9 @@ To build a new version of the game, all you need to do is run the `make` command
 make
 ```
 
-## Code Maintenance  
+<!-- ## Code Maintenance  
 
-We use some automation tools to help us keep a healthy codebase.
+We use some automation tools to help us keep a healthy codebase. -->
 
 ## Other Ways to Help
 
@@ -275,4 +259,4 @@ Submitting documentation updates, enhancements, designs, or bug fixes. Spelling 
 
 ### Helping Someone
 
-Since this project is more of a tuorial, you could share this project with your friends and colleagues.
+Since this project is more of a tutorial, you could share this project with your friends and colleagues.
