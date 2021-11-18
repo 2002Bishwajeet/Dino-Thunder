@@ -1,12 +1,15 @@
 #include "main_menu.hpp"
 #include "game_play.hpp"
 #include <SFML/Window/Event.hpp>
-#include<SFML/Audio.hpp>
+#include <SFML/Audio.hpp>
 
 // Initialize the main menu Constructor with all the default values
-MainMenu::MainMenu(std::shared_ptr<Context> &context) : m_context(context) , m_isPlayButtonSelected(true),
-      m_isPlayButtonPressed(false), m_isExitButtonSelected(false),
-      m_isExitButtonPressed(false)
+MainMenu::MainMenu(std::shared_ptr<Context>& context)
+    : m_context(context)
+    , m_isPlayButtonSelected(true)
+    , m_isPlayButtonPressed(false)
+    , m_isExitButtonSelected(false)
+    , m_isExitButtonPressed(false)
 {
 }
 
@@ -26,14 +29,14 @@ void MainMenu::Init()
     // Background Setup
     m_background.setTexture(m_context->m_assets->getTexture(BACKGROUND));
     m_background.setScale(5.f, 5.f);
-    
+
     // Code for creating a cloud - by @oceanofamisha
-    m_cloud.setFillColor(sf::Color(221,231,238));
-    m_cloud.setOutlineColor(sf::Color(129,165,186));
+    m_cloud.setFillColor(sf::Color(221, 231, 238));
+    m_cloud.setOutlineColor(sf::Color(129, 165, 186));
 
     m_cloud.setPointCount(29);
 
-    m_cloud.setOrigin(m_context->m_window->getSize().x/2, m_context->m_window->getSize().y/2);
+    m_cloud.setOrigin(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2);
 
     m_cloud.setPoint(0, sf::Vector2f(300.f, 500.f));
     m_cloud.setPoint(1, sf::Vector2f(305.f, 490.f));
@@ -52,7 +55,7 @@ void MainMenu::Init()
     m_cloud.setPoint(14, sf::Vector2f(500.f, 390.f));
     m_cloud.setPoint(15, sf::Vector2f(525.f, 385.f));
     m_cloud.setPoint(16, sf::Vector2f(550.f, 370.f));
-    m_cloud.setPoint(17, sf::Vector2f(600.f, 350.f)); 
+    m_cloud.setPoint(17, sf::Vector2f(600.f, 350.f));
     m_cloud.setPoint(18, sf::Vector2f(640.f, 355.f));
     m_cloud.setPoint(19, sf::Vector2f(675.f, 360.f));
     m_cloud.setPoint(20, sf::Vector2f(685.f, 370.f));
@@ -64,18 +67,17 @@ void MainMenu::Init()
     m_cloud.setPoint(26, sf::Vector2f(795.f, 485.f));
     m_cloud.setPoint(27, sf::Vector2f(800.f, 490.f));
     m_cloud.setPoint(28, sf::Vector2f(800.f, 500.f));
-    
-    m_cloud.setScale(0.5f, 0.5f);   
-     m_cloud.setPosition( 350, 30);
 
+    m_cloud.setScale(0.5f, 0.5f);
+    m_cloud.setPosition(350, 30);
 
-   m_music.openFromFile("assets/music/mainmenu.ogg");
-   m_music.setLoop(true);
-   m_music.setVolume(75);
+    m_music.openFromFile("assets/music/mainmenu.ogg");
+    m_music.setLoop(true);
+    m_music.setVolume(75);
 
-// Never call the play method inside the loop
-//  It will restart again and again
-   m_music.play();
+    // Never call the play method inside the loop
+    //  It will restart again and again
+    m_music.play();
 
     //  Applying the fonts to the text objects
 
@@ -85,46 +87,37 @@ void MainMenu::Init()
     //  Set the text to the title
     m_gametitle.setString("Dino Thunder");
     //  Set the Origin
-   m_gametitle.setOrigin(m_gametitle.getLocalBounds().width / 2,
-                          m_gametitle.getLocalBounds().height / 2);
+    m_gametitle.setOrigin(m_gametitle.getLocalBounds().width / 2, m_gametitle.getLocalBounds().height / 2);
     //  Set the position
-    m_gametitle.setPosition(m_context->m_window->getSize().x / 2-177.f,
-                            m_context->m_window->getSize().y / 2 -200.f);
+    m_gametitle.setPosition(m_context->m_window->getSize().x / 2 - 177.f, m_context->m_window->getSize().y / 2 - 200.f);
     //  Set Size
     m_gametitle.setCharacterSize(100);
     //  Set the color
-    m_gametitle.setFillColor(sf::Color(245,171,53,255));
-
+    m_gametitle.setFillColor(sf::Color(245, 171, 53, 255));
 
     // PLAY BUTTON
     //  Set font need a reference to the font object
     m_playButton.setFont(m_context->m_assets->getFont(SECONDARY_FONT));
     //  Set the Character Size to the title
-      m_playButton.setCharacterSize(50);
+    m_playButton.setCharacterSize(50);
     //  Set the text to the title
     m_playButton.setString("Play");
-    //  Set the Origin 
-   m_playButton.setOrigin(m_playButton.getLocalBounds().width / 2,
-                          m_playButton.getLocalBounds().height / 2);
+    //  Set the Origin
+    m_playButton.setOrigin(m_playButton.getLocalBounds().width / 2, m_playButton.getLocalBounds().height / 2);
     //  Set the position
-    m_playButton.setPosition(m_context->m_window->getSize().x / 2,
-                            m_context->m_window->getSize().y / 2 );
+    m_playButton.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2);
 
     // Pause Button
     //  Set font need a reference to the font object
     m_exitButton.setFont(m_context->m_assets->getFont(SECONDARY_FONT));
     //  Set the Character Size to the title
-      m_exitButton.setCharacterSize(50);
+    m_exitButton.setCharacterSize(50);
     //  Set the text to the title
     m_exitButton.setString("Exit");
     //  Set the Origin
-   m_exitButton.setOrigin(m_exitButton.getLocalBounds().width / 2,
-                          m_exitButton.getLocalBounds().height / 2);
+    m_exitButton.setOrigin(m_exitButton.getLocalBounds().width / 2, m_exitButton.getLocalBounds().height / 2);
     //  Set the position
-    m_exitButton.setPosition(m_context->m_window->getSize().x / 2,
-                            m_context->m_window->getSize().y / 2 +100.f);
-
-   
+    m_exitButton.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 + 100.f);
 }
 void MainMenu::ProcessInput()
 {
@@ -134,14 +127,12 @@ void MainMenu::ProcessInput()
     {
         //  Close window
         if (event.type == sf::Event::Closed)
-         {  
-              m_music.stop();
-           m_music.~Music();
-              m_context->m_window->close();
-          
-       
-         }  
-         else if (event.type == sf::Event::KeyPressed)
+        {
+            m_music.stop();
+            m_music.~Music();
+            m_context->m_window->close();
+        }
+        else if (event.type == sf::Event::KeyPressed)
         {
             switch (event.key.code)
             {
@@ -175,7 +166,7 @@ void MainMenu::ProcessInput()
                 else
                 {
                     m_isExitButtonPressed = true;
-                      m_music.stop();
+                    m_music.stop();
                     m_music.~Music();
                 }
 
@@ -190,49 +181,44 @@ void MainMenu::ProcessInput()
     }
 }
 
-void MainMenu::Update(sf::Time deltaTime) {
-
+void MainMenu::Update(sf::Time deltaTime)
+{
     // Update the text objects with respect to the keyboard input
-   if(m_isPlayButtonSelected)
+    if (m_isPlayButtonSelected)
     {
         m_playButton.setFillColor(sf::Color::Red);
-        m_exitButton.setFillColor(sf::Color(192,192,192));
+        m_exitButton.setFillColor(sf::Color(192, 192, 192));
     }
     else
     {
         m_exitButton.setFillColor(sf::Color::Red);
         //  Grey Shade
-        m_playButton.setFillColor(sf::Color(192,192,192));
+        m_playButton.setFillColor(sf::Color(192, 192, 192));
     }
-    
-    if(m_isPlayButtonPressed)
+
+    if (m_isPlayButtonPressed)
     {
         m_context->m_state->AddState(std::make_unique<GamePlay>(m_context), true);
     }
-    else if(m_isExitButtonPressed)
+    else if (m_isExitButtonPressed)
     {
         m_context->m_window->close();
         m_music.stop();
         m_music.~Music();
-
     }
 
-   m_cloud.move(0.2f,0.f);
-   if(m_cloud.getPosition().x > m_context->m_window->getSize().x+20)
-   {
-       m_cloud.setPosition(0.f, m_cloud.getPosition().y);
-   }
-
+    m_cloud.move(0.2f, 0.f);
+    if (m_cloud.getPosition().x > m_context->m_window->getSize().x + 20)
+    {
+        m_cloud.setPosition(0.f, m_cloud.getPosition().y);
+    }
 }
 void MainMenu::Draw()
 {
-   
     //  Clear the window
     m_context->m_window->clear(
         //  White Shade
-        sf::Color(254,255,254)
-    );
-  
+        sf::Color(254, 255, 254));
 
     // Draw Stuffs here
 
@@ -245,9 +231,9 @@ void MainMenu::Draw()
     //  Drawing Main Menu Text
     m_context->m_window->draw(m_gametitle);
     // Drawing Play Button
-      m_context->m_window->draw(m_playButton);
+    m_context->m_window->draw(m_playButton);
     //   Drawing Exit Button
-        m_context->m_window->draw(m_exitButton);
+    m_context->m_window->draw(m_exitButton);
     //  Display the window
     m_context->m_window->display();
 }

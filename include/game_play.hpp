@@ -6,6 +6,7 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Audio/Sound.hpp>
 #include <SFML/Audio/Music.hpp>
+#include <SFML/Graphics/Text.hpp>
 #include <vector>
 #include <array>
 
@@ -22,6 +23,7 @@ private:
     sf::Sprite m_obstacle;
     sf::IntRect m_dinoRect;
     sf::Clock clock;
+    sf::Text m_scoreText;
 
     bool m_isPaused;
     bool m_isJumping;
@@ -35,7 +37,7 @@ private:
     float m_gameSpeed = 6.0f;
 
     float gravity = 1.0f;
-    float score = 0;
+    float m_score = 0;
 
 public:
     GamePlay(std::shared_ptr<Context>& context);

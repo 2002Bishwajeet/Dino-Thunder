@@ -5,14 +5,14 @@
 #include "State.hpp"
 #include "game.hpp"
 
-class PauseGame:public engine::State
+class PauseGame : public engine::State
 {
 private:
     std::shared_ptr<Context> m_context;
     sf::Text m_pauseTitle;
 
 public:
-    PauseGame(std::shared_ptr<Context> &context);
+    PauseGame(std::shared_ptr<Context>& context);
     ~PauseGame();
 
     void Init() override;

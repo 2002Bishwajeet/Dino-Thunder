@@ -26,8 +26,6 @@ enum AssetID
 
 };
 
-
-
 //  Context Struct
 //  Holds all the data needed to run the game
 //  Hold assetManager State manager and Rendering Window
@@ -49,29 +47,28 @@ struct Context
     }
 };
 
-
 //  Game Class
 class Game
 {
 private:
-//  creating a shared pointer to the context
-//  To know more about shared pointers check the link below
-//  https://en.cppreference.com/w/cpp/memory/shared_ptr
-//  https://docs.microsoft.com/en-us/cpp/cpp/how-to-create-and-use-shared-ptr-instances?view=msvc-170 -> More Stuff with better examples
+    //  creating a shared pointer to the context
+    //  To know more about shared pointers check the link below
+    //  https://en.cppreference.com/w/cpp/memory/shared_ptr
+    //  https://docs.microsoft.com/en-us/cpp/cpp/how-to-create-and-use-shared-ptr-instances?view=msvc-170 -> More Stuff with better examples
 
-//  To Explain in breif
-/* 
-    shared_ptr is a smart pointer that manages the lifetime of an object.
-    It is a pointer to an object that is shared between multiple owners.
-    A shared_ptr can share ownership of an object while storing a pointer to another object.
-    This feature can be used to point to member objects while owning the object they belong to.
-    The stored pointer is the one accessed by get(), the dereference and the comparison operators.
-    The managed pointer is the one passed to the deleter when use count reaches zero.
- */
+    //  To Explain in breif
+    /*
+        shared_ptr is a smart pointer that manages the lifetime of an object.
+        It is a pointer to an object that is shared between multiple owners.
+        A shared_ptr can share ownership of an object while storing a pointer to another object.
+        This feature can be used to point to member objects while owning the object they belong to.
+        The stored pointer is the one accessed by get(), the dereference and the comparison operators.
+        The managed pointer is the one passed to the deleter when use count reaches zero.
+     */
 
     std::shared_ptr<Context> m_context;
 
-//  A variable Time per second is used to calculate the delta time
+    //  A variable Time per second is used to calculate the delta time
 
     const sf::Time TIME_PER_FRAME = sf::seconds(1.f / 60.f);
 
@@ -79,6 +76,6 @@ public:
     Game();
     ~Game();
 
-//  Run method to run the game
+    //  Run method to run the game
     void Run();
 };

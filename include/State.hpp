@@ -2,7 +2,7 @@
 
 #include <SFML/System/Time.hpp>
 
-/* 
+/*
 Defining a State Class
 A state class is a class that represents a state of the game.
 It is responsible for updating the game state and rendering it.
@@ -15,7 +15,6 @@ namespace engine
 {
     class State
     {
-    
     public:
         State(){};
 
@@ -24,9 +23,9 @@ namespace engine
         //  Also we need to declare the destructor as virtual since we are inheriting from this class
         //  Not declaring it would not lead to proper dispose of this class
 
-    /* 
-    Since this is a state class, we need mainly the 4 functions below
-     */
+        /*
+        Since this is a state class, we need mainly the 4 functions below
+         */
 
         virtual ~State(){};
 
