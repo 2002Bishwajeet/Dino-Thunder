@@ -36,7 +36,7 @@ clean:
 	
 
 #  Make sure to comment this before pushing it to github
-# temp: 
-# 	g++ -Isrc/include -c temp.cpp 
+temp: 
+	g++ -Isrc/include -c temp.cpp 
 
-# 	$(CXX) temp.o  -I$(INCLUDE) -Isrc/include -o temp -Lsrc/lib $(LIBRARIES)
+	$(CXX) temp.o  -I$(INCLUDE) -Isrc/include -o temp -Lsrc/lib $(LIBRARIES)
