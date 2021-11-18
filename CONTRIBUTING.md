@@ -86,10 +86,6 @@ To get proper autocompletion for all the different functions and classes in the 
 
 After finishing the installation process, you can start writing and editing code.
 
-#### Advanced Topics
-
-We love to create issues that are good for beginners and label them as `good first issue` or `hacktoberfest`, but some more advanced topics might require extra knowledge. Below is a list of links you can use to learn more about some of the more advance topics that will help you master the SFML .
-
 ### File Structure
 
 ```bash
