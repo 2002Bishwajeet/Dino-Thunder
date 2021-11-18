@@ -4,7 +4,7 @@ This is an attempt to make a chrome dinosaur game using SFML - a wrapper for Ope
 
 ## Why SFML?
 
-Honestly when we decided to make this game for our college project, we were told to make this in 20yr old `<graphics>` library. I really didn't wanted to make a game using an Old library, also some of the functionalites were too limited in that library. For instance you only create a **640x480 window**, you can't change the size of the window, you can't change the color of the window, you can't change the title of the window, also you would need DOS to run the game and the graphics were horrible and you can't use sprites.
+Honestly when we decided to make this game for our college project, we were told to make this in 20 yr old `<graphics>` library. I really didn't wanted to make a game using an Old library, also some of the functionalites were too limited in that library. For instance you only create a **640x480 window**, you can't change the size of the window, you can't change the color of the window, you can't change the title of the window, also you would need DOS to run the game and the graphics were horrible and you can't use sprites.
 
 Then the quest for a graphic library began. I was amazed to see different libraries written in C++. OpenGL - the library used to create and render graphics, that's something which had a lot of learning curve and there were endless tutorials which were quite intriguing.
 
@@ -55,3 +55,56 @@ And lastly you would need [GNU Make](http://gnuwin32.sourceforge.net/packages/ma
 2. Type `make`
 
 That's it you would have a `main.exe` file in the directory. type `.\main.exe` to run the game
+
+## Roadmap
+
+Since we were a big nooble in game development, honestly we didn't knew at start how to begin making a game. That's when we started watching random YouTube tutorials to get to know the basics of SFML. We binged watch a lot of tutorials read the docs and start experimenting on some Stuffs. Now since we were in confident in our using the library, then came a major concern. How to oraganize the code and make it easy to read and understand. We had to implement the game engine to ensure smooth flow of the Game states. [SFML WIKI](https://github.com/SFML/SFML/wiki/Sources) had a lots of resources for the same. It also had many game examples as well some of the **FAQs** .
+
+We would like to give a huge shoutout to [DevKage](https://www.youtube.com/watch?v=xtZHJxYA6q8&list=PLiZZKL9HLmWMF8PlzvZu2WOC9kjs1zzhm) for his awesome C++ SFML tutorials. This tutorial actually helped us build a basic game engine for this Dino Game. Rest we all had to implement our own game logic, assets and states.
+
+### Main Menu
+
+Every game must have a main menu state. We decided to keep it simple and sober. We would display the tile of the game in pixelated font. we would have two buttons then - `Play` and `Exit`. These are self explanatory. On the we decided to keep a scenary which would be used in main game state too. To add something more funky, we decided to add some clouds which would move to display realism. Also we decided to add Dino in the main screen which could be moved by right and left arrow keys. Since we have added a music in the main menu, it would be great if a user wants to listen to that song while goofing around with dinosaur.
+
+### Game Play State
+
+This was the state where the actual magic happens. In the game play state we actually had to work on small small parts to not be overwhelmed.
+
+**We Started with the following first**
+
+* Adding Background to the Gameplay State
+* Adding Floor sprite
+* Adding Dino Sprite
+* Adding ingame music
+* Moving Dino Animation
+* Jumping Physics on Dino
+* Jumping Sound Dino
+* Obstacle Swapning
+* Parallax Effect (though not properly done)
+* Random Obstacle swapning and movement
+* Calculating Score
+* Moving to Pause Game and Game Over states
+
+Then all was left to implement `GameOver` state and `Pause Game` state.
+
+## Creators
+
+| Author | About | Github username |
+| ----------------- | --- | ---------------- |
+| Bishwajeet Parhi| Bishwajeet Parhi is currently a second year undergrad student  Computer Science student at the Indraprastha University. He is a passionate programmer and a gamer. He is also an active Open Source Contributor | [@2002Bishwajeet](https://github.com/2002bishwajeet) |
+| Akshat Gupta | Akshat Gupta is also currently a second year undergrad student Computer Science student at the Indraprastha University. He is new to programming and stuffs. He is enthusiastic and its his first project to work together as a team | [@AKG2506](https://github.com/AKG2506)
+| Amisha Sagar | Amisha Sagar is also currently a second year undergrad student Computer Science student at the Indraprastha University. she is also a passionate programmer and loves to build new stuffs. She is more keen and interested in Game Development. She knows Unity and had experimented a lots of things in game dev | [@oceanofamisha](https://github.com/oceanofamisha)
+
+## What's next?
+
+Since the main aim of this project was to learn **SFML** and more importantly it was for our college project, we would seldomly improve the game. But if you want to contribute to this project or if you want to make a new feature, please feel free to do so. Make sure you have read the [Code of Conduct](/CODE_OF_CONDUCT.md) and [Contributing.md](/CONTRIBUTING.md) guide before making your first PR in this repo.
+
+## License
+
+This project is licensed under the MIT license. All the sprites and textures have been taken from <https://www.itch.io>.  All of the sprites are free and open for commercial use. I am sorry as I couldn't credit the authors of the sprites. If I have used your sprite, feel free to point me so that I can credit you.
+
+**As for the Music and sounds:**
+The original Copyright(s) is (are) solely owned by the Companies/Original-Artist(s)/Record-label(s).
+All the contents are strictly done for a educational purpose
+
+**DISCLAIMER**: As per 3rd Section of Fair use guidelines borrowing small bits of material from an original work is more likely to be considered fair use. Copyright Disclaimer under Section 107 of the Copyright Act 1976, allowance is made for fair use
