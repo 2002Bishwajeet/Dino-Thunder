@@ -97,15 +97,14 @@ Then all was left to implement `GameOver` state and `Pause Game` state.
 
 ## What's next?
 
-Since the main aim of this project was to learn **SFML** and more importantly it was basically for our college project, we would seldomly update the game and fix unknown bugs. But if you want to contribute to this project or if you want to make a new feature, please feel free to do so. Make sure you have read the [Code of Conduct](CODE_OF_CONDUCT.md) and [Contributing.md](CONTRIBUTING.md) file before making your first PR in this repo.
+Since the main aim of this project was to learn **SFML** and more importantly it was for our college project, we would seldomly improve the game. But if you want to contribute to this project or if you want to make a new feature, please feel free to do so. Make sure you have read the [Code of Conduct](/CODE_OF_CONDUCT.md) and [Contributing.md](/CONTRIBUTING.md) guide before making your first PR in this repo.
 
-## License 
+## License
 
 This project is licensed under the MIT license. All the sprites and textures have been taken from <https://www.itch.io>.  All of the sprites are free and open for commercial use. I am sorry as I couldn't credit the authors of the sprites. If I have used your sprite, feel free to point me so that I can credit you.
 
-**As for the Music and sounds**
- The original Copyright(s) is (are) solely owned by the Companies/Original-Artist(s)/Record-label(s).
-All the contents are strictly done for a promotional purpose
+**As for the Music and sounds:**
+The original Copyright(s) is (are) solely owned by the Companies/Original-Artist(s)/Record-label(s).
+All the contents are strictly done for a educational purpose
 
 **DISCLAIMER**: As per 3rd Section of Fair use guidelines borrowing small bits of material from an original work is more likely to be considered fair use. Copyright Disclaimer under Section 107 of the Copyright Act 1976, allowance is made for fair use
-
