@@ -39,4 +39,4 @@ clean:
 # temp: 
 # 	g++ -Isrc/include -c temp.cpp 
 
-# 	$(CXX) temp.o  -I$(INCLUDE) -Isrc/include -o temp -Lsrc/lib $(LIBRARIES)
+# 	$(CXX) temp.o  -Isrc/include -o temp -Lsrc/lib $(LIBRARIES)
