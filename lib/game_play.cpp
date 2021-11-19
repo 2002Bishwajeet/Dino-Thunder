@@ -34,7 +34,6 @@ void GamePlay::Init()
     m_scoreText.setFont(m_context->m_assets->getFont(SECONDARY_FONT));
     m_scoreText.setCharacterSize(30);
     m_scoreText.setFillColor(sf::Color::White);
-    m_scoreText.setPosition(sf::Vector2f(m_context->m_window->getSize().x - m_scoreText.getGlobalBounds().height - 200, 10));
 
     //  Obstacles Setup
     m_obstacle.setPosition(0, m_context->m_window->getSize().y + m_obstacle.getGlobalBounds().height);
@@ -61,7 +60,7 @@ void GamePlay::Init()
 
     // TODO: Figure out a better way for the loop condition.
     //  What if you decided to increase the window size?
-    for (int i = 0; i < 24; i++)
+    for (int i = 0; i < 27; i++)
     {
         m_floor.setPosition(i * 62.f, m_context->m_window->getSize().y - 64);
         m_floors.push_back(m_floor);
@@ -107,6 +106,7 @@ void GamePlay::Update(sf::Time deltaTime)
         // Increase score as time passes
         m_score += deltaTime.asSeconds() * m_gameSpeed;
         m_scoreText.setString("Score: " + std::to_string(abs(m_score)));
+        m_scoreText.setPosition(sf::Vector2f(m_context->m_window->getSize().x - m_scoreText.getGlobalBounds().width - 40, 10));
 
         if ((int)abs(m_score) % 100 == 0)
             m_gameSpeed += 0.3f;
@@ -132,7 +132,7 @@ void GamePlay::Update(sf::Time deltaTime)
         // }
 
         // Move the floors
-        for (int i = 0; i < 24; i++)
+        for (int i = 0; i < 27; i++)
         {
             m_floors[i].move(-m_gameSpeed, 0.f);
             if (m_floors[i].getPosition().x < -m_floors[i].getGlobalBounds().width)
@@ -226,5 +226,5 @@ void GamePlay::Pause()
 void GamePlay::Start()
 {
     m_isPaused = false;
-    //  m_gameMusic.play();
+    m_gameMusic.play();
 }
