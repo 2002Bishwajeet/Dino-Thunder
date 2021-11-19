@@ -54,7 +54,7 @@ And lastly you would need [GNU Make](http://gnuwin32.sourceforge.net/packages/ma
 1. Open `Terminal`
 2. Type `make`
 
-That's it you would have a `main.exe` file in the directory. type `.\main.exe` to run the game
+That's it, you would have a `main.exe` file in the directory. Type `.\main.exe` to run the game
 
 ## Roadmap
 
@@ -97,7 +97,7 @@ Then all was left to implement `GameOver` state and `Pause Game` state.
 
 ## What's next?
 
-Since the main aim of this project was to learn **SFML** and more importantly it was for our college project, we would seldomly improve the game. But if you want to contribute to this project or if you want to make a new feature, please feel free to do so. Make sure you have read the [Code of Conduct](/CODE_OF_CONDUCT.md) and [Contributing.md](/CONTRIBUTING.md) guide before making your first PR in this repo.
+Since the main aim of this project was to learn **SFML** and more importantly it was for our college project, we would seldomly improve the game. But if you want to contribute to this project or if you want to make a new feature, please feel free to do so. Make sure you have read the [Code of Conduct](/CODE_OF_CONDUCT.md) and [Contributing](/CONTRIBUTING.md) guide before making your first PR in this repo.
 
 ## License
 
