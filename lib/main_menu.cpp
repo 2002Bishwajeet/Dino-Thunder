@@ -25,51 +25,41 @@ void MainMenu::Init()
     m_context->m_assets->loadTexture(BACKGROUND, "assets/sprites/background/layers/parallax-mountain.png");
     m_context->m_assets->loadFont(MAIN_FONT, "assets/fonts/8bitOperatorPlus8-Bold.ttf");
     m_context->m_assets->loadFont(SECONDARY_FONT, "assets/fonts/8bitOperatorPlusSC-Bold.ttf");
+    m_context->m_assets->loadTexture(CLOUD, "assets/sprites/clouds/Clouds.png");
 
     // Background Setup
     m_background.setTexture(m_context->m_assets->getTexture(BACKGROUND));
     m_background.setScale(5.f, 5.f);
 
-    // Code for creating a cloud - by @oceanofamisha
-    m_cloud.setFillColor(sf::Color(221, 231, 238));
-    m_cloud.setOutlineColor(sf::Color(129, 165, 186));
+    // Cloud Setup
+    m_cloud.setTexture(m_context->m_assets->getTexture(CLOUD));
 
-    m_cloud.setPointCount(29);
+    for (auto& cloud : clouds)
+    {
+        cloud.setTexture(m_context->m_assets->getTexture(CLOUD));
+        cloud.setScale(2.5f, 2.5f);
+    }
+    clouds[0].setTextureRect(sf::IntRect(8, 13, 60, 35));
+    clouds[0].setPosition(0, m_cloud.getLocalBounds().height / 2);
+    clouds[0].setRotation(-10);
 
-    m_cloud.setOrigin(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2);
+    clouds[1].setTextureRect(sf::IntRect(81, 24, 30, 20));
+    clouds[1].setPosition(300, m_cloud.getLocalBounds().height / 2 + 50);
 
-    m_cloud.setPoint(0, sf::Vector2f(300.f, 500.f));
-    m_cloud.setPoint(1, sf::Vector2f(305.f, 490.f));
-    m_cloud.setPoint(2, sf::Vector2f(310.f, 480.f));
-    m_cloud.setPoint(3, sf::Vector2f(315.f, 470.f));
-    m_cloud.setPoint(4, sf::Vector2f(320.f, 460.f));
-    m_cloud.setPoint(5, sf::Vector2f(325.f, 455.f));
-    m_cloud.setPoint(6, sf::Vector2f(330.f, 450.f));
-    m_cloud.setPoint(7, sf::Vector2f(335.f, 445.f));
-    m_cloud.setPoint(8, sf::Vector2f(340.f, 440.f));
-    m_cloud.setPoint(9, sf::Vector2f(390.f, 435.f));
-    m_cloud.setPoint(10, sf::Vector2f(400.f, 430.f));
-    m_cloud.setPoint(11, sf::Vector2f(420.f, 420.f));
-    m_cloud.setPoint(12, sf::Vector2f(450.f, 415.f));
-    m_cloud.setPoint(13, sf::Vector2f(475.f, 410.f));
-    m_cloud.setPoint(14, sf::Vector2f(500.f, 390.f));
-    m_cloud.setPoint(15, sf::Vector2f(525.f, 385.f));
-    m_cloud.setPoint(16, sf::Vector2f(550.f, 370.f));
-    m_cloud.setPoint(17, sf::Vector2f(600.f, 350.f));
-    m_cloud.setPoint(18, sf::Vector2f(640.f, 355.f));
-    m_cloud.setPoint(19, sf::Vector2f(675.f, 360.f));
-    m_cloud.setPoint(20, sf::Vector2f(685.f, 370.f));
-    m_cloud.setPoint(21, sf::Vector2f(700.f, 375.f));
-    m_cloud.setPoint(22, sf::Vector2f(710.f, 400.f));
-    m_cloud.setPoint(23, sf::Vector2f(755.f, 440.f));
-    m_cloud.setPoint(24, sf::Vector2f(760.f, 465.f));
-    m_cloud.setPoint(25, sf::Vector2f(780.f, 470.f));
-    m_cloud.setPoint(26, sf::Vector2f(795.f, 485.f));
-    m_cloud.setPoint(27, sf::Vector2f(800.f, 490.f));
-    m_cloud.setPoint(28, sf::Vector2f(800.f, 500.f));
+    clouds[2].setTextureRect(sf::IntRect(8, 55, 34, 23));
+    clouds[2].setPosition(400, m_cloud.getLocalBounds().height / 2 + 90);
 
-    m_cloud.setScale(0.5f, 0.5f);
-    m_cloud.setPosition(350, 30);
+    clouds[3].setTextureRect(sf::IntRect(67, 55, 50, 29));
+    clouds[3].setPosition(0, m_cloud.getLocalBounds().height / 2 + 100);
+
+    clouds[4].setTextureRect(sf::IntRect(16, 86, 41, 28));
+    clouds[4].setPosition(600, m_cloud.getLocalBounds().height / 2 + 120);
+
+    clouds[5].setTextureRect(sf::IntRect(72, 93, 31, 24));
+    clouds[5].setPosition(700, m_cloud.getLocalBounds().height / 2 + 200);
+
+    // tempcloud.setScale(0.5f, 0.5f);
+    // tempcloud.setPosition(350, 30);
 
     m_music.openFromFile("assets/music/mainmenu.ogg");
     m_music.setLoop(true);
@@ -207,8 +197,17 @@ void MainMenu::Update(sf::Time deltaTime)
         m_music.~Music();
     }
 
+    for (auto& cloud : clouds)
+    {
+        cloud.move(0.2f, 0.f);
+        if (cloud.getPosition().x > m_context->m_window->getSize().x + 60)
+        {
+            cloud.setPosition(0.f, cloud.getPosition().y);
+        }
+    }
+
     m_cloud.move(0.2f, 0.f);
-    if (m_cloud.getPosition().x > m_context->m_window->getSize().x + 20)
+    if (m_cloud.getPosition().x > m_context->m_window->getSize().x + 60)
     {
         m_cloud.setPosition(0.f, m_cloud.getPosition().y);
     }
@@ -226,7 +225,12 @@ void MainMenu::Draw()
     m_context->m_window->draw(m_background);
 
     // Drawing Clouds
-    m_context->m_window->draw(m_cloud);
+    for (auto& cloud : clouds)
+    {
+        m_context->m_window->draw(cloud);
+    }
+
+    // m_context->m_window->draw(tempcloud);
 
     //  Drawing Main Menu Text
     m_context->m_window->draw(m_gametitle);
