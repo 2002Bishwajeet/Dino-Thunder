@@ -24,8 +24,7 @@ private:
     sf::ConvexShape tempcloud;
 
     // Cloud
-    std::array<sf::Sprite, 6> clouds;
-    sf::Sprite m_cloud;
+    std::array<sf::Sprite, 6> m_clouds;
 
     //  Music
     sf::Music m_music;
