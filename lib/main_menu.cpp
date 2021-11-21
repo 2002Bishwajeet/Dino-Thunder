@@ -31,7 +31,7 @@ void MainMenu::Init()
     m_background.setTexture(m_context->m_assets->getTexture(BACKGROUND));
     m_background.setScale(5.f, 5.f);
 
-      for (auto& cloud : m_clouds)
+    for (auto& cloud : m_clouds)
     {
         cloud.setTexture(m_context->m_assets->getTexture(CLOUD));
         cloud.setScale(2.5f, 2.5f);
@@ -41,22 +41,17 @@ void MainMenu::Init()
     m_clouds[0].setRotation(-10);
 
     m_clouds[1].setTextureRect(sf::IntRect(81, 24, 30, 20));
-    m_clouds[1].setPosition(300, m_clouds[1].getLocalBounds().height / 2 + 50);
+    m_clouds[1].setPosition(m_context->m_window->getSize().x - 80, m_clouds[1].getLocalBounds().height / 2 + 50);
 
     m_clouds[2].setTextureRect(sf::IntRect(8, 55, 34, 23));
-    m_clouds[2].setPosition(400, m_clouds[2].getLocalBounds().height / 2 + 90);
+    m_clouds[2].setPosition(250, m_clouds[2].getLocalBounds().height / 2 + 120);
 
     m_clouds[3].setTextureRect(sf::IntRect(67, 55, 50, 29));
-    m_clouds[3].setPosition(0, m_clouds[3].getLocalBounds().height / 2 + 100);
+    m_clouds[3].setPosition(500, m_clouds[3].getLocalBounds().height / 2 + 50);
 
     m_clouds[4].setTextureRect(sf::IntRect(16, 86, 41, 28));
-    m_clouds[4].setPosition(600, m_clouds[4].getLocalBounds().height / 2 + 120);
-
-    m_clouds[5].setTextureRect(sf::IntRect(72, 93, 31, 24));
-    m_clouds[5].setPosition(700, m_clouds[5].getLocalBounds().height / 2 + 200);
-
-    // tempcloud.setScale(0.5f, 0.5f);
-    // tempcloud.setPosition(350, 30);
+    m_clouds[4].setPosition(800, m_clouds[4].getLocalBounds().height / 2 + 150);
+    m_clouds[4].setRotation(-14);
 
     m_music.openFromFile("assets/music/mainmenu.ogg");
     m_music.setLoop(true);
@@ -196,14 +191,12 @@ void MainMenu::Update(sf::Time deltaTime)
 
     for (auto& cloud : m_clouds)
     {
-        cloud.move(0.2f, 0.f);
+        cloud.move(4.f / cloud.getLocalBounds().width, 0.f);
         if (cloud.getPosition().x > m_context->m_window->getSize().x + 60)
         {
-            cloud.setPosition(0.f, cloud.getPosition().y);
+            cloud.setPosition(0.f - 40.f, cloud.getPosition().y);
         }
     }
-
-  
 }
 void MainMenu::Draw()
 {
