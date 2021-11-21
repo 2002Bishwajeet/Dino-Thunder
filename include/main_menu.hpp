@@ -8,6 +8,7 @@
 #include <SFML/Graphics/Sprite.hpp>
 #include "State.hpp"
 #include "game.hpp"
+#include <array>
 
 //  Main menu Class . As main menu is a state, it has inherited from State class.
 class MainMenu : public engine::State
@@ -20,7 +21,10 @@ private:
     sf::Text m_gametitle;
     sf::Text m_playButton;
     sf::Text m_exitButton;
-    sf::ConvexShape m_cloud;
+    sf::ConvexShape tempcloud;
+
+    // Cloud
+    std::array<sf::Sprite, 5> m_clouds;
 
     //  Music
     sf::Music m_music;
