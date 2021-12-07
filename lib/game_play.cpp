@@ -19,7 +19,13 @@ GamePlay::~GamePlay()
 void GamePlay::Init()
 {
     //  Loading Assets for the game
-    m_context->m_assets->loadTexture(BACKGROUND, "assets/sprites/background/layers/parallax-mountain.png");
+    m_context->m_assets->loadTexture(SKY, "assets/sprites/background/sky.png");
+    m_context->m_assets->loadTexture(SKY_CLOUD, "assets/sprites/background/sky_cloud.png");
+    m_context->m_assets->loadTexture(PINE_1, "assets/sprites/background/pine1.png");
+    m_context->m_assets->loadTexture(PINE_2, "assets/sprites/background/pine2.png");
+    m_context->m_assets->loadTexture(MOUNTAINS, "assets/sprites/background/mountain2.png");
+    m_context->m_assets->loadTexture(CLOUD, "assets/sprites/background/cloud.png");
+
     m_context->m_assets->loadTexture(FLOOR, "assets/sprites/floor/Wasteland-Files.png");
     m_context->m_assets->loadTexture(DINO, "assets/sprites/Dino/sheets/DinoSprites-tard.png");
     m_context->m_assets->loadTexture(OBSTACLE_1, "assets/sprites/obstacles/winter_tree_1.png");
@@ -51,9 +57,24 @@ void GamePlay::Init()
     m_gameMusic.play();
 
     // Background Setup
-    m_background.setTexture(m_context->m_assets->getTexture(BACKGROUND));
-    m_background.setScale(5.f, 5.f);
+    m_sky.setTexture(m_context->m_assets->getTexture(SKY));
+    m_sky.scale(2.0f, 2.0f);
 
+    m_skyCloud.setTexture(m_context->m_assets->getTexture(SKY_CLOUD));
+    m_skyCloud.scale(2.0f, 1.0f);
+    m_skyCloud.setPosition(0.0f, 50.0f);
+
+    m_mountains.setTexture(m_context->m_assets->getTexture(MOUNTAINS));
+    m_mountains.scale(2.0f, 2.0f);
+    m_mountains.setPosition(0.0f, 230.0f);
+
+    m_pine1.setTexture(m_context->m_assets->getTexture(PINE_1));
+    m_pine1.scale(2.0f, 1.5f);
+    m_pine1.setPosition(0.0f, 360.0f);
+
+    m_pine2.setTexture(m_context->m_assets->getTexture(PINE_2));
+    m_pine2.scale(2.0f, 1.5f);
+    m_pine2.setPosition(0.0f, 425.0f);
     // Floor Setup
     m_floor.setTexture(m_context->m_assets->getTexture(FLOOR));
     m_floor.setTextureRect(sf::IntRect(100, 128, 16, 16));
@@ -206,7 +227,14 @@ void GamePlay::ProcessInput()
 void GamePlay::Draw()
 {
     m_context->m_window->clear();
-    m_context->m_window->draw(m_background);
+
+    // Drawing Background
+    m_context->m_window->draw(m_sky);
+    m_context->m_window->draw(m_skyCloud);
+    m_context->m_window->draw(m_mountains);
+    m_context->m_window->draw(m_pine1);
+    m_context->m_window->draw(m_pine2);
+
     m_context->m_window->draw(m_dino);
 
     for (auto& floor : m_floors)

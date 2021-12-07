@@ -30,7 +30,12 @@ private:
     sf::Music m_music;
 
     // Background
-    sf::Sprite m_background;
+    sf::Sprite m_sky;
+    sf::Sprite m_mountains;
+    sf::Sprite m_skyCloud;
+    sf::Sprite m_cloud;
+    sf::Sprite m_pine1;
+    sf::Sprite m_pine2;
 
     bool m_isPlayButtonSelected;
     bool m_isPlayButtonPressed;

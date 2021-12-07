@@ -22,7 +22,14 @@ enum AssetID
     BACKGROUND,
     FLOOR,
     JUMP_SOUND,
-    GAME_OVER_SOUND
+    GAME_OVER_SOUND,
+    
+    MOUNTAINS,
+    PINE_1,
+    PINE_2,
+    SKY,
+    SKY_CLOUD,
+    CLOUDS
 
 };
 

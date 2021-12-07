@@ -14,7 +14,15 @@ class GamePlay : public engine::State
 {
 private:
     std::shared_ptr<Context> m_context;
-    sf::Sprite m_background;
+
+    // Background
+    sf::Sprite m_sky;
+    sf::Sprite m_mountains;
+    sf::Sprite m_skyCloud;
+    sf::Sprite m_cloud;
+    sf::Sprite m_pine1;
+    sf::Sprite m_pine2;
+
     sf::Sprite m_floor;
     sf::Sprite m_dino;
     sf::Music m_gameMusic;
