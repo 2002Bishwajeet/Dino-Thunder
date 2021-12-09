@@ -23,23 +23,21 @@ void MainMenu::Init()
     //  Loading the fonts from the file and storing it in the map
     //  MAIN_FONT and SECONDARY_FONT are the enums for the fonts which will used to identify
     m_context->m_assets->loadTexture(SKY, "assets/sprites/background/sky.png");
-    m_context->m_assets->loadTexture(SKY_CLOUD, "assets/sprites/background/sky_cloud.png");
+    m_context->m_assets->loadTexture(CLOUDS, "assets/sprites/background/cloud.png", true);
     m_context->m_assets->loadTexture(PINE_1, "assets/sprites/background/pine1.png");
     m_context->m_assets->loadTexture(PINE_2, "assets/sprites/background/pine2.png");
     m_context->m_assets->loadTexture(MOUNTAINS, "assets/sprites/background/mountain2.png");
-    m_context->m_assets->loadTexture(CLOUD, "assets/sprites/background/cloud.png");
 
     m_context->m_assets->loadFont(MAIN_FONT, "assets/fonts/8bitOperatorPlus8-Bold.ttf");
     m_context->m_assets->loadFont(SECONDARY_FONT, "assets/fonts/8bitOperatorPlusSC-Bold.ttf");
-    m_context->m_assets->loadTexture(CLOUD, "assets/sprites/clouds/Clouds.png");
 
     // Background Setup
     m_sky.setTexture(m_context->m_assets->getTexture(SKY));
     m_sky.scale(2.0f, 2.0f);
 
-    m_skyCloud.setTexture(m_context->m_assets->getTexture(SKY_CLOUD));
-    m_skyCloud.scale(2.0f, 1.0f);
-    m_skyCloud.setPosition(0.0f, 50.0f);
+    m_cloud.setTexture(m_context->m_assets->getTexture(CLOUDS));
+    m_cloud.scale(2.1f, 1.3f);
+    m_cloud.setPosition(0.0f, 60.0f);
 
     m_mountains.setTexture(m_context->m_assets->getTexture(MOUNTAINS));
     m_mountains.scale(2.0f, 2.0f);
@@ -53,31 +51,22 @@ void MainMenu::Init()
     m_pine2.scale(2.0f, 1.5f);
     m_pine2.setPosition(0.0f, 425.0f);
 
-    for (auto& cloud : m_clouds)
-    {
-        cloud.setTexture(m_context->m_assets->getTexture(CLOUD));
-        cloud.setScale(2.5f, 2.5f);
-    }
-    m_clouds[0].setTextureRect(sf::IntRect(8, 13, 60, 35));
-    m_clouds[0].setPosition(0, m_clouds[0].getLocalBounds().height / 2);
-    m_clouds[0].setRotation(-10);
-
-    m_clouds[1].setTextureRect(sf::IntRect(81, 24, 30, 20));
-    m_clouds[1].setPosition(m_context->m_window->getSize().x - 80, m_clouds[1].getLocalBounds().height / 2 + 50);
-
-    m_clouds[2].setTextureRect(sf::IntRect(8, 55, 34, 23));
-    m_clouds[2].setPosition(250, m_clouds[2].getLocalBounds().height / 2 + 120);
-
-    m_clouds[3].setTextureRect(sf::IntRect(67, 55, 50, 29));
-    m_clouds[3].setPosition(500, m_clouds[3].getLocalBounds().height / 2 + 50);
-
-    m_clouds[4].setTextureRect(sf::IntRect(16, 86, 41, 28));
-    m_clouds[4].setPosition(800, m_clouds[4].getLocalBounds().height / 2 + 150);
-    m_clouds[4].setRotation(-14);
-
     m_music.openFromFile("assets/music/mainmenu.ogg");
     m_music.setLoop(true);
     m_music.setVolume(75);
+
+    // Shader Setup
+    // Study this code. Idk how this works
+    m_shader.loadFromMemory(
+        "uniform float offset;"
+
+        "void main() {"
+        "    gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;"
+        "    gl_TexCoord[0] = gl_TextureMatrix[0] * gl_MultiTexCoord0;"
+        "    gl_TexCoord[0].x = gl_TexCoord[0].x + offset;" // magic
+        "    gl_FrontColor = gl_Color;"
+        "}",
+        sf::Shader::Vertex);
 
     // Never call the play method inside the loop
     //  It will restart again and again
@@ -211,38 +200,21 @@ void MainMenu::Update(sf::Time deltaTime)
         m_music.~Music();
     }
 
-    for (auto& cloud : m_clouds)
-    {
-        cloud.move(4.f / cloud.getLocalBounds().width, 0.f);
-        if (cloud.getPosition().x > m_context->m_window->getSize().x + 60)
-        {
-            cloud.setPosition(0.f - 40.f, cloud.getPosition().y);
-        }
-    }
+    m_shader.setUniform("offset", offset += deltaTime.asSeconds() / 70);
 }
 void MainMenu::Draw()
 {
     //  Clear the window
-    m_context->m_window->clear(
-        //  White Shade
-        sf::Color(254, 255, 254));
+    m_context->m_window->clear();
 
     // Draw Stuffs here
 
     // Drawing Background
     m_context->m_window->draw(m_sky);
-    m_context->m_window->draw(m_skyCloud);
+    m_context->m_window->draw(m_cloud, &m_shader);
     m_context->m_window->draw(m_mountains);
     m_context->m_window->draw(m_pine1);
     m_context->m_window->draw(m_pine2);
-
-    // Drawing Clouds
-    for (auto& cloud : m_clouds)
-    {
-        m_context->m_window->draw(cloud);
-    }
-
-    // m_context->m_window->draw(tempcloud);
 
     //  Drawing Main Menu Text
     m_context->m_window->draw(m_gametitle);

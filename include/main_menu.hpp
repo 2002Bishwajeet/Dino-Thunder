@@ -4,8 +4,9 @@
 
 #include <SFML/Graphics/Text.hpp>
 #include <SFML/Graphics/ConvexShape.hpp>
-#include <SFML/Audio.hpp>
 #include <SFML/Graphics/Sprite.hpp>
+#include <SFML/Graphics/Shader.hpp>
+#include <SFML/Audio.hpp>
 #include "State.hpp"
 #include "game.hpp"
 #include <array>
@@ -32,10 +33,14 @@ private:
     // Background
     sf::Sprite m_sky;
     sf::Sprite m_mountains;
-    sf::Sprite m_skyCloud;
     sf::Sprite m_cloud;
     sf::Sprite m_pine1;
     sf::Sprite m_pine2;
+
+    //  Shader
+    sf::Shader m_shader;
+
+    float offset = 0.f;
 
     bool m_isPlayButtonSelected;
     bool m_isPlayButtonPressed;

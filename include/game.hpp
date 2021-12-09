@@ -11,7 +11,7 @@ enum AssetID
 {
     MAIN_FONT,
     SECONDARY_FONT,
-    CLOUD,
+    CLOUDS,
     DINO,
     OBSTACLE_1,
     OBSTACLE_2,
@@ -29,7 +29,7 @@ enum AssetID
     PINE_2,
     SKY,
     SKY_CLOUD,
-    CLOUDS
+    CLOUD
 
 };
 

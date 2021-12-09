@@ -64,6 +64,10 @@ void GamePlay::Init()
     m_skyCloud.scale(2.0f, 1.0f);
     m_skyCloud.setPosition(0.0f, 50.0f);
 
+    m_cloud.setTexture(m_context->m_assets->getTexture(CLOUD));
+    m_cloud.scale(2.0f, 1.0f);
+    m_cloud.setPosition(0.0f, 50.0f);
+
     m_mountains.setTexture(m_context->m_assets->getTexture(MOUNTAINS));
     m_mountains.scale(2.0f, 2.0f);
     m_mountains.setPosition(0.0f, 230.0f);
@@ -75,7 +79,8 @@ void GamePlay::Init()
     m_pine2.setTexture(m_context->m_assets->getTexture(PINE_2));
     m_pine2.scale(2.0f, 1.5f);
     m_pine2.setPosition(0.0f, 425.0f);
-    // Floor Setup
+
+       // Floor Setup
     m_floor.setTexture(m_context->m_assets->getTexture(FLOOR));
     m_floor.setTextureRect(sf::IntRect(100, 128, 16, 16));
     m_floor.setScale(5.f, 4.f);
@@ -231,6 +236,7 @@ void GamePlay::Draw()
     // Drawing Background
     m_context->m_window->draw(m_sky);
     m_context->m_window->draw(m_skyCloud);
+    m_context->m_window->draw(m_cloud);
     m_context->m_window->draw(m_mountains);
     m_context->m_window->draw(m_pine1);
     m_context->m_window->draw(m_pine2);
