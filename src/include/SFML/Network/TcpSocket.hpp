@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -32,7 +33,6 @@
 #include <SFML/Network/Socket.hpp>
 #include <SFML/System/Time.hpp>
 
-
 namespace sf
 {
 class TcpListener;
@@ -46,7 +46,6 @@ class Packet;
 class SFML_NETWORK_API TcpSocket : public Socket
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -109,7 +108,8 @@ public:
     /// \see disconnect
     ///
     ////////////////////////////////////////////////////////////
-    Status connect(const IpAddress& remoteAddress, unsigned short remotePort, Time timeout = Time::Zero);
+    Status connect(const IpAddress& remoteAddress, unsigned short remotePort,
+                   Time timeout = Time::Zero);
 
     ////////////////////////////////////////////////////////////
     /// \brief Disconnect the socket from its remote peer
@@ -165,7 +165,8 @@ public:
     ///
     /// \param data     Pointer to the array to fill with the received bytes
     /// \param size     Maximum number of bytes that can be received
-    /// \param received This variable is filled with the actual number of bytes received
+    /// \param received This variable is filled with the actual number of bytes
+    /// received
     ///
     /// \return Status code
     ///
@@ -209,7 +210,6 @@ public:
     Status receive(Packet& packet);
 
 private:
-
     friend class TcpListener;
 
     ////////////////////////////////////////////////////////////
@@ -220,22 +220,21 @@ private:
     {
         PendingPacket();
 
-        Uint32            Size;         ///< Data of packet size
-        std::size_t       SizeReceived; ///< Number of size bytes received so far
-        std::vector<char> Data;         ///< Data of the packet
+        Uint32 Size;              ///< Data of packet size
+        std::size_t SizeReceived; ///< Number of size bytes received so far
+        std::vector<char> Data;   ///< Data of the packet
     };
 
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    PendingPacket m_pendingPacket; ///< Temporary data of the packet currently being received
+    PendingPacket m_pendingPacket; ///< Temporary data of the packet currently
+                                   ///< being received
 };
 
 } // namespace sf
 
-
 #endif // SFML_TCPSOCKET_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::TcpSocket
@@ -298,7 +297,8 @@ private:
 /// // Wait for a connection
 /// sf::TcpSocket socket;
 /// listener.accept(socket);
-/// std::cout << "New client connected: " << socket.getRemoteAddress() << std::endl;
+/// std::cout << "New client connected: " << socket.getRemoteAddress() <<
+/// std::endl;
 ///
 /// // Receive a message from the client
 /// char buffer[1024];

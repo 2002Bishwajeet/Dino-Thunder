@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -30,19 +31,17 @@
 ////////////////////////////////////////////////////////////
 #include <SFML/Config.hpp>
 
-
 ////////////////////////////////////////////////////////////
 // Define portable import / export macros
 ////////////////////////////////////////////////////////////
 #if defined(SFML_WINDOW_EXPORTS)
 
-    #define SFML_WINDOW_API SFML_API_EXPORT
+#define SFML_WINDOW_API SFML_API_EXPORT
 
 #else
 
-    #define SFML_WINDOW_API SFML_API_IMPORT
+#define SFML_WINDOW_API SFML_API_IMPORT
 
 #endif
-
 
 #endif // SFML_WINDOW_EXPORT_HPP

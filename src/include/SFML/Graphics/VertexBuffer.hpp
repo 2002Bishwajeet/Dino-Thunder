@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -28,11 +29,10 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
+#include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/Export.hpp>
 #include <SFML/Graphics/PrimitiveType.hpp>
-#include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Window/GlResource.hpp>
-
 
 namespace sf
 {
@@ -46,7 +46,6 @@ class Vertex;
 class SFML_GRAPHICS_API VertexBuffer : public Drawable, private GlResource
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Usage specifiers
     ///
@@ -93,7 +92,8 @@ public:
     explicit VertexBuffer(Usage usage);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Construct a VertexBuffer with a specific PrimitiveType and usage specifier
+    /// \brief Construct a VertexBuffer with a specific PrimitiveType and usage
+    /// specifier
     ///
     /// Creates an empty vertex buffer and sets its primitive type
     /// to \p type and usage to \p usage.
@@ -195,12 +195,14 @@ public:
     /// \return True if the update was successful
     ///
     ////////////////////////////////////////////////////////////
-    bool update(const Vertex* vertices, std::size_t vertexCount, unsigned int offset);
+    bool update(const Vertex* vertices, std::size_t vertexCount,
+                unsigned int offset);
 
     ////////////////////////////////////////////////////////////
     /// \brief Copy the contents of another buffer into this buffer
     ///
-    /// \param vertexBuffer Vertex buffer whose contents to copy into this vertex buffer
+    /// \param vertexBuffer Vertex buffer whose contents to copy into this
+    /// vertex buffer
     ///
     /// \return True if the copy was successful
     ///
@@ -215,7 +217,7 @@ public:
     /// \return Reference to self
     ///
     ////////////////////////////////////////////////////////////
-    VertexBuffer& operator =(const VertexBuffer& right);
+    VertexBuffer& operator=(const VertexBuffer& right);
 
     ////////////////////////////////////////////////////////////
     /// \brief Swap the contents of this vertex buffer with those of another
@@ -301,7 +303,8 @@ public:
     /// // draw OpenGL stuff that use no vertex buffer...
     /// \endcode
     ///
-    /// \param vertexBuffer Pointer to the vertex buffer to bind, can be null to use no vertex buffer
+    /// \param vertexBuffer Pointer to the vertex buffer to bind, can be null to
+    /// use no vertex buffer
     ///
     ////////////////////////////////////////////////////////////
     static void bind(const VertexBuffer* vertexBuffer);
@@ -319,7 +322,6 @@ public:
     static bool isAvailable();
 
 private:
-
     ////////////////////////////////////////////////////////////
     /// \brief Draw the vertex buffer to a render target
     ///
@@ -330,21 +332,18 @@ private:
     virtual void draw(RenderTarget& target, RenderStates states) const;
 
 private:
-
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    unsigned int  m_buffer;        ///< Internal buffer identifier
-    std::size_t   m_size;          ///< Size in Vertexes of the currently allocated buffer
+    unsigned int m_buffer; ///< Internal buffer identifier
+    std::size_t m_size; ///< Size in Vertexes of the currently allocated buffer
     PrimitiveType m_primitiveType; ///< Type of primitives to draw
-    Usage         m_usage;         ///< How this vertex buffer is to be used
+    Usage m_usage;                 ///< How this vertex buffer is to be used
 };
 
 } // namespace sf
 
-
 #endif // SFML_VERTEXBUFFER_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::VertexBuffer

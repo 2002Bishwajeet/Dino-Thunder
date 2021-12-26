@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -32,7 +33,6 @@
 #include <string>
 #include <vector>
 
-
 namespace sf
 {
 class InputStream;
@@ -46,7 +46,6 @@ class SoundFileWriter;
 class SFML_AUDIO_API SoundFileFactory
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Register a new reader
     ///
@@ -90,12 +89,14 @@ public:
     ///
     /// \param filename Path of the sound file
     ///
-    /// \return A new sound file reader that can read the given file, or null if no reader can handle it
+    /// \return A new sound file reader that can read the given file, or null if
+    /// no reader can handle it
     ///
     /// \see createReaderFromMemory, createReaderFromStream
     ///
     ////////////////////////////////////////////////////////////
-    static SoundFileReader* createReaderFromFilename(const std::string& filename);
+    static SoundFileReader*
+    createReaderFromFilename(const std::string& filename);
 
     ////////////////////////////////////////////////////////////
     /// \brief Instantiate the right codec for the given file in memory
@@ -105,12 +106,14 @@ public:
     /// \param data        Pointer to the file data in memory
     /// \param sizeInBytes Total size of the file data, in bytes
     ///
-    /// \return A new sound file codec that can read the given file, or null if no codec can handle it
+    /// \return A new sound file codec that can read the given file, or null if
+    /// no codec can handle it
     ///
     /// \see createReaderFromFilename, createReaderFromStream
     ///
     ////////////////////////////////////////////////////////////
-    static SoundFileReader* createReaderFromMemory(const void* data, std::size_t sizeInBytes);
+    static SoundFileReader* createReaderFromMemory(const void* data,
+                                                   std::size_t sizeInBytes);
 
     ////////////////////////////////////////////////////////////
     /// \brief Instantiate the right codec for the given file in stream
@@ -119,7 +122,8 @@ public:
     ///
     /// \param stream Source stream to read from
     ///
-    /// \return A new sound file codec that can read the given file, or null if no codec can handle it
+    /// \return A new sound file codec that can read the given file, or null if
+    /// no codec can handle it
     ///
     /// \see createReaderFromFilename, createReaderFromMemory
     ///
@@ -133,13 +137,14 @@ public:
     ///
     /// \param filename Path of the sound file
     ///
-    /// \return A new sound file writer that can write given file, or null if no writer can handle it
+    /// \return A new sound file writer that can write given file, or null if no
+    /// writer can handle it
     ///
     ////////////////////////////////////////////////////////////
-    static SoundFileWriter* createWriterFromFilename(const std::string& filename);
+    static SoundFileWriter*
+    createWriterFromFilename(const std::string& filename);
 
 private:
-
     ////////////////////////////////////////////////////////////
     // Types
     ////////////////////////////////////////////////////////////
@@ -170,7 +175,6 @@ private:
 
 #endif // SFML_SOUNDFILEFACTORY_HPP
 
-
 ////////////////////////////////////////////////////////////
 /// \class sf::SoundFileFactory
 /// \ingroup audio
@@ -181,10 +185,11 @@ private:
 /// are wrapped into the higher-level classes sf::InputSoundFile and
 /// sf::OutputSoundFile.
 ///
-/// To register a new reader (writer) use the sf::SoundFileFactory::registerReader
-/// (registerWriter) static function. You don't have to call the unregisterReader
-/// (unregisterWriter) function, unless you want to unregister a format before your
-/// application ends (typically, when a plugin is unloaded).
+/// To register a new reader (writer) use the
+/// sf::SoundFileFactory::registerReader (registerWriter) static function. You
+/// don't have to call the unregisterReader (unregisterWriter) function, unless
+/// you want to unregister a format before your application ends (typically,
+/// when a plugin is unloaded).
 ///
 /// Usage example:
 /// \code
@@ -192,6 +197,7 @@ private:
 /// sf::SoundFileFactory::registerWriter<MySoundFileWriter>();
 /// \endcode
 ///
-/// \see sf::InputSoundFile, sf::OutputSoundFile, sf::SoundFileReader, sf::SoundFileWriter
+/// \see sf::InputSoundFile, sf::OutputSoundFile, sf::SoundFileReader,
+/// sf::SoundFileWriter
 ///
 ////////////////////////////////////////////////////////////

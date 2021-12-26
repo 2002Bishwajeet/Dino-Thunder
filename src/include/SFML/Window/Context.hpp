@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -28,17 +29,16 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
+#include <SFML/System/NonCopyable.hpp>
+#include <SFML/Window/ContextSettings.hpp>
 #include <SFML/Window/Export.hpp>
 #include <SFML/Window/GlResource.hpp>
-#include <SFML/Window/ContextSettings.hpp>
-#include <SFML/System/NonCopyable.hpp>
-
 
 namespace sf
 {
 namespace priv
 {
-    class GlContext;
+class GlContext;
 }
 
 typedef void (*GlFunctionPointer)();
@@ -50,7 +50,6 @@ typedef void (*GlFunctionPointer)();
 class SFML_WINDOW_API Context : GlResource, NonCopyable
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -143,10 +142,10 @@ public:
     /// \param height   Back buffer height
     ///
     ////////////////////////////////////////////////////////////
-    Context(const ContextSettings& settings, unsigned int width, unsigned int height);
+    Context(const ContextSettings& settings, unsigned int width,
+            unsigned int height);
 
 private:
-
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
@@ -154,7 +153,6 @@ private:
 };
 
 } // namespace sf
-
 
 #endif // SFML_CONTEXT_HPP
 

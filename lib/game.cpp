@@ -1,16 +1,20 @@
 #include "game.hpp"
+#include "main_menu.hpp"
 #include <SFML/Graphics/CircleShape.hpp>
 #include <SFML/Window/Event.hpp>
-#include "main_menu.hpp"
 
 Game::Game()
-    : m_context(std::make_shared<Context>()) // Make sure to initalise the m_context pointer
+    : m_context(std::make_shared<Context>()) // Make sure to initalise the
+                                             // m_context pointer
 
 {
     // Creating a render window
-    //  We are gonna keep the main window in 720p i.e 1280x720 px and in Windowed mode
-    // Here we are using m_context to get the window pointer to create the window
-    m_context->m_window->create(sf::VideoMode(1280, 720), "Dinosour Game", sf::Style::Close);
+    //  We are gonna keep the main window in 720p i.e 1280x720 px and in
+    //  Windowed mode
+    // Here we are using m_context to get the window pointer to create the
+    // window
+    m_context->m_window->create(sf::VideoMode(1280, 720), "Dinosour Game",
+                                sf::Style::Close);
 
     //  We will be adding a new State to the stack
     //  The state will be the Main Menu
@@ -19,15 +23,14 @@ Game::Game()
     // We will set the framerate to 60 for the current application
     m_context->m_window->setFramerateLimit(60);
 
-    //  We will set the VSync to true for the current application to avoid the screen tearing
+    //  We will set the VSync to true for the current application to avoid the
+    //  screen tearing
     m_context->m_window->setVerticalSyncEnabled(true);
 
     m_context->m_window->setKeyRepeatEnabled(false);
 }
 
-Game::~Game()
-{
-}
+Game::~Game() {}
 
 void Game::Run()
 {

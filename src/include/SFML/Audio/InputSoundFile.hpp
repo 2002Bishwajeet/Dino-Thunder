@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -31,9 +32,8 @@
 #include <SFML/Audio/Export.hpp>
 #include <SFML/System/NonCopyable.hpp>
 #include <SFML/System/Time.hpp>
-#include <string>
 #include <algorithm>
-
+#include <string>
 
 namespace sf
 {
@@ -47,7 +47,6 @@ class SoundFileReader;
 class SFML_AUDIO_API InputSoundFile : NonCopyable
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -165,7 +164,8 @@ public:
     /// If the given offset exceeds to total number of samples,
     /// this function jumps to the end of the sound file.
     ///
-    /// \param sampleOffset Index of the sample to jump to, relative to the beginning
+    /// \param sampleOffset Index of the sample to jump to, relative to the
+    /// beginning
     ///
     ////////////////////////////////////////////////////////////
     void seek(Uint64 sampleOffset);
@@ -196,7 +196,6 @@ public:
     Uint64 read(Int16* samples, Uint64 maxCount);
 
 private:
-
     ////////////////////////////////////////////////////////////
     /// \brief Close the current file
     ///
@@ -206,20 +205,18 @@ private:
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    SoundFileReader* m_reader;       ///< Reader that handles I/O on the file's format
-    InputStream*     m_stream;       ///< Input stream used to access the file's data
-    bool             m_streamOwned;  ///< Is the stream internal or external?
-    Uint64           m_sampleOffset; ///< Sample Read Position
-    Uint64           m_sampleCount;  ///< Total number of samples in the file
-    unsigned int     m_channelCount; ///< Number of channels of the sound
-    unsigned int     m_sampleRate;   ///< Number of samples per second
+    SoundFileReader* m_reader; ///< Reader that handles I/O on the file's format
+    InputStream* m_stream;     ///< Input stream used to access the file's data
+    bool m_streamOwned;        ///< Is the stream internal or external?
+    Uint64 m_sampleOffset;     ///< Sample Read Position
+    Uint64 m_sampleCount;      ///< Total number of samples in the file
+    unsigned int m_channelCount; ///< Number of channels of the sound
+    unsigned int m_sampleRate;   ///< Number of samples per second
 };
 
 } // namespace sf
 
-
 #endif // SFML_INPUTSOUNDFILE_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::InputSoundFile

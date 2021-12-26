@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -28,17 +29,16 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Graphics/Export.hpp>
-#include <SFML/Graphics/Color.hpp>
-#include <SFML/Graphics/Rect.hpp>
-#include <SFML/Graphics/View.hpp>
-#include <SFML/Graphics/Transform.hpp>
 #include <SFML/Graphics/BlendMode.hpp>
-#include <SFML/Graphics/RenderStates.hpp>
+#include <SFML/Graphics/Color.hpp>
+#include <SFML/Graphics/Export.hpp>
 #include <SFML/Graphics/PrimitiveType.hpp>
+#include <SFML/Graphics/Rect.hpp>
+#include <SFML/Graphics/RenderStates.hpp>
+#include <SFML/Graphics/Transform.hpp>
 #include <SFML/Graphics/Vertex.hpp>
+#include <SFML/Graphics/View.hpp>
 #include <SFML/System/NonCopyable.hpp>
-
 
 namespace sf
 {
@@ -52,7 +52,6 @@ class VertexBuffer;
 class SFML_GRAPHICS_API RenderTarget : NonCopyable
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Destructor
     ///
@@ -211,7 +210,8 @@ public:
     /// match perfectly. But if you define a custom view or resize your
     /// render target, this assertion is not true anymore, i.e. a point
     /// located at (150, 75) in your 2D world may map to the pixel
-    /// (10, 50) of your render target -- if the view is translated by (140, 25).
+    /// (10, 50) of your render target -- if the view is translated by (140,
+    /// 25).
     ///
     /// This version uses a custom view for calculations, see the other
     /// overload of the function if you want to use the current view of the
@@ -234,7 +234,8 @@ public:
     /// \param states   Render states to use for drawing
     ///
     ////////////////////////////////////////////////////////////
-    void draw(const Drawable& drawable, const RenderStates& states = RenderStates::Default);
+    void draw(const Drawable& drawable,
+              const RenderStates& states = RenderStates::Default);
 
     ////////////////////////////////////////////////////////////
     /// \brief Draw primitives defined by an array of vertices
@@ -246,7 +247,8 @@ public:
     ///
     ////////////////////////////////////////////////////////////
     void draw(const Vertex* vertices, std::size_t vertexCount,
-              PrimitiveType type, const RenderStates& states = RenderStates::Default);
+              PrimitiveType type,
+              const RenderStates& states = RenderStates::Default);
 
     ////////////////////////////////////////////////////////////
     /// \brief Draw primitives defined by a vertex buffer
@@ -255,7 +257,8 @@ public:
     /// \param states       Render states to use for drawing
     ///
     ////////////////////////////////////////////////////////////
-    void draw(const VertexBuffer& vertexBuffer, const RenderStates& states = RenderStates::Default);
+    void draw(const VertexBuffer& vertexBuffer,
+              const RenderStates& states = RenderStates::Default);
 
     ////////////////////////////////////////////////////////////
     /// \brief Draw primitives defined by a vertex buffer
@@ -266,7 +269,9 @@ public:
     /// \param states       Render states to use for drawing
     ///
     ////////////////////////////////////////////////////////////
-    void draw(const VertexBuffer& vertexBuffer, std::size_t firstVertex, std::size_t vertexCount, const RenderStates& states = RenderStates::Default);
+    void draw(const VertexBuffer& vertexBuffer, std::size_t firstVertex,
+              std::size_t vertexCount,
+              const RenderStates& states = RenderStates::Default);
 
     ////////////////////////////////////////////////////////////
     /// \brief Return the size of the rendering region of the target
@@ -344,7 +349,8 @@ public:
     void popGLStates();
 
     ////////////////////////////////////////////////////////////
-    /// \brief Reset the internal OpenGL states so that the target is ready for drawing
+    /// \brief Reset the internal OpenGL states so that the target is ready for
+    /// drawing
     ///
     /// This function can be used when you mix SFML drawing
     /// and direct OpenGL rendering, if you choose not to use
@@ -367,7 +373,6 @@ public:
     void resetGLStates();
 
 protected:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -384,7 +389,6 @@ protected:
     void initialize();
 
 private:
-
     ////////////////////////////////////////////////////////////
     /// \brief Apply the current view
     ///
@@ -440,7 +444,8 @@ private:
     /// \param vertexCount Number of vertices to use when drawing
     ///
     ////////////////////////////////////////////////////////////
-    void drawPrimitives(PrimitiveType type, std::size_t firstVertex, std::size_t vertexCount);
+    void drawPrimitives(PrimitiveType type, std::size_t firstVertex,
+                        std::size_t vertexCount);
 
     ////////////////////////////////////////////////////////////
     /// \brief Clean up environment after drawing
@@ -456,32 +461,34 @@ private:
     ////////////////////////////////////////////////////////////
     struct StatesCache
     {
-        enum {VertexCacheSize = 4};
+        enum
+        {
+            VertexCacheSize = 4
+        };
 
-        bool      enable;         ///< Is the cache enabled?
-        bool      glStatesSet;    ///< Are our internal GL states set yet?
-        bool      viewChanged;    ///< Has the current view changed since last draw?
-        BlendMode lastBlendMode;  ///< Cached blending mode
-        Uint64    lastTextureId;  ///< Cached texture
-        bool      texCoordsArrayEnabled; ///< Is GL_TEXTURE_COORD_ARRAY client state enabled?
-        bool      useVertexCache; ///< Did we previously use the vertex cache?
-        Vertex    vertexCache[VertexCacheSize]; ///< Pre-transformed vertices cache
+        bool enable;      ///< Is the cache enabled?
+        bool glStatesSet; ///< Are our internal GL states set yet?
+        bool viewChanged; ///< Has the current view changed since last draw?
+        BlendMode lastBlendMode;    ///< Cached blending mode
+        Uint64 lastTextureId;       ///< Cached texture
+        bool texCoordsArrayEnabled; ///< Is GL_TEXTURE_COORD_ARRAY client state
+                                    ///< enabled?
+        bool useVertexCache;        ///< Did we previously use the vertex cache?
+        Vertex vertexCache[VertexCacheSize]; ///< Pre-transformed vertices cache
     };
 
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    View        m_defaultView; ///< Default view
-    View        m_view;        ///< Current view
-    StatesCache m_cache;       ///< Render states cache
-    Uint64      m_id;          ///< Unique number that identifies the RenderTarget
+    View m_defaultView;  ///< Default view
+    View m_view;         ///< Current view
+    StatesCache m_cache; ///< Render states cache
+    Uint64 m_id;         ///< Unique number that identifies the RenderTarget
 };
 
 } // namespace sf
 
-
 #endif // SFML_RENDERTARGET_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::RenderTarget

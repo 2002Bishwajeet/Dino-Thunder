@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -31,7 +32,6 @@
 #include <SFML/Audio/Export.hpp>
 #include <string>
 
-
 namespace sf
 {
 class InputStream;
@@ -43,16 +43,16 @@ class InputStream;
 class SFML_AUDIO_API SoundFileReader
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Structure holding the audio properties of a sound file
     ///
     ////////////////////////////////////////////////////////////
     struct Info
     {
-        Uint64       sampleCount;  ///< Total number of samples in the file
+        Uint64 sampleCount;        ///< Total number of samples in the file
         unsigned int channelCount; ///< Number of channels of the sound
-        unsigned int sampleRate;   ///< Samples rate of the sound, in samples per second
+        unsigned int
+            sampleRate; ///< Samples rate of the sound, in samples per second
     };
 
     ////////////////////////////////////////////////////////////
@@ -86,7 +86,8 @@ public:
     /// If the given offset exceeds to total number of samples,
     /// this function must jump to the end of the file.
     ///
-    /// \param sampleOffset Index of the sample to jump to, relative to the beginning
+    /// \param sampleOffset Index of the sample to jump to, relative to the
+    /// beginning
     ///
     ////////////////////////////////////////////////////////////
     virtual void seek(Uint64 sampleOffset) = 0;
@@ -105,9 +106,7 @@ public:
 
 } // namespace sf
 
-
 #endif // SFML_SOUNDFILEREADER_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::SoundFileReader
@@ -132,7 +131,8 @@ public:
 ///
 ///     static bool check(sf::InputStream& stream)
 ///     {
-///         // typically, read the first few header bytes and check fields that identify the format
+///         // typically, read the first few header bytes and check fields that
+///         identify the format
 ///         // return true if the reader can handle the format
 ///     }
 ///
@@ -145,13 +145,15 @@ public:
 ///
 ///     virtual void seek(sf::Uint64 sampleOffset)
 ///     {
-///         // advance to the sampleOffset-th sample from the beginning of the sound
+///         // advance to the sampleOffset-th sample from the beginning of the
+///         sound
 ///     }
 ///
 ///     virtual sf::Uint64 read(sf::Int16* samples, sf::Uint64 maxCount)
 ///     {
 ///         // read up to 'maxCount' samples into the 'samples' array,
-///         // convert them (for example from normalized float) if they are not stored
+///         // convert them (for example from normalized float) if they are not
+///         stored
 ///         // as 16-bits signed integers in the file
 ///         // return the actual number of samples read
 ///     }

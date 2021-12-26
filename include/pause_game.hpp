@@ -1,9 +1,9 @@
 #pragma once
 
-#include <memory>
-#include <SFML/Graphics/Text.hpp>
 #include "State.hpp"
 #include "game.hpp"
+#include <SFML/Graphics/Text.hpp>
+#include <memory>
 
 class PauseGame : public engine::State
 {

@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -32,7 +33,6 @@
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/System/Vector2.hpp>
 
-
 namespace sf
 {
 ////////////////////////////////////////////////////////////
@@ -42,7 +42,6 @@ namespace sf
 class SFML_GRAPHICS_API Transform
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -65,8 +64,7 @@ public:
     /// \param a22 Element (2, 2) of the matrix
     ///
     ////////////////////////////////////////////////////////////
-    Transform(float a00, float a01, float a02,
-              float a10, float a11, float a12,
+    Transform(float a00, float a01, float a02, float a10, float a11, float a12,
               float a20, float a21, float a22);
 
     ////////////////////////////////////////////////////////////
@@ -244,8 +242,8 @@ public:
     /// can be chained.
     /// \code
     /// sf::Transform transform;
-    /// transform.rotate(90, sf::Vector2f(8, 3)).translate(sf::Vector2f(50, 20));
-    /// \endcode
+    /// transform.rotate(90, sf::Vector2f(8, 3)).translate(sf::Vector2f(50,
+    /// 20)); \endcode
     ///
     /// \param angle Rotation angle, in degrees
     /// \param center Center of rotation
@@ -354,7 +352,6 @@ public:
     static const Transform Identity; ///< The identity transform (does nothing)
 
 private:
-
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
@@ -373,7 +370,8 @@ private:
 /// \return New combined transform
 ///
 ////////////////////////////////////////////////////////////
-SFML_GRAPHICS_API Transform operator *(const Transform& left, const Transform& right);
+SFML_GRAPHICS_API Transform operator*(const Transform& left,
+                                      const Transform& right);
 
 ////////////////////////////////////////////////////////////
 /// \relates sf::Transform
@@ -387,7 +385,8 @@ SFML_GRAPHICS_API Transform operator *(const Transform& left, const Transform& r
 /// \return The combined transform
 ///
 ////////////////////////////////////////////////////////////
-SFML_GRAPHICS_API Transform& operator *=(Transform& left, const Transform& right);
+SFML_GRAPHICS_API Transform& operator*=(Transform& left,
+                                        const Transform& right);
 
 ////////////////////////////////////////////////////////////
 /// \relates sf::Transform
@@ -401,7 +400,8 @@ SFML_GRAPHICS_API Transform& operator *=(Transform& left, const Transform& right
 /// \return New transformed point
 ///
 ////////////////////////////////////////////////////////////
-SFML_GRAPHICS_API Vector2f operator *(const Transform& left, const Vector2f& right);
+SFML_GRAPHICS_API Vector2f operator*(const Transform& left,
+                                     const Vector2f& right);
 
 ////////////////////////////////////////////////////////////
 /// \relates sf::Transform
@@ -416,7 +416,8 @@ SFML_GRAPHICS_API Vector2f operator *(const Transform& left, const Vector2f& rig
 /// \return true if the transforms are equal, false otherwise
 ///
 ////////////////////////////////////////////////////////////
-SFML_GRAPHICS_API bool operator ==(const Transform& left, const Transform& right);
+SFML_GRAPHICS_API bool operator==(const Transform& left,
+                                  const Transform& right);
 
 ////////////////////////////////////////////////////////////
 /// \relates sf::Transform
@@ -430,13 +431,12 @@ SFML_GRAPHICS_API bool operator ==(const Transform& left, const Transform& right
 /// \return true if the transforms are not equal, false otherwise
 ///
 ////////////////////////////////////////////////////////////
-SFML_GRAPHICS_API bool operator !=(const Transform& left, const Transform& right);
+SFML_GRAPHICS_API bool operator!=(const Transform& left,
+                                  const Transform& right);
 
 } // namespace sf
 
-
 #endif // SFML_TRANSFORM_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::Transform

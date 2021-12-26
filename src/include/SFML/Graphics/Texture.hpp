@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -32,7 +33,6 @@
 #include <SFML/Graphics/Image.hpp>
 #include <SFML/Window/GlResource.hpp>
 
-
 namespace sf
 {
 class InputStream;
@@ -48,7 +48,6 @@ class Window;
 class SFML_GRAPHICS_API Texture : GlResource
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Types of texture coordinates that can be used for rendering
     ///
@@ -60,7 +59,6 @@ public:
     };
 
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -125,7 +123,8 @@ public:
     /// \see loadFromMemory, loadFromStream, loadFromImage
     ///
     ////////////////////////////////////////////////////////////
-    bool loadFromFile(const std::string& filename, const IntRect& area = IntRect());
+    bool loadFromFile(const std::string& filename,
+                      const IntRect& area = IntRect());
 
     ////////////////////////////////////////////////////////////
     /// \brief Load the texture from a file in memory
@@ -157,7 +156,8 @@ public:
     /// \see loadFromFile, loadFromStream, loadFromImage
     ///
     ////////////////////////////////////////////////////////////
-    bool loadFromMemory(const void* data, std::size_t size, const IntRect& area = IntRect());
+    bool loadFromMemory(const void* data, std::size_t size,
+                        const IntRect& area = IntRect());
 
     ////////////////////////////////////////////////////////////
     /// \brief Load the texture from a custom stream
@@ -275,7 +275,8 @@ public:
     /// \param y      Y offset in the texture where to copy the source pixels
     ///
     ////////////////////////////////////////////////////////////
-    void update(const Uint8* pixels, unsigned int width, unsigned int height, unsigned int x, unsigned int y);
+    void update(const Uint8* pixels, unsigned int width, unsigned int height,
+                unsigned int x, unsigned int y);
 
     ////////////////////////////////////////////////////////////
     /// \brief Update a part of this texture from another texture
@@ -516,7 +517,7 @@ public:
     /// \return Reference to self
     ///
     ////////////////////////////////////////////////////////////
-    Texture& operator =(const Texture& right);
+    Texture& operator=(const Texture& right);
 
     ////////////////////////////////////////////////////////////
     /// \brief Swap the contents of this texture with those of another
@@ -565,11 +566,12 @@ public:
     /// coordinates more intuitive for the high-level API, users don't need
     /// to compute normalized values.
     ///
-    /// \param texture Pointer to the texture to bind, can be null to use no texture
-    /// \param coordinateType Type of texture coordinates to use
+    /// \param texture Pointer to the texture to bind, can be null to use no
+    /// texture \param coordinateType Type of texture coordinates to use
     ///
     ////////////////////////////////////////////////////////////
-    static void bind(const Texture* texture, CoordinateType coordinateType = Normalized);
+    static void bind(const Texture* texture,
+                     CoordinateType coordinateType = Normalized);
 
     ////////////////////////////////////////////////////////////
     /// \brief Get the maximum texture size allowed
@@ -584,7 +586,6 @@ public:
     static unsigned int getMaximumSize();
 
 private:
-
     friend class Text;
     friend class RenderTexture;
     friend class RenderTarget;
@@ -616,20 +617,22 @@ private:
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    Vector2u     m_size;          ///< Public texture size
-    Vector2u     m_actualSize;    ///< Actual texture size (can be greater than public size because of padding)
-    unsigned int m_texture;       ///< Internal texture identifier
-    bool         m_isSmooth;      ///< Status of the smooth filter
-    bool         m_sRgb;          ///< Should the texture source be converted from sRGB?
-    bool         m_isRepeated;    ///< Is the texture in repeat mode?
-    mutable bool m_pixelsFlipped; ///< To work around the inconsistency in Y orientation
-    bool         m_fboAttachment; ///< Is this texture owned by a framebuffer object?
-    bool         m_hasMipmap;     ///< Has the mipmap been generated?
-    Uint64       m_cacheId;       ///< Unique number that identifies the texture to the render target's cache
+    Vector2u m_size;        ///< Public texture size
+    Vector2u m_actualSize;  ///< Actual texture size (can be greater than public
+                            ///< size because of padding)
+    unsigned int m_texture; ///< Internal texture identifier
+    bool m_isSmooth;        ///< Status of the smooth filter
+    bool m_sRgb;       ///< Should the texture source be converted from sRGB?
+    bool m_isRepeated; ///< Is the texture in repeat mode?
+    mutable bool
+        m_pixelsFlipped;  ///< To work around the inconsistency in Y orientation
+    bool m_fboAttachment; ///< Is this texture owned by a framebuffer object?
+    bool m_hasMipmap;     ///< Has the mipmap been generated?
+    Uint64 m_cacheId;     ///< Unique number that identifies the texture to the
+                          ///< render target's cache
 };
 
 } // namespace sf
-
 
 #endif // SFML_TEXTURE_HPP
 
@@ -708,8 +711,8 @@ private:
 ///     ...
 ///
 ///     // update the texture
-///     sf::Uint8* pixels = ...; // get a fresh chunk of pixels (the next frame of a movie, for example)
-///     texture.update(pixels);
+///     sf::Uint8* pixels = ...; // get a fresh chunk of pixels (the next frame
+///     of a movie, for example) texture.update(pixels);
 ///
 ///     // draw it
 ///     window.draw(sprite);

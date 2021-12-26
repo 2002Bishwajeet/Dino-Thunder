@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -38,21 +39,23 @@ namespace sf
 ////////////////////////////////////////////////////////////
 enum PrimitiveType
 {
-    Points,        ///< List of individual points
-    Lines,         ///< List of individual lines
-    LineStrip,     ///< List of connected lines, a point uses the previous point to form a line
-    Triangles,     ///< List of individual triangles
-    TriangleStrip, ///< List of connected triangles, a point uses the two previous points to form a triangle
-    TriangleFan,   ///< List of connected triangles, a point uses the common center and the previous point to form a triangle
-    Quads,         ///< List of individual quads (deprecated, don't work with OpenGL ES)
+    Points,    ///< List of individual points
+    Lines,     ///< List of individual lines
+    LineStrip, ///< List of connected lines, a point uses the previous point to
+               ///< form a line
+    Triangles, ///< List of individual triangles
+    TriangleStrip, ///< List of connected triangles, a point uses the two
+                   ///< previous points to form a triangle
+    TriangleFan,   ///< List of connected triangles, a point uses the common
+                   ///< center and the previous point to form a triangle
+    Quads, ///< List of individual quads (deprecated, don't work with OpenGL ES)
 
     // Deprecated names
-    LinesStrip     = LineStrip,     ///< \deprecated Use LineStrip instead
+    LinesStrip = LineStrip,         ///< \deprecated Use LineStrip instead
     TrianglesStrip = TriangleStrip, ///< \deprecated Use TriangleStrip instead
-    TrianglesFan   = TriangleFan    ///< \deprecated Use TriangleFan instead
+    TrianglesFan = TriangleFan      ///< \deprecated Use TriangleFan instead
 };
 
 } // namespace sf
-
 
 #endif // SFML_PRIMITIVETYPE_HPP

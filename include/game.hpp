@@ -15,15 +15,12 @@ enum AssetID
     DINO,
     OBSTACLE_1,
     OBSTACLE_2,
-    OBSTACLE_3,
-    OBSTACLE_4,
-    OBSTACLE_5,
     BIRD,
     BACKGROUND,
     FLOOR,
     JUMP_SOUND,
     GAME_OVER_SOUND,
-    
+
     MOUNTAINS,
     PINE_1,
     PINE_2,
@@ -37,7 +34,8 @@ enum AssetID
 //  Holds all the data needed to run the game
 //  Hold assetManager State manager and Rendering Window
 
-//  We will pass an object to each of the states so that they can access the assets and draw on the window
+//  We will pass an object to each of the states so that they can access the
+//  assets and draw on the window
 struct Context
 {
     //  They will all hold the unique Pointer
@@ -61,16 +59,18 @@ private:
     //  creating a shared pointer to the context
     //  To know more about shared pointers check the link below
     //  https://en.cppreference.com/w/cpp/memory/shared_ptr
-    //  https://docs.microsoft.com/en-us/cpp/cpp/how-to-create-and-use-shared-ptr-instances?view=msvc-170 -> More Stuff with better examples
+    //  https://docs.microsoft.com/en-us/cpp/cpp/how-to-create-and-use-shared-ptr-instances?view=msvc-170
+    //  -> More Stuff with better examples
 
     //  To Explain in breif
     /*
         shared_ptr is a smart pointer that manages the lifetime of an object.
         It is a pointer to an object that is shared between multiple owners.
-        A shared_ptr can share ownership of an object while storing a pointer to another object.
-        This feature can be used to point to member objects while owning the object they belong to.
-        The stored pointer is the one accessed by get(), the dereference and the comparison operators.
-        The managed pointer is the one passed to the deleter when use count reaches zero.
+        A shared_ptr can share ownership of an object while storing a pointer to
+       another object. This feature can be used to point to member objects while
+       owning the object they belong to. The stored pointer is the one accessed
+       by get(), the dereference and the comparison operators. The managed
+       pointer is the one passed to the deleter when use count reaches zero.
      */
 
     std::shared_ptr<Context> m_context;

@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -30,14 +31,13 @@
 ////////////////////////////////////////////////////////////
 #include <SFML/Graphics/Export.hpp>
 #include <SFML/Graphics/Glyph.hpp>
-#include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Rect.hpp>
-#include <SFML/System/Vector2.hpp>
+#include <SFML/Graphics/Texture.hpp>
 #include <SFML/System/String.hpp>
+#include <SFML/System/Vector2.hpp>
 #include <map>
 #include <string>
 #include <vector>
-
 
 namespace sf
 {
@@ -50,7 +50,6 @@ class InputStream;
 class SFML_GRAPHICS_API Font
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Holds various information about a font
     ///
@@ -61,7 +60,6 @@ public:
     };
 
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -172,12 +170,14 @@ public:
     /// \param codePoint        Unicode code point of the character to get
     /// \param characterSize    Reference character size
     /// \param bold             Retrieve the bold version or the regular one?
-    /// \param outlineThickness Thickness of outline (when != 0 the glyph will not be filled)
+    /// \param outlineThickness Thickness of outline (when != 0 the glyph will
+    /// not be filled)
     ///
     /// \return The glyph corresponding to \a codePoint and \a characterSize
     ///
     ////////////////////////////////////////////////////////////
-    const Glyph& getGlyph(Uint32 codePoint, unsigned int characterSize, bool bold, float outlineThickness = 0) const;
+    const Glyph& getGlyph(Uint32 codePoint, unsigned int characterSize,
+                          bool bold, float outlineThickness = 0) const;
 
     ////////////////////////////////////////////////////////////
     /// \brief Get the kerning offset of two glyphs
@@ -195,7 +195,8 @@ public:
     /// \return Kerning value for \a first and \a second, in pixels
     ///
     ////////////////////////////////////////////////////////////
-    float getKerning(Uint32 first, Uint32 second, unsigned int characterSize) const;
+    float getKerning(Uint32 first, Uint32 second,
+                     unsigned int characterSize) const;
 
     ////////////////////////////////////////////////////////////
     /// \brief Get the line spacing
@@ -240,7 +241,8 @@ public:
     float getUnderlineThickness(unsigned int characterSize) const;
 
     ////////////////////////////////////////////////////////////
-    /// \brief Retrieve the texture containing the loaded glyphs of a certain size
+    /// \brief Retrieve the texture containing the loaded glyphs of a certain
+    /// size
     ///
     /// The contents of the returned texture changes as more glyphs
     /// are requested, thus it is not very relevant. It is mainly
@@ -261,17 +263,19 @@ public:
     /// \return Reference to self
     ///
     ////////////////////////////////////////////////////////////
-    Font& operator =(const Font& right);
+    Font& operator=(const Font& right);
 
 private:
-
     ////////////////////////////////////////////////////////////
     /// \brief Structure defining a row of glyphs
     ///
     ////////////////////////////////////////////////////////////
     struct Row
     {
-        Row(unsigned int rowTop, unsigned int rowHeight) : width(0), top(rowTop), height(rowHeight) {}
+        Row(unsigned int rowTop, unsigned int rowHeight)
+            : width(0), top(rowTop), height(rowHeight)
+        {
+        }
 
         unsigned int width;  ///< Current width of the row
         unsigned int top;    ///< Y position of the row into the texture
@@ -281,7 +285,8 @@ private:
     ////////////////////////////////////////////////////////////
     // Types
     ////////////////////////////////////////////////////////////
-    typedef std::map<Uint64, Glyph> GlyphTable; ///< Table mapping a codepoint to its glyph
+    typedef std::map<Uint64, Glyph>
+        GlyphTable; ///< Table mapping a codepoint to its glyph
 
     ////////////////////////////////////////////////////////////
     /// \brief Structure defining a page of glyphs
@@ -291,10 +296,12 @@ private:
     {
         Page();
 
-        GlyphTable       glyphs;  ///< Table mapping code points to their corresponding glyph
-        Texture          texture; ///< Texture containing the pixels of the glyphs
-        unsigned int     nextRow; ///< Y position of the next new row in the texture
-        std::vector<Row> rows;    ///< List containing the position of all the existing rows
+        GlyphTable
+            glyphs; ///< Table mapping code points to their corresponding glyph
+        Texture texture;      ///< Texture containing the pixels of the glyphs
+        unsigned int nextRow; ///< Y position of the next new row in the texture
+        std::vector<Row>
+            rows; ///< List containing the position of all the existing rows
     };
 
     ////////////////////////////////////////////////////////////
@@ -309,12 +316,14 @@ private:
     /// \param codePoint        Unicode code point of the character to load
     /// \param characterSize    Reference character size
     /// \param bold             Retrieve the bold version or the regular one?
-    /// \param outlineThickness Thickness of outline (when != 0 the glyph will not be filled)
+    /// \param outlineThickness Thickness of outline (when != 0 the glyph will
+    /// not be filled)
     ///
     /// \return The glyph corresponding to \a codePoint and \a characterSize
     ///
     ////////////////////////////////////////////////////////////
-    Glyph loadGlyph(Uint32 codePoint, unsigned int characterSize, bool bold, float outlineThickness) const;
+    Glyph loadGlyph(Uint32 codePoint, unsigned int characterSize, bool bold,
+                    float outlineThickness) const;
 
     ////////////////////////////////////////////////////////////
     /// \brief Find a suitable rectangle within the texture for a glyph
@@ -326,7 +335,8 @@ private:
     /// \return Found rectangle within the texture
     ///
     ////////////////////////////////////////////////////////////
-    IntRect findGlyphRect(Page& page, unsigned int width, unsigned int height) const;
+    IntRect findGlyphRect(Page& page, unsigned int width,
+                          unsigned int height) const;
 
     ////////////////////////////////////////////////////////////
     /// \brief Make sure that the given size is the current one
@@ -341,29 +351,35 @@ private:
     ////////////////////////////////////////////////////////////
     // Types
     ////////////////////////////////////////////////////////////
-    typedef std::map<unsigned int, Page> PageTable; ///< Table mapping a character size to its page (texture)
+    typedef std::map<unsigned int, Page>
+        PageTable; ///< Table mapping a character size to its page (texture)
 
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    void*                      m_library;     ///< Pointer to the internal library interface (it is typeless to avoid exposing implementation details)
-    void*                      m_face;        ///< Pointer to the internal font face (it is typeless to avoid exposing implementation details)
-    void*                      m_streamRec;   ///< Pointer to the stream rec instance (it is typeless to avoid exposing implementation details)
-    void*                      m_stroker;     ///< Pointer to the stroker (it is typeless to avoid exposing implementation details)
-    int*                       m_refCount;    ///< Reference counter used by implicit sharing
-    Info                       m_info;        ///< Information about the font
-    mutable PageTable          m_pages;       ///< Table containing the glyphs pages by character size
-    mutable std::vector<Uint8> m_pixelBuffer; ///< Pixel buffer holding a glyph's pixels before being written to the texture
-    #ifdef SFML_SYSTEM_ANDROID
-    void*                      m_stream; ///< Asset file streamer (if loaded from file)
-    #endif
+    void* m_library;   ///< Pointer to the internal library interface (it is
+                       ///< typeless to avoid exposing implementation details)
+    void* m_face;      ///< Pointer to the internal font face (it is typeless to
+                       ///< avoid exposing implementation details)
+    void* m_streamRec; ///< Pointer to the stream rec instance (it is typeless
+                       ///< to avoid exposing implementation details)
+    void* m_stroker;   ///< Pointer to the stroker (it is typeless to avoid
+                       ///< exposing implementation details)
+    int* m_refCount;   ///< Reference counter used by implicit sharing
+    Info m_info;       ///< Information about the font
+    mutable PageTable
+        m_pages; ///< Table containing the glyphs pages by character size
+    mutable std::vector<Uint8>
+        m_pixelBuffer; ///< Pixel buffer holding a glyph's pixels before being
+                       ///< written to the texture
+#ifdef SFML_SYSTEM_ANDROID
+    void* m_stream; ///< Asset file streamer (if loaded from file)
+#endif
 };
 
 } // namespace sf
 
-
 #endif // SFML_FONT_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::Font

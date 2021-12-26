@@ -1,21 +1,17 @@
 #include "pause_game.hpp"
 #include <SFML/Window/Event.hpp>
 
-PauseGame::PauseGame(std::shared_ptr<Context>& context)
-{
-    m_context = context;
-}
+PauseGame::PauseGame(std::shared_ptr<Context>& context) { m_context = context; }
 
-PauseGame::~PauseGame()
-{
-}
+PauseGame::~PauseGame() {}
 
 void PauseGame::Init()
 {
     m_pauseTitle.setFont(m_context->m_assets->getFont(MAIN_FONT));
     m_pauseTitle.setString("Pause");
     m_pauseTitle.setCharacterSize(100);
-    m_pauseTitle.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2);
+    m_pauseTitle.setPosition(m_context->m_window->getSize().x / 2,
+                             m_context->m_window->getSize().y / 2);
 }
 void PauseGame::ProcessInput()
 {

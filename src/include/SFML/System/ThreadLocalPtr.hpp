@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -30,7 +31,6 @@
 ////////////////////////////////////////////////////////////
 #include <SFML/System/ThreadLocal.hpp>
 
-
 namespace sf
 {
 ////////////////////////////////////////////////////////////
@@ -41,7 +41,6 @@ template <typename T>
 class ThreadLocalPtr : private ThreadLocal
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -59,7 +58,7 @@ public:
     /// \return Reference to the thread-local variable
     ///
     ////////////////////////////////////////////////////////////
-    T& operator *() const;
+    T& operator*() const;
 
     ////////////////////////////////////////////////////////////
     /// \brief Overload of operator ->
@@ -70,7 +69,7 @@ public:
     /// \return Pointer to the thread-local variable
     ///
     ////////////////////////////////////////////////////////////
-    T* operator ->() const;
+    T* operator->() const;
 
     ////////////////////////////////////////////////////////////
     /// \brief Conversion operator to implicitly convert the
@@ -89,7 +88,7 @@ public:
     /// \return Reference to self
     ///
     ////////////////////////////////////////////////////////////
-    ThreadLocalPtr<T>& operator =(T* value);
+    ThreadLocalPtr<T>& operator=(T* value);
 
     ////////////////////////////////////////////////////////////
     /// \brief Assignment operator for a ThreadLocalPtr parameter
@@ -99,16 +98,14 @@ public:
     /// \return Reference to self
     ///
     ////////////////////////////////////////////////////////////
-    ThreadLocalPtr<T>& operator =(const ThreadLocalPtr<T>& right);
+    ThreadLocalPtr<T>& operator=(const ThreadLocalPtr<T>& right);
 };
 
 } // namespace sf
 
 #include <SFML/System/ThreadLocalPtr.inl>
 
-
 #endif // SFML_THREADLOCALPTR_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::ThreadLocalPtr

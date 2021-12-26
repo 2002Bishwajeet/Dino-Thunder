@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -29,10 +30,9 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Network/Export.hpp>
-#include <SFML/Network/Socket.hpp>
 #include <SFML/Network/IpAddress.hpp>
+#include <SFML/Network/Socket.hpp>
 #include <vector>
-
 
 namespace sf
 {
@@ -45,13 +45,13 @@ class Packet;
 class SFML_NETWORK_API UdpSocket : public Socket
 {
 public:
-
     ////////////////////////////////////////////////////////////
     // Constants
     ////////////////////////////////////////////////////////////
     enum
     {
-        MaxDatagramSize = 65507 ///< The maximum number of bytes that can be sent in a single UDP datagram
+        MaxDatagramSize = 65507 ///< The maximum number of bytes that can be
+                                ///< sent in a single UDP datagram
     };
 
     ////////////////////////////////////////////////////////////
@@ -128,7 +128,8 @@ public:
     /// \see receive
     ///
     ////////////////////////////////////////////////////////////
-    Status send(const void* data, std::size_t size, const IpAddress& remoteAddress, unsigned short remotePort);
+    Status send(const void* data, std::size_t size,
+                const IpAddress& remoteAddress, unsigned short remotePort);
 
     ////////////////////////////////////////////////////////////
     /// \brief Receive raw data from a remote peer
@@ -140,18 +141,19 @@ public:
     /// then an error will be returned and *all* the data will
     /// be lost.
     ///
-    /// \param data          Pointer to the array to fill with the received bytes
-    /// \param size          Maximum number of bytes that can be received
-    /// \param received      This variable is filled with the actual number of bytes received
-    /// \param remoteAddress Address of the peer that sent the data
-    /// \param remotePort    Port of the peer that sent the data
+    /// \param data          Pointer to the array to fill with the received
+    /// bytes \param size          Maximum number of bytes that can be received
+    /// \param received      This variable is filled with the actual number of
+    /// bytes received \param remoteAddress Address of the peer that sent the
+    /// data \param remotePort    Port of the peer that sent the data
     ///
     /// \return Status code
     ///
     /// \see send
     ///
     ////////////////////////////////////////////////////////////
-    Status receive(void* data, std::size_t size, std::size_t& received, IpAddress& remoteAddress, unsigned short& remotePort);
+    Status receive(void* data, std::size_t size, std::size_t& received,
+                   IpAddress& remoteAddress, unsigned short& remotePort);
 
     ////////////////////////////////////////////////////////////
     /// \brief Send a formatted packet of data to a remote peer
@@ -169,7 +171,8 @@ public:
     /// \see receive
     ///
     ////////////////////////////////////////////////////////////
-    Status send(Packet& packet, const IpAddress& remoteAddress, unsigned short remotePort);
+    Status send(Packet& packet, const IpAddress& remoteAddress,
+                unsigned short remotePort);
 
     ////////////////////////////////////////////////////////////
     /// \brief Receive a formatted packet of data from a remote peer
@@ -186,21 +189,20 @@ public:
     /// \see send
     ///
     ////////////////////////////////////////////////////////////
-    Status receive(Packet& packet, IpAddress& remoteAddress, unsigned short& remotePort);
+    Status receive(Packet& packet, IpAddress& remoteAddress,
+                   unsigned short& remotePort);
 
 private:
-
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    std::vector<char> m_buffer; ///< Temporary buffer holding the received data in Receive(Packet)
+    std::vector<char> m_buffer; ///< Temporary buffer holding the received data
+                                ///< in Receive(Packet)
 };
 
 } // namespace sf
 
-
 #endif // SFML_UDPSOCKET_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::UdpSocket
@@ -256,13 +258,12 @@ private:
 /// socket.bind(55001);
 ///
 /// // Send a message to 192.168.1.50 on port 55002
-/// std::string message = "Hi, I am " + sf::IpAddress::getLocalAddress().toString();
-/// socket.send(message.c_str(), message.size() + 1, "192.168.1.50", 55002);
+/// std::string message = "Hi, I am " +
+/// sf::IpAddress::getLocalAddress().toString(); socket.send(message.c_str(),
+/// message.size() + 1, "192.168.1.50", 55002);
 ///
-/// // Receive an answer (most likely from 192.168.1.50, but could be anyone else)
-/// char buffer[1024];
-/// std::size_t received = 0;
-/// sf::IpAddress sender;
+/// // Receive an answer (most likely from 192.168.1.50, but could be anyone
+/// else) char buffer[1024]; std::size_t received = 0; sf::IpAddress sender;
 /// unsigned short port;
 /// socket.receive(buffer, sizeof(buffer), received, sender, port);
 /// std::cout << sender.ToString() << " said: " << buffer << std::endl;

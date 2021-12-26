@@ -2,8 +2,8 @@
 
 #include <memory>
 
-#include <SFML/Graphics/Text.hpp>
 #include <SFML/Audio/Sound.hpp>
+#include <SFML/Graphics/Text.hpp>
 
 #include "State.hpp"
 #include "game.hpp"

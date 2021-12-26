@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -32,45 +33,45 @@
 
 // Windows' HWND is a typedef on struct HWND__*
 #if defined(SFML_SYSTEM_WINDOWS)
-    struct HWND__;
+struct HWND__;
 #endif
 
 namespace sf
 {
 #if defined(SFML_SYSTEM_WINDOWS)
 
-    // Window handle is HWND (HWND__*) on Windows
-    typedef HWND__* WindowHandle;
+// Window handle is HWND (HWND__*) on Windows
+typedef HWND__* WindowHandle;
 
-#elif defined(SFML_SYSTEM_LINUX) || defined(SFML_SYSTEM_FREEBSD) || defined(SFML_SYSTEM_OPENBSD)
+#elif defined(SFML_SYSTEM_LINUX) || defined(SFML_SYSTEM_FREEBSD) ||            \
+    defined(SFML_SYSTEM_OPENBSD)
 
-    // Window handle is Window (unsigned long) on Unix - X11
-    typedef unsigned long WindowHandle;
+// Window handle is Window (unsigned long) on Unix - X11
+typedef unsigned long WindowHandle;
 
 #elif defined(SFML_SYSTEM_MACOS)
 
-    // Window handle is NSWindow or NSView (void*) on Mac OS X - Cocoa
-    typedef void* WindowHandle;
+// Window handle is NSWindow or NSView (void*) on Mac OS X - Cocoa
+typedef void* WindowHandle;
 
 #elif defined(SFML_SYSTEM_IOS)
 
-    // Window handle is UIWindow (void*) on iOS - UIKit
-    typedef void* WindowHandle;
+// Window handle is UIWindow (void*) on iOS - UIKit
+typedef void* WindowHandle;
 
 #elif defined(SFML_SYSTEM_ANDROID)
 
-    // Window handle is ANativeWindow* (void*) on Android
-    typedef void* WindowHandle;
+// Window handle is ANativeWindow* (void*) on Android
+typedef void* WindowHandle;
 
 #elif defined(SFML_DOXYGEN)
 
-    // Define typedef symbol so that Doxygen can attach some documentation to it
-    typedef "platform-specific" WindowHandle;
+// Define typedef symbol so that Doxygen can attach some documentation to it
+typedef "platform-specific" WindowHandle;
 
 #endif
 
 } // namespace sf
-
 
 #endif // SFML_WINDOWHANDLE_HPP
 

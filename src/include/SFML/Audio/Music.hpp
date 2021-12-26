@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -29,13 +30,12 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Audio/Export.hpp>
-#include <SFML/Audio/SoundStream.hpp>
 #include <SFML/Audio/InputSoundFile.hpp>
+#include <SFML/Audio/SoundStream.hpp>
 #include <SFML/System/Mutex.hpp>
 #include <SFML/System/Time.hpp>
 #include <string>
 #include <vector>
-
 
 namespace sf
 {
@@ -48,7 +48,6 @@ class InputStream;
 class SFML_AUDIO_API Music : public SoundStream
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Structure defining a time range using the template type
     ///
@@ -60,10 +59,7 @@ public:
         /// \brief Default constructor
         ///
         ////////////////////////////////////////////////////////////
-        Span()
-        {
-
-        }
+        Span() {}
 
         ////////////////////////////////////////////////////////////
         /// \brief Initialization constructor
@@ -72,12 +68,7 @@ public:
         /// \param len Initial Length
         ///
         ////////////////////////////////////////////////////////////
-        Span(T off, T len):
-        offset(off),
-        length(len)
-        {
-
-        }
+        Span(T off, T len) : offset(off), length(len) {}
 
         T offset; ///< The beginning offset of the time range
         T length; ///< The length of the time range
@@ -189,21 +180,25 @@ public:
     TimeSpan getLoopPoints() const;
 
     ////////////////////////////////////////////////////////////
-    /// \brief Sets the beginning and end of the sound's looping sequence using sf::Time
+    /// \brief Sets the beginning and end of the sound's looping sequence using
+    /// sf::Time
     ///
-    /// Loop points allow one to specify a pair of positions such that, when the music
-    /// is enabled for looping, it will seamlessly seek to the beginning whenever it
-    /// encounters the end. Valid ranges for timePoints.offset and timePoints.length are
-    /// [0, Dur) and (0, Dur-offset] respectively, where Dur is the value returned by getDuration().
-    /// Note that the EOF "loop point" from the end to the beginning of the stream is still honored,
-    /// in case the caller seeks to a point after the end of the loop range. This function can be
-    /// safely called at any point after a stream is opened, and will be applied to a playing sound
-    /// without affecting the current playing offset.
+    /// Loop points allow one to specify a pair of positions such that, when the
+    /// music is enabled for looping, it will seamlessly seek to the beginning
+    /// whenever it encounters the end. Valid ranges for timePoints.offset and
+    /// timePoints.length are [0, Dur) and (0, Dur-offset] respectively, where
+    /// Dur is the value returned by getDuration(). Note that the EOF "loop
+    /// point" from the end to the beginning of the stream is still honored, in
+    /// case the caller seeks to a point after the end of the loop range. This
+    /// function can be safely called at any point after a stream is opened, and
+    /// will be applied to a playing sound without affecting the current playing
+    /// offset.
     ///
     /// \warning Setting the loop points while the stream's status is Paused
     /// will set its status to Stopped. The playing offset will be unaffected.
     ///
-    /// \param timePoints The definition of the loop. Can be any time points within the sound's length
+    /// \param timePoints The definition of the loop. Can be any time points
+    /// within the sound's length
     ///
     /// \see getLoopPoints
     ///
@@ -211,7 +206,6 @@ public:
     void setLoopPoints(TimeSpan timePoints);
 
 protected:
-
     ////////////////////////////////////////////////////////////
     /// \brief Request a new chunk of audio samples from the stream source
     ///
@@ -234,11 +228,13 @@ protected:
     virtual void onSeek(Time timeOffset);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Change the current playing position in the stream source to the loop offset
+    /// \brief Change the current playing position in the stream source to the
+    /// loop offset
     ///
-    /// This is called by the underlying SoundStream whenever it needs us to reset
-    /// the seek position for a loop. We then determine whether we are looping on a
-    /// loop point or the end-of-file, perform the seek, and return the new position.
+    /// This is called by the underlying SoundStream whenever it needs us to
+    /// reset the seek position for a loop. We then determine whether we are
+    /// looping on a loop point or the end-of-file, perform the seek, and return
+    /// the new position.
     ///
     /// \return The seek position after looping (or -1 if there's no loop)
     ///
@@ -246,7 +242,6 @@ protected:
     virtual Int64 onLoop();
 
 private:
-
     ////////////////////////////////////////////////////////////
     /// \brief Initialize the internal state after loading a new music
     ///
@@ -276,17 +271,15 @@ private:
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    InputSoundFile     m_file;     ///< The streamed music file
-    std::vector<Int16> m_samples;  ///< Temporary buffer of samples
-    Mutex              m_mutex;    ///< Mutex protecting the data
-    Span<Uint64>       m_loopSpan; ///< Loop Range Specifier
+    InputSoundFile m_file;        ///< The streamed music file
+    std::vector<Int16> m_samples; ///< Temporary buffer of samples
+    Mutex m_mutex;                ///< Mutex protecting the data
+    Span<Uint64> m_loopSpan;      ///< Loop Range Specifier
 };
 
 } // namespace sf
 
-
 #endif // SFML_MUSIC_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::Music

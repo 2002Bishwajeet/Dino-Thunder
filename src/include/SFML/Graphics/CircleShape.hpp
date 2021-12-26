@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -31,7 +32,6 @@
 #include <SFML/Graphics/Export.hpp>
 #include <SFML/Graphics/Shape.hpp>
 
-
 namespace sf
 {
 ////////////////////////////////////////////////////////////
@@ -41,7 +41,6 @@ namespace sf
 class SFML_GRAPHICS_API CircleShape : public Shape
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -99,7 +98,8 @@ public:
     /// not taken into account.
     /// The result is undefined if \a index is out of the valid range.
     ///
-    /// \param index Index of the point to get, in range [0 .. getPointCount() - 1]
+    /// \param index Index of the point to get, in range [0 .. getPointCount() -
+    /// 1]
     ///
     /// \return index-th point of the shape
     ///
@@ -107,19 +107,16 @@ public:
     virtual Vector2f getPoint(std::size_t index) const;
 
 private:
-
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    float       m_radius;     ///< Radius of the circle
+    float m_radius;           ///< Radius of the circle
     std::size_t m_pointCount; ///< Number of points composing the circle
 };
 
 } // namespace sf
 
-
 #endif // SFML_CIRCLESHAPE_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::CircleShape

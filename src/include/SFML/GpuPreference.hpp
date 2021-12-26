@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -25,12 +26,10 @@
 #ifndef SFML_GPUPREFERENCE_HPP
 #define SFML_GPUPREFERENCE_HPP
 
-
 ////////////////////////////////////////////////////////////
 /// Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Config.hpp>
-
 
 ////////////////////////////////////////////////////////////
 /// \file
@@ -38,7 +37,6 @@
 /// \brief File containing SFML_DEFINE_DISCRETE_GPU_PREFERENCE
 ///
 ////////////////////////////////////////////////////////////
-
 
 ////////////////////////////////////////////////////////////
 /// \def SFML_DEFINE_DISCRETE_GPU_PREFERENCE
@@ -60,15 +58,15 @@
 ////////////////////////////////////////////////////////////
 #if defined(SFML_SYSTEM_WINDOWS)
 
-    #define SFML_DEFINE_DISCRETE_GPU_PREFERENCE \
-                extern "C" __declspec(dllexport) unsigned long NvOptimusEnablement = 1; \
-                extern "C" __declspec(dllexport) unsigned long AmdPowerXpressRequestHighPerformance = 1;
+#define SFML_DEFINE_DISCRETE_GPU_PREFERENCE                                    \
+    extern "C" __declspec(dllexport) unsigned long NvOptimusEnablement = 1;    \
+    extern "C" __declspec(                                                     \
+        dllexport) unsigned long AmdPowerXpressRequestHighPerformance = 1;
 
 #else
 
-    #define SFML_DEFINE_DISCRETE_GPU_PREFERENCE
+#define SFML_DEFINE_DISCRETE_GPU_PREFERENCE
 
 #endif
-
 
 #endif // SFML_GPUPREFERENCE_HPP

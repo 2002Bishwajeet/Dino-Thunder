@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -31,7 +32,6 @@
 #include <SFML/Graphics/Export.hpp>
 #include <SFML/Graphics/Transform.hpp>
 
-
 namespace sf
 {
 ////////////////////////////////////////////////////////////
@@ -41,7 +41,6 @@ namespace sf
 class SFML_GRAPHICS_API Transformable
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -58,8 +57,8 @@ public:
     /// \brief set the position of the object
     ///
     /// This function completely overwrites the previous position.
-    /// See the move function to apply an offset based on the previous position instead.
-    /// The default position of a transformable object is (0, 0).
+    /// See the move function to apply an offset based on the previous position
+    /// instead. The default position of a transformable object is (0, 0).
     ///
     /// \param x X coordinate of the new position
     /// \param y Y coordinate of the new position
@@ -73,8 +72,8 @@ public:
     /// \brief set the position of the object
     ///
     /// This function completely overwrites the previous position.
-    /// See the move function to apply an offset based on the previous position instead.
-    /// The default position of a transformable object is (0, 0).
+    /// See the move function to apply an offset based on the previous position
+    /// instead. The default position of a transformable object is (0, 0).
     ///
     /// \param position New position
     ///
@@ -87,8 +86,8 @@ public:
     /// \brief set the orientation of the object
     ///
     /// This function completely overwrites the previous rotation.
-    /// See the rotate function to add an angle based on the previous rotation instead.
-    /// The default rotation of a transformable object is 0.
+    /// See the rotate function to add an angle based on the previous rotation
+    /// instead. The default rotation of a transformable object is 0.
     ///
     /// \param angle New rotation, in degrees
     ///
@@ -101,8 +100,8 @@ public:
     /// \brief set the scale factors of the object
     ///
     /// This function completely overwrites the previous scale.
-    /// See the scale function to add a factor based on the previous scale instead.
-    /// The default scale of a transformable object is (1, 1).
+    /// See the scale function to add a factor based on the previous scale
+    /// instead. The default scale of a transformable object is (1, 1).
     ///
     /// \param factorX New horizontal scale factor
     /// \param factorY New vertical scale factor
@@ -116,8 +115,8 @@ public:
     /// \brief set the scale factors of the object
     ///
     /// This function completely overwrites the previous scale.
-    /// See the scale function to add a factor based on the previous scale instead.
-    /// The default scale of a transformable object is (1, 1).
+    /// See the scale function to add a factor based on the previous scale
+    /// instead. The default scale of a transformable object is (1, 1).
     ///
     /// \param factors New scale factors
     ///
@@ -294,7 +293,8 @@ public:
     ////////////////////////////////////////////////////////////
     /// \brief get the combined transform of the object
     ///
-    /// \return Transform combining the position/rotation/scale/origin of the object
+    /// \return Transform combining the position/rotation/scale/origin of the
+    /// object
     ///
     /// \see getInverseTransform
     ///
@@ -312,25 +312,25 @@ public:
     const Transform& getInverseTransform() const;
 
 private:
-
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    Vector2f          m_origin;                     ///< Origin of translation/rotation/scaling of the object
-    Vector2f          m_position;                   ///< Position of the object in the 2D world
-    float             m_rotation;                   ///< Orientation of the object, in degrees
-    Vector2f          m_scale;                      ///< Scale of the object
-    mutable Transform m_transform;                  ///< Combined transformation of the object
-    mutable bool      m_transformNeedUpdate;        ///< Does the transform need to be recomputed?
-    mutable Transform m_inverseTransform;           ///< Combined transformation of the object
-    mutable bool      m_inverseTransformNeedUpdate; ///< Does the transform need to be recomputed?
+    Vector2f m_origin; ///< Origin of translation/rotation/scaling of the object
+    Vector2f m_position;           ///< Position of the object in the 2D world
+    float m_rotation;              ///< Orientation of the object, in degrees
+    Vector2f m_scale;              ///< Scale of the object
+    mutable Transform m_transform; ///< Combined transformation of the object
+    mutable bool
+        m_transformNeedUpdate; ///< Does the transform need to be recomputed?
+    mutable Transform
+        m_inverseTransform; ///< Combined transformation of the object
+    mutable bool m_inverseTransformNeedUpdate; ///< Does the transform need to
+                                               ///< be recomputed?
 };
 
 } // namespace sf
 
-
 #endif // SFML_TRANSFORMABLE_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::Transformable
@@ -377,7 +377,8 @@ private:
 /// \code
 /// class MyEntity : public sf::Transformable, public sf::Drawable
 /// {
-///     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const
+///     virtual void draw(sf::RenderTarget& target, sf::RenderStates states)
+///     const
 ///     {
 ///         states.transform *= getTransform();
 ///         target.draw(..., states);

@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -25,7 +26,6 @@
 #ifndef SFML_VECTOR3_HPP
 #define SFML_VECTOR3_HPP
 
-
 namespace sf
 {
 ////////////////////////////////////////////////////////////
@@ -37,7 +37,6 @@ template <typename T>
 class Vector3
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -88,7 +87,7 @@ public:
 ///
 ////////////////////////////////////////////////////////////
 template <typename T>
-Vector3<T> operator -(const Vector3<T>& left);
+Vector3<T> operator-(const Vector3<T>& left);
 
 ////////////////////////////////////////////////////////////
 /// \relates Vector3
@@ -104,7 +103,7 @@ Vector3<T> operator -(const Vector3<T>& left);
 ///
 ////////////////////////////////////////////////////////////
 template <typename T>
-Vector3<T>& operator +=(Vector3<T>& left, const Vector3<T>& right);
+Vector3<T>& operator+=(Vector3<T>& left, const Vector3<T>& right);
 
 ////////////////////////////////////////////////////////////
 /// \relates Vector3
@@ -120,7 +119,7 @@ Vector3<T>& operator +=(Vector3<T>& left, const Vector3<T>& right);
 ///
 ////////////////////////////////////////////////////////////
 template <typename T>
-Vector3<T>& operator -=(Vector3<T>& left, const Vector3<T>& right);
+Vector3<T>& operator-=(Vector3<T>& left, const Vector3<T>& right);
 
 ////////////////////////////////////////////////////////////
 /// \relates Vector3
@@ -133,7 +132,7 @@ Vector3<T>& operator -=(Vector3<T>& left, const Vector3<T>& right);
 ///
 ////////////////////////////////////////////////////////////
 template <typename T>
-Vector3<T> operator +(const Vector3<T>& left, const Vector3<T>& right);
+Vector3<T> operator+(const Vector3<T>& left, const Vector3<T>& right);
 
 ////////////////////////////////////////////////////////////
 /// \relates Vector3
@@ -146,7 +145,7 @@ Vector3<T> operator +(const Vector3<T>& left, const Vector3<T>& right);
 ///
 ////////////////////////////////////////////////////////////
 template <typename T>
-Vector3<T> operator -(const Vector3<T>& left, const Vector3<T>& right);
+Vector3<T> operator-(const Vector3<T>& left, const Vector3<T>& right);
 
 ////////////////////////////////////////////////////////////
 /// \relates Vector3
@@ -159,7 +158,7 @@ Vector3<T> operator -(const Vector3<T>& left, const Vector3<T>& right);
 ///
 ////////////////////////////////////////////////////////////
 template <typename T>
-Vector3<T> operator *(const Vector3<T>& left, T right);
+Vector3<T> operator*(const Vector3<T>& left, T right);
 
 ////////////////////////////////////////////////////////////
 /// \relates Vector3
@@ -172,7 +171,7 @@ Vector3<T> operator *(const Vector3<T>& left, T right);
 ///
 ////////////////////////////////////////////////////////////
 template <typename T>
-Vector3<T> operator *(T left, const Vector3<T>& right);
+Vector3<T> operator*(T left, const Vector3<T>& right);
 
 ////////////////////////////////////////////////////////////
 /// \relates Vector3
@@ -188,7 +187,7 @@ Vector3<T> operator *(T left, const Vector3<T>& right);
 ///
 ////////////////////////////////////////////////////////////
 template <typename T>
-Vector3<T>& operator *=(Vector3<T>& left, T right);
+Vector3<T>& operator*=(Vector3<T>& left, T right);
 
 ////////////////////////////////////////////////////////////
 /// \relates Vector3
@@ -201,7 +200,7 @@ Vector3<T>& operator *=(Vector3<T>& left, T right);
 ///
 ////////////////////////////////////////////////////////////
 template <typename T>
-Vector3<T> operator /(const Vector3<T>& left, T right);
+Vector3<T> operator/(const Vector3<T>& left, T right);
 
 ////////////////////////////////////////////////////////////
 /// \relates Vector3
@@ -217,7 +216,7 @@ Vector3<T> operator /(const Vector3<T>& left, T right);
 ///
 ////////////////////////////////////////////////////////////
 template <typename T>
-Vector3<T>& operator /=(Vector3<T>& left, T right);
+Vector3<T>& operator/=(Vector3<T>& left, T right);
 
 ////////////////////////////////////////////////////////////
 /// \relates Vector3
@@ -232,7 +231,7 @@ Vector3<T>& operator /=(Vector3<T>& left, T right);
 ///
 ////////////////////////////////////////////////////////////
 template <typename T>
-bool operator ==(const Vector3<T>& left, const Vector3<T>& right);
+bool operator==(const Vector3<T>& left, const Vector3<T>& right);
 
 ////////////////////////////////////////////////////////////
 /// \relates Vector3
@@ -247,19 +246,17 @@ bool operator ==(const Vector3<T>& left, const Vector3<T>& right);
 ///
 ////////////////////////////////////////////////////////////
 template <typename T>
-bool operator !=(const Vector3<T>& left, const Vector3<T>& right);
+bool operator!=(const Vector3<T>& left, const Vector3<T>& right);
 
 #include <SFML/System/Vector3.inl>
 
 // Define the most common types
-typedef Vector3<int>   Vector3i;
+typedef Vector3<int> Vector3i;
 typedef Vector3<float> Vector3f;
 
 } // namespace sf
 
-
 #endif // SFML_VECTOR3_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::Vector3
@@ -281,7 +278,8 @@ typedef Vector3<float> Vector3f;
 ///
 /// The sf::Vector3 class has a small and simple interface, its x and y members
 /// can be accessed directly (there are no accessors like setX(), getX()) and it
-/// contains no mathematical function like dot product, cross product, length, etc.
+/// contains no mathematical function like dot product, cross product, length,
+/// etc.
 ///
 /// Usage example:
 /// \code

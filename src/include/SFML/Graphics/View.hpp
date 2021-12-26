@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -33,7 +34,6 @@
 #include <SFML/Graphics/Transform.hpp>
 #include <SFML/System/Vector2.hpp>
 
-
 namespace sf
 {
 ////////////////////////////////////////////////////////////
@@ -43,7 +43,6 @@ namespace sf
 class SFML_GRAPHICS_API View
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -265,25 +264,29 @@ public:
     const Transform& getInverseTransform() const;
 
 private:
-
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    Vector2f          m_center;              ///< Center of the view, in scene coordinates
-    Vector2f          m_size;                ///< Size of the view, in scene coordinates
-    float             m_rotation;            ///< Angle of rotation of the view rectangle, in degrees
-    FloatRect         m_viewport;            ///< Viewport rectangle, expressed as a factor of the render-target's size
-    mutable Transform m_transform;           ///< Precomputed projection transform corresponding to the view
-    mutable Transform m_inverseTransform;    ///< Precomputed inverse projection transform corresponding to the view
-    mutable bool      m_transformUpdated;    ///< Internal state telling if the transform needs to be updated
-    mutable bool      m_invTransformUpdated; ///< Internal state telling if the inverse transform needs to be updated
+    Vector2f m_center; ///< Center of the view, in scene coordinates
+    Vector2f m_size;   ///< Size of the view, in scene coordinates
+    float m_rotation;  ///< Angle of rotation of the view rectangle, in degrees
+    FloatRect m_viewport; ///< Viewport rectangle, expressed as a factor of the
+                          ///< render-target's size
+    mutable Transform m_transform; ///< Precomputed projection transform
+                                   ///< corresponding to the view
+    mutable Transform
+        m_inverseTransform;          ///< Precomputed inverse projection
+                                     ///< transform corresponding to the view
+    mutable bool m_transformUpdated; ///< Internal state telling if the
+                                     ///< transform needs to be updated
+    mutable bool
+        m_invTransformUpdated; ///< Internal state telling if the inverse
+                               ///< transform needs to be updated
 };
 
 } // namespace sf
 
-
 #endif // SFML_VIEW_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::View
@@ -314,8 +317,8 @@ private:
 /// sf::RenderWindow window;
 /// sf::View view;
 ///
-/// // Initialize the view to a rectangle located at (100, 100) and with a size of 400x200
-/// view.reset(sf::FloatRect(100, 100, 400, 200));
+/// // Initialize the view to a rectangle located at (100, 100) and with a size
+/// of 400x200 view.reset(sf::FloatRect(100, 100, 400, 200));
 ///
 /// // Rotate it by 45 degrees
 /// view.rotate(45);
@@ -336,7 +339,8 @@ private:
 /// window.draw(someText);
 /// \endcode
 ///
-/// See also the note on coordinates and undistorted rendering in sf::Transformable.
+/// See also the note on coordinates and undistorted rendering in
+/// sf::Transformable.
 ///
 /// \see sf::RenderWindow, sf::RenderTexture
 ///

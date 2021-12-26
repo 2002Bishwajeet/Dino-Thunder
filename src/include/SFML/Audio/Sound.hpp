@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -33,7 +34,6 @@
 #include <SFML/System/Time.hpp>
 #include <cstdlib>
 
-
 namespace sf
 {
 class SoundBuffer;
@@ -45,7 +45,6 @@ class SoundBuffer;
 class SFML_AUDIO_API Sound : public SoundSource
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -55,7 +54,8 @@ public:
     ////////////////////////////////////////////////////////////
     /// \brief Construct the sound with a buffer
     ///
-    /// \param buffer Sound buffer containing the audio data to play with the sound
+    /// \param buffer Sound buffer containing the audio data to play with the
+    /// sound
     ///
     ////////////////////////////////////////////////////////////
     explicit Sound(const SoundBuffer& buffer);
@@ -199,7 +199,7 @@ public:
     /// \return Reference to self
     ///
     ////////////////////////////////////////////////////////////
-    Sound& operator =(const Sound& right);
+    Sound& operator=(const Sound& right);
 
     ////////////////////////////////////////////////////////////
     /// \brief Reset the internal buffer of the sound
@@ -213,7 +213,6 @@ public:
     void resetBuffer();
 
 private:
-
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
@@ -222,9 +221,7 @@ private:
 
 } // namespace sf
 
-
 #endif // SFML_SOUND_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::Sound

@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -34,7 +35,6 @@
 #include <ostream>
 #include <string>
 
-
 namespace sf
 {
 ////////////////////////////////////////////////////////////
@@ -44,7 +44,6 @@ namespace sf
 class SFML_NETWORK_API IpAddress
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -181,14 +180,19 @@ public:
     ////////////////////////////////////////////////////////////
     // Static member data
     ////////////////////////////////////////////////////////////
-    static const IpAddress None;      ///< Value representing an empty/invalid address
-    static const IpAddress Any;       ///< Value representing any address (0.0.0.0)
-    static const IpAddress LocalHost; ///< The "localhost" address (for connecting a computer to itself locally)
-    static const IpAddress Broadcast; ///< The "broadcast" address (for sending UDP messages to everyone on a local network)
+    static const IpAddress
+        None;                   ///< Value representing an empty/invalid address
+    static const IpAddress Any; ///< Value representing any address (0.0.0.0)
+    static const IpAddress
+        LocalHost; ///< The "localhost" address (for connecting
+                   ///< a computer to itself locally)
+    static const IpAddress
+        Broadcast; ///< The "broadcast" address (for sending UDP messages to
+                   ///< everyone on a local network)
 
 private:
-
-    friend SFML_NETWORK_API bool operator <(const IpAddress& left, const IpAddress& right);
+    friend SFML_NETWORK_API bool operator<(const IpAddress& left,
+                                           const IpAddress& right);
 
     ////////////////////////////////////////////////////////////
     /// \brief Resolve the given address string
@@ -202,7 +206,7 @@ private:
     // Member data
     ////////////////////////////////////////////////////////////
     Uint32 m_address; ///< Address stored as an unsigned 32 bits integer
-    bool   m_valid;   ///< Is the address valid?
+    bool m_valid;     ///< Is the address valid?
 };
 
 ////////////////////////////////////////////////////////////
@@ -214,7 +218,7 @@ private:
 /// \return True if both addresses are equal
 ///
 ////////////////////////////////////////////////////////////
-SFML_NETWORK_API bool operator ==(const IpAddress& left, const IpAddress& right);
+SFML_NETWORK_API bool operator==(const IpAddress& left, const IpAddress& right);
 
 ////////////////////////////////////////////////////////////
 /// \brief Overload of != operator to compare two IP addresses
@@ -225,7 +229,7 @@ SFML_NETWORK_API bool operator ==(const IpAddress& left, const IpAddress& right)
 /// \return True if both addresses are different
 ///
 ////////////////////////////////////////////////////////////
-SFML_NETWORK_API bool operator !=(const IpAddress& left, const IpAddress& right);
+SFML_NETWORK_API bool operator!=(const IpAddress& left, const IpAddress& right);
 
 ////////////////////////////////////////////////////////////
 /// \brief Overload of < operator to compare two IP addresses
@@ -236,7 +240,7 @@ SFML_NETWORK_API bool operator !=(const IpAddress& left, const IpAddress& right)
 /// \return True if \a left is lesser than \a right
 ///
 ////////////////////////////////////////////////////////////
-SFML_NETWORK_API bool operator <(const IpAddress& left, const IpAddress& right);
+SFML_NETWORK_API bool operator<(const IpAddress& left, const IpAddress& right);
 
 ////////////////////////////////////////////////////////////
 /// \brief Overload of > operator to compare two IP addresses
@@ -247,7 +251,7 @@ SFML_NETWORK_API bool operator <(const IpAddress& left, const IpAddress& right);
 /// \return True if \a left is greater than \a right
 ///
 ////////////////////////////////////////////////////////////
-SFML_NETWORK_API bool operator >(const IpAddress& left, const IpAddress& right);
+SFML_NETWORK_API bool operator>(const IpAddress& left, const IpAddress& right);
 
 ////////////////////////////////////////////////////////////
 /// \brief Overload of <= operator to compare two IP addresses
@@ -258,7 +262,7 @@ SFML_NETWORK_API bool operator >(const IpAddress& left, const IpAddress& right);
 /// \return True if \a left is lesser or equal than \a right
 ///
 ////////////////////////////////////////////////////////////
-SFML_NETWORK_API bool operator <=(const IpAddress& left, const IpAddress& right);
+SFML_NETWORK_API bool operator<=(const IpAddress& left, const IpAddress& right);
 
 ////////////////////////////////////////////////////////////
 /// \brief Overload of >= operator to compare two IP addresses
@@ -269,7 +273,7 @@ SFML_NETWORK_API bool operator <=(const IpAddress& left, const IpAddress& right)
 /// \return True if \a left is greater or equal than \a right
 ///
 ////////////////////////////////////////////////////////////
-SFML_NETWORK_API bool operator >=(const IpAddress& left, const IpAddress& right);
+SFML_NETWORK_API bool operator>=(const IpAddress& left, const IpAddress& right);
 
 ////////////////////////////////////////////////////////////
 /// \brief Overload of >> operator to extract an IP address from an input stream
@@ -280,7 +284,8 @@ SFML_NETWORK_API bool operator >=(const IpAddress& left, const IpAddress& right)
 /// \return Reference to the input stream
 ///
 ////////////////////////////////////////////////////////////
-SFML_NETWORK_API std::istream& operator >>(std::istream& stream, IpAddress& address);
+SFML_NETWORK_API std::istream& operator>>(std::istream& stream,
+                                          IpAddress& address);
 
 ////////////////////////////////////////////////////////////
 /// \brief Overload of << operator to print an IP address to an output stream
@@ -291,13 +296,12 @@ SFML_NETWORK_API std::istream& operator >>(std::istream& stream, IpAddress& addr
 /// \return Reference to the output stream
 ///
 ////////////////////////////////////////////////////////////
-SFML_NETWORK_API std::ostream& operator <<(std::ostream& stream, const IpAddress& address);
+SFML_NETWORK_API std::ostream& operator<<(std::ostream& stream,
+                                          const IpAddress& address);
 
 } // namespace sf
 
-
 #endif // SFML_IPADDRESS_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::IpAddress
@@ -311,16 +315,17 @@ SFML_NETWORK_API std::ostream& operator <<(std::ostream& stream, const IpAddress
 /// Usage example:
 /// \code
 /// sf::IpAddress a0;                                     // an invalid address
-/// sf::IpAddress a1 = sf::IpAddress::None;               // an invalid address (same as a0)
-/// sf::IpAddress a2("127.0.0.1");                        // the local host address
-/// sf::IpAddress a3 = sf::IpAddress::Broadcast;          // the broadcast address
-/// sf::IpAddress a4(192, 168, 1, 56);                    // a local address
-/// sf::IpAddress a5("my_computer");                      // a local address created from a network name
-/// sf::IpAddress a6("89.54.1.169");                      // a distant address
-/// sf::IpAddress a7("www.google.com");                   // a distant address created from a network name
-/// sf::IpAddress a8 = sf::IpAddress::getLocalAddress();  // my address on the local network
-/// sf::IpAddress a9 = sf::IpAddress::getPublicAddress(); // my address on the internet
-/// \endcode
+/// sf::IpAddress a1 = sf::IpAddress::None;               // an invalid address
+/// (same as a0) sf::IpAddress a2("127.0.0.1");                        // the
+/// local host address sf::IpAddress a3 = sf::IpAddress::Broadcast;          //
+/// the broadcast address sf::IpAddress a4(192, 168, 1, 56); // a local address
+/// sf::IpAddress a5("my_computer");                      // a local address
+/// created from a network name sf::IpAddress a6("89.54.1.169"); // a distant
+/// address sf::IpAddress a7("www.google.com");                   // a distant
+/// address created from a network name sf::IpAddress a8 =
+/// sf::IpAddress::getLocalAddress();  // my address on the local network
+/// sf::IpAddress a9 = sf::IpAddress::getPublicAddress(); // my address on the
+/// internet \endcode
 ///
 /// Note that sf::IpAddress currently doesn't support IPv6
 /// nor other types of network addresses.

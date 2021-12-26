@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -28,6 +29,10 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
+#include <SFML/System/Clock.hpp>
+#include <SFML/System/NonCopyable.hpp>
+#include <SFML/System/String.hpp>
+#include <SFML/System/Vector2.hpp>
 #include <SFML/Window/ContextSettings.hpp>
 #include <SFML/Window/Cursor.hpp>
 #include <SFML/Window/Export.hpp>
@@ -35,19 +40,14 @@
 #include <SFML/Window/VideoMode.hpp>
 #include <SFML/Window/WindowHandle.hpp>
 #include <SFML/Window/WindowStyle.hpp>
-#include <SFML/System/Clock.hpp>
-#include <SFML/System/NonCopyable.hpp>
-#include <SFML/System/String.hpp>
-#include <SFML/System/Vector2.hpp>
-
 
 namespace sf
 {
 namespace priv
 {
-    class GlContext;
-    class WindowImpl;
-}
+class GlContext;
+class WindowImpl;
+} // namespace priv
 
 class Event;
 
@@ -58,7 +58,6 @@ class Event;
 class SFML_WINDOW_API Window : GlResource, NonCopyable
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -81,13 +80,15 @@ public:
     /// advanced OpenGL context settings such as antialiasing,
     /// depth-buffer bits, etc.
     ///
-    /// \param mode     Video mode to use (defines the width, height and depth of the rendering area of the window)
-    /// \param title    Title of the window
-    /// \param style    %Window style, a bitwise OR combination of sf::Style enumerators
-    /// \param settings Additional settings for the underlying OpenGL context
+    /// \param mode     Video mode to use (defines the width, height and depth
+    /// of the rendering area of the window) \param title    Title of the window
+    /// \param style    %Window style, a bitwise OR combination of sf::Style
+    /// enumerators \param settings Additional settings for the underlying
+    /// OpenGL context
     ///
     ////////////////////////////////////////////////////////////
-    Window(VideoMode mode, const String& title, Uint32 style = Style::Default, const ContextSettings& settings = ContextSettings());
+    Window(VideoMode mode, const String& title, Uint32 style = Style::Default,
+           const ContextSettings& settings = ContextSettings());
 
     ////////////////////////////////////////////////////////////
     /// \brief Construct the window from an existing control
@@ -103,7 +104,8 @@ public:
     /// \param settings Additional settings for the underlying OpenGL context
     ///
     ////////////////////////////////////////////////////////////
-    explicit Window(WindowHandle handle, const ContextSettings& settings = ContextSettings());
+    explicit Window(WindowHandle handle,
+                    const ContextSettings& settings = ContextSettings());
 
     ////////////////////////////////////////////////////////////
     /// \brief Destructor
@@ -124,13 +126,16 @@ public:
     /// advanced OpenGL context settings such as antialiasing,
     /// depth-buffer bits, etc.
     ///
-    /// \param mode     Video mode to use (defines the width, height and depth of the rendering area of the window)
-    /// \param title    Title of the window
-    /// \param style    %Window style, a bitwise OR combination of sf::Style enumerators
-    /// \param settings Additional settings for the underlying OpenGL context
+    /// \param mode     Video mode to use (defines the width, height and depth
+    /// of the rendering area of the window) \param title    Title of the window
+    /// \param style    %Window style, a bitwise OR combination of sf::Style
+    /// enumerators \param settings Additional settings for the underlying
+    /// OpenGL context
     ///
     ////////////////////////////////////////////////////////////
-    void create(VideoMode mode, const String& title, Uint32 style = Style::Default, const ContextSettings& settings = ContextSettings());
+    void create(VideoMode mode, const String& title,
+                Uint32 style = Style::Default,
+                const ContextSettings& settings = ContextSettings());
 
     ////////////////////////////////////////////////////////////
     /// \brief Create (or recreate) the window from an existing control
@@ -147,7 +152,8 @@ public:
     /// \param settings Additional settings for the underlying OpenGL context
     ///
     ////////////////////////////////////////////////////////////
-    void create(WindowHandle handle, const ContextSettings& settings = ContextSettings());
+    void create(WindowHandle handle,
+                const ContextSettings& settings = ContextSettings());
 
     ////////////////////////////////////////////////////////////
     /// \brief Close the window and destroy all the attached resources
@@ -204,7 +210,8 @@ public:
     ///
     /// \param event Event to be returned
     ///
-    /// \return True if an event was returned, or false if the event queue was empty
+    /// \return True if an event was returned, or false if the event queue was
+    /// empty
     ///
     /// \see waitEvent
     ///
@@ -407,7 +414,8 @@ public:
     /// unprecise as well (for example, you can get 65 FPS when
     /// requesting 60).
     ///
-    /// \param limit Framerate limit, in frames per seconds (use 0 to disable limit)
+    /// \param limit Framerate limit, in frames per seconds (use 0 to disable
+    /// limit)
     ///
     ////////////////////////////////////////////////////////////
     void setFramerateLimit(unsigned int limit);
@@ -497,7 +505,6 @@ public:
     WindowHandle getSystemHandle() const;
 
 protected:
-
     ////////////////////////////////////////////////////////////
     /// \brief Function called after the window has been created
     ///
@@ -518,7 +525,6 @@ protected:
     virtual void onResize();
 
 private:
-
     ////////////////////////////////////////////////////////////
     /// \brief Processes an event before it is sent to the user
     ///
@@ -542,18 +548,18 @@ private:
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    priv::WindowImpl* m_impl;           ///< Platform-specific implementation of the window
-    priv::GlContext*  m_context;        ///< Platform-specific implementation of the OpenGL context
-    Clock             m_clock;          ///< Clock for measuring the elapsed time between frames
-    Time              m_frameTimeLimit; ///< Current framerate limit
-    Vector2u          m_size;           ///< Current size of the window
+    priv::WindowImpl*
+        m_impl; ///< Platform-specific implementation of the window
+    priv::GlContext*
+        m_context; ///< Platform-specific implementation of the OpenGL context
+    Clock m_clock; ///< Clock for measuring the elapsed time between frames
+    Time m_frameTimeLimit; ///< Current framerate limit
+    Vector2u m_size;       ///< Current size of the window
 };
 
 } // namespace sf
 
-
 #endif // SFML_WINDOW_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::Window

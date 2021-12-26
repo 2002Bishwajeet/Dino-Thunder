@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -28,10 +29,9 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Graphics/Export.hpp>
 #include <SFML/Graphics/Color.hpp>
+#include <SFML/Graphics/Export.hpp>
 #include <SFML/System/Vector2.hpp>
-
 
 namespace sf
 {
@@ -42,7 +42,6 @@ namespace sf
 class SFML_GRAPHICS_API Vertex
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -82,28 +81,29 @@ public:
     Vertex(const Vector2f& thePosition, const Vector2f& theTexCoords);
 
     ////////////////////////////////////////////////////////////
-    /// \brief Construct the vertex from its position, color and texture coordinates
+    /// \brief Construct the vertex from its position, color and texture
+    /// coordinates
     ///
     /// \param thePosition  Vertex position
     /// \param theColor     Vertex color
     /// \param theTexCoords Vertex texture coordinates
     ///
     ////////////////////////////////////////////////////////////
-    Vertex(const Vector2f& thePosition, const Color& theColor, const Vector2f& theTexCoords);
+    Vertex(const Vector2f& thePosition, const Color& theColor,
+           const Vector2f& theTexCoords);
 
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    Vector2f  position;  ///< 2D position of the vertex
-    Color     color;     ///< Color of the vertex
-    Vector2f  texCoords; ///< Coordinates of the texture's pixel to map to the vertex
+    Vector2f position; ///< 2D position of the vertex
+    Color color;       ///< Color of the vertex
+    Vector2f
+        texCoords; ///< Coordinates of the texture's pixel to map to the vertex
 };
 
 } // namespace sf
 
-
 #endif // SFML_VERTEX_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::Vertex
@@ -129,10 +129,11 @@ public:
 /// // define a 100x100 square, red, with a 10x10 texture mapped on it
 /// sf::Vertex vertices[] =
 /// {
-///     sf::Vertex(sf::Vector2f(  0,   0), sf::Color::Red, sf::Vector2f( 0,  0)),
-///     sf::Vertex(sf::Vector2f(  0, 100), sf::Color::Red, sf::Vector2f( 0, 10)),
-///     sf::Vertex(sf::Vector2f(100, 100), sf::Color::Red, sf::Vector2f(10, 10)),
-///     sf::Vertex(sf::Vector2f(100,   0), sf::Color::Red, sf::Vector2f(10,  0))
+///     sf::Vertex(sf::Vector2f(  0,   0), sf::Color::Red, sf::Vector2f( 0, 0)),
+///     sf::Vertex(sf::Vector2f(  0, 100), sf::Color::Red, sf::Vector2f( 0,
+///     10)), sf::Vertex(sf::Vector2f(100, 100), sf::Color::Red,
+///     sf::Vector2f(10, 10)), sf::Vertex(sf::Vector2f(100,   0),
+///     sf::Color::Red, sf::Vector2f(10,  0))
 /// };
 ///
 /// // draw it

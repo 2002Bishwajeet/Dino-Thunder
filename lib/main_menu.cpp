@@ -1,35 +1,38 @@
 #include "main_menu.hpp"
 #include "game_play.hpp"
-#include <SFML/Window/Event.hpp>
 #include <SFML/Audio.hpp>
+#include <SFML/Window/Event.hpp>
 
 // Initialize the main menu Constructor with all the default values
 MainMenu::MainMenu(std::shared_ptr<Context>& context)
-    : m_context(context)
-    , m_isPlayButtonSelected(true)
-    , m_isPlayButtonPressed(false)
-    , m_isExitButtonSelected(false)
-    , m_isExitButtonPressed(false)
+    : m_context(context), m_isPlayButtonSelected(true),
+      m_isPlayButtonPressed(false), m_isExitButtonSelected(false),
+      m_isExitButtonPressed(false)
 {
 }
 
-MainMenu::~MainMenu()
-{
-}
+MainMenu::~MainMenu() {}
 
 // Function init method to load or set the stage of the main menu
 void MainMenu::Init()
 {
     //  Loading the fonts from the file and storing it in the map
-    //  MAIN_FONT and SECONDARY_FONT are the enums for the fonts which will used to identify
+    //  MAIN_FONT and SECONDARY_FONT are the enums for the fonts which will used
+    //  to identify
     m_context->m_assets->loadTexture(SKY, "assets/sprites/background/sky.png");
-    m_context->m_assets->loadTexture(CLOUDS, "assets/sprites/background/cloud.png", true);
-    m_context->m_assets->loadTexture(PINE_1, "assets/sprites/background/pine1.png");
-    m_context->m_assets->loadTexture(PINE_2, "assets/sprites/background/pine2.png");
-    m_context->m_assets->loadTexture(MOUNTAINS, "assets/sprites/background/mountain2.png");
+    m_context->m_assets->loadTexture(
+        CLOUDS, "assets/sprites/background/cloud.png", true);
+    m_context->m_assets->loadTexture(PINE_1,
+                                     "assets/sprites/background/pine1.png");
+    m_context->m_assets->loadTexture(PINE_2,
+                                     "assets/sprites/background/pine2.png");
+    m_context->m_assets->loadTexture(MOUNTAINS,
+                                     "assets/sprites/background/mountain2.png");
 
-    m_context->m_assets->loadFont(MAIN_FONT, "assets/fonts/8bitOperatorPlus8-Bold.ttf");
-    m_context->m_assets->loadFont(SECONDARY_FONT, "assets/fonts/8bitOperatorPlusSC-Bold.ttf");
+    m_context->m_assets->loadFont(MAIN_FONT,
+                                  "assets/fonts/8bitOperatorPlus8-Bold.ttf");
+    m_context->m_assets->loadFont(SECONDARY_FONT,
+                                  "assets/fonts/8bitOperatorPlusSC-Bold.ttf");
 
     // Background Setup
     m_sky.setTexture(m_context->m_assets->getTexture(SKY));
@@ -61,9 +64,10 @@ void MainMenu::Init()
         "uniform float offset;"
 
         "void main() {"
-        "    gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * gl_Vertex;"
+        "    gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * "
+        "gl_Vertex;"
         "    gl_TexCoord[0] = gl_TextureMatrix[0] * gl_MultiTexCoord0;"
-        "    gl_TexCoord[0].x = gl_TexCoord[0].x + offset;" // magic
+        "    gl_TexCoord[0].x = gl_TexCoord[0].x - offset;" // magic
         "    gl_FrontColor = gl_Color;"
         "}",
         sf::Shader::Vertex);
@@ -80,9 +84,11 @@ void MainMenu::Init()
     //  Set the text to the title
     m_gametitle.setString("Dino Thunder");
     //  Set the Origin
-    m_gametitle.setOrigin(m_gametitle.getLocalBounds().width / 2, m_gametitle.getLocalBounds().height / 2);
+    m_gametitle.setOrigin(m_gametitle.getLocalBounds().width / 2,
+                          m_gametitle.getLocalBounds().height / 2);
     //  Set the position
-    m_gametitle.setPosition(m_context->m_window->getSize().x / 2 - 177.f, m_context->m_window->getSize().y / 2 - 200.f);
+    m_gametitle.setPosition(m_context->m_window->getSize().x / 2 - 177.f,
+                            m_context->m_window->getSize().y / 2 - 200.f);
     //  Set Size
     m_gametitle.setCharacterSize(100);
     //  Set the color
@@ -96,9 +102,11 @@ void MainMenu::Init()
     //  Set the text to the title
     m_playButton.setString("Play");
     //  Set the Origin
-    m_playButton.setOrigin(m_playButton.getLocalBounds().width / 2, m_playButton.getLocalBounds().height / 2);
+    m_playButton.setOrigin(m_playButton.getLocalBounds().width / 2,
+                           m_playButton.getLocalBounds().height / 2);
     //  Set the position
-    m_playButton.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2);
+    m_playButton.setPosition(m_context->m_window->getSize().x / 2,
+                             m_context->m_window->getSize().y / 2);
 
     // Pause Button
     //  Set font need a reference to the font object
@@ -108,9 +116,11 @@ void MainMenu::Init()
     //  Set the text to the title
     m_exitButton.setString("Exit");
     //  Set the Origin
-    m_exitButton.setOrigin(m_exitButton.getLocalBounds().width / 2, m_exitButton.getLocalBounds().height / 2);
+    m_exitButton.setOrigin(m_exitButton.getLocalBounds().width / 2,
+                           m_exitButton.getLocalBounds().height / 2);
     //  Set the position
-    m_exitButton.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 + 100.f);
+    m_exitButton.setPosition(m_context->m_window->getSize().x / 2,
+                             m_context->m_window->getSize().y / 2 + 100.f);
 }
 void MainMenu::ProcessInput()
 {
@@ -129,46 +139,46 @@ void MainMenu::ProcessInput()
         {
             switch (event.key.code)
             {
-            case sf::Keyboard::Up:
-            {
-                if (!m_isPlayButtonSelected)
+                case sf::Keyboard::Up:
                 {
-                    m_isPlayButtonSelected = true;
-                    m_isExitButtonSelected = false;
+                    if (!m_isPlayButtonSelected)
+                    {
+                        m_isPlayButtonSelected = true;
+                        m_isExitButtonSelected = false;
+                    }
+                    break;
                 }
-                break;
-            }
-            case sf::Keyboard::Down:
-            {
-                if (!m_isExitButtonSelected)
+                case sf::Keyboard::Down:
                 {
-                    m_isPlayButtonSelected = false;
-                    m_isExitButtonSelected = true;
+                    if (!m_isExitButtonSelected)
+                    {
+                        m_isPlayButtonSelected = false;
+                        m_isExitButtonSelected = true;
+                    }
+                    break;
                 }
-                break;
-            }
-            case sf::Keyboard::Return:
-            {
-                m_isPlayButtonPressed = false;
-                m_isExitButtonPressed = false;
+                case sf::Keyboard::Return:
+                {
+                    m_isPlayButtonPressed = false;
+                    m_isExitButtonPressed = false;
 
-                if (m_isPlayButtonSelected)
-                {
-                    m_isPlayButtonPressed = true;
-                }
-                else
-                {
-                    m_isExitButtonPressed = true;
-                    m_music.stop();
-                    m_music.~Music();
-                }
+                    if (m_isPlayButtonSelected)
+                    {
+                        m_isPlayButtonPressed = true;
+                    }
+                    else
+                    {
+                        m_isExitButtonPressed = true;
+                        m_music.stop();
+                        m_music.~Music();
+                    }
 
-                break;
-            }
-            default:
-            {
-                break;
-            }
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
             }
         }
     }
@@ -191,7 +201,8 @@ void MainMenu::Update(sf::Time deltaTime)
 
     if (m_isPlayButtonPressed)
     {
-        m_context->m_state->AddState(std::make_unique<GamePlay>(m_context), true);
+        m_context->m_state->AddState(std::make_unique<GamePlay>(m_context),
+                                     true);
     }
     else if (m_isExitButtonPressed)
     {
@@ -200,7 +211,7 @@ void MainMenu::Update(sf::Time deltaTime)
         m_music.~Music();
     }
 
-    m_shader.setUniform("offset", offset += deltaTime.asSeconds() / 70);
+    m_shader.setUniform("offset", offset += deltaTime.asSeconds() / 100);
 }
 void MainMenu::Draw()
 {

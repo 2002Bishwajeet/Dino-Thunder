@@ -1,38 +1,39 @@
 #include "game_play.hpp"
 #include "game_over.hpp"
-#include <SFML/Window/Event.hpp>
 #include "pause_game.hpp"
+#include <SFML/Window/Event.hpp>
 
 GamePlay::GamePlay(std::shared_ptr<Context>& context)
-    : m_context(context)
-    , m_isJumping(false)
-    , m_jumpSpeed(25.0)
-    , m_playJumpSound(false)
-    , m_gameSpeed(6.5f)
+    : m_context(context), m_isJumping(false), m_jumpSpeed(25.0),
+      m_playJumpSound(false), m_gameSpeed(6.5f)
 {
 }
 
-GamePlay::~GamePlay()
-{
-}
+GamePlay::~GamePlay() {}
 
 void GamePlay::Init()
 {
     //  Loading Assets for the game
     m_context->m_assets->loadTexture(SKY, "assets/sprites/background/sky.png");
-    m_context->m_assets->loadTexture(SKY_CLOUD, "assets/sprites/background/sky_cloud.png");
-    m_context->m_assets->loadTexture(PINE_1, "assets/sprites/background/pine1.png");
-    m_context->m_assets->loadTexture(PINE_2, "assets/sprites/background/pine2.png");
-    m_context->m_assets->loadTexture(MOUNTAINS, "assets/sprites/background/mountain2.png");
-    m_context->m_assets->loadTexture(CLOUD, "assets/sprites/background/cloud.png");
+    m_context->m_assets->loadTexture(SKY_CLOUD,
+                                     "assets/sprites/background/sky_cloud.png");
+    m_context->m_assets->loadTexture(PINE_1,
+                                     "assets/sprites/background/pine1.png");
+    m_context->m_assets->loadTexture(PINE_2,
+                                     "assets/sprites/background/pine2.png");
+    m_context->m_assets->loadTexture(MOUNTAINS,
+                                     "assets/sprites/background/mountain2.png");
+    m_context->m_assets->loadTexture(CLOUD,
+                                     "assets/sprites/background/cloud.png");
 
-    m_context->m_assets->loadTexture(FLOOR, "assets/sprites/floor/Wasteland-Files.png");
-    m_context->m_assets->loadTexture(DINO, "assets/sprites/Dino/sheets/DinoSprites-tard.png");
-    m_context->m_assets->loadTexture(OBSTACLE_1, "assets/sprites/obstacles/winter_tree_1.png");
-    m_context->m_assets->loadTexture(OBSTACLE_2, "assets/sprites/obstacles/winter_tree_2.png");
-    m_context->m_assets->loadTexture(OBSTACLE_3, "assets/sprites/obstacles/winter_tree_3.png");
-    m_context->m_assets->loadTexture(OBSTACLE_4, "assets/sprites/obstacles/winter_tree_4.png");
-    m_context->m_assets->loadTexture(OBSTACLE_5, "assets/sprites/obstacles/winter_tree_5.png");
+    m_context->m_assets->loadTexture(FLOOR, "assets/sprites/floor/floor.png",
+                                     true);
+    m_context->m_assets->loadTexture(
+        DINO, "assets/sprites/Dino/sheets/DinoSprites-tard.png");
+    m_context->m_assets->loadTexture(OBSTACLE_1,
+                                     "assets/sprites/obstacles/cactus1.png");
+    m_context->m_assets->loadTexture(OBSTACLE_2,
+                                     "assets/sprites/obstacles/cactus2.png");
     m_context->m_assets->loadSound(JUMP_SOUND, "assets/sounds/jump.wav");
     m_gameMusic.openFromFile("assets/music/game_music.ogg");
 
@@ -40,11 +41,15 @@ void GamePlay::Init()
     m_scoreText.setFont(m_context->m_assets->getFont(SECONDARY_FONT));
     m_scoreText.setCharacterSize(30);
     m_scoreText.setFillColor(sf::Color::White);
-    m_scoreText.setPosition(sf::Vector2f(m_context->m_window->getSize().x - m_scoreText.getGlobalBounds().height - 200, 10));
+    m_scoreText.setPosition(
+        sf::Vector2f(m_context->m_window->getSize().x -
+                         m_scoreText.getGlobalBounds().height - 200,
+                     10));
 
     //  Obstacles Setup
-    m_obstacle.setPosition(0, m_context->m_window->getSize().y + m_obstacle.getGlobalBounds().height);
-    m_obstacle.setScale(1.5, 0.9);
+    m_obstacle.setPosition(0, m_context->m_window->getSize().y +
+                                  m_obstacle.getGlobalBounds().height);
+    m_obstacle.setScale(2.0, 2.0);
 
     // Jump Sound Setup
     m_jumpSound.setBuffer(m_context->m_assets->getSound(JUMP_SOUND));
@@ -60,18 +65,17 @@ void GamePlay::Init()
     m_sky.setTexture(m_context->m_assets->getTexture(SKY));
     m_sky.scale(2.0f, 2.0f);
 
-    m_skyCloud.setTexture(m_context->m_assets->getTexture(SKY_CLOUD));
-    m_skyCloud.scale(2.0f, 1.0f);
-    m_skyCloud.setPosition(0.0f, 50.0f);
-
+    // Clouds Setup
     m_cloud.setTexture(m_context->m_assets->getTexture(CLOUD));
     m_cloud.scale(2.0f, 1.0f);
     m_cloud.setPosition(0.0f, 50.0f);
 
+    // Mountains Setup
     m_mountains.setTexture(m_context->m_assets->getTexture(MOUNTAINS));
     m_mountains.scale(2.0f, 2.0f);
     m_mountains.setPosition(0.0f, 230.0f);
 
+    // Pine Tree Setup
     m_pine1.setTexture(m_context->m_assets->getTexture(PINE_1));
     m_pine1.scale(2.0f, 1.5f);
     m_pine1.setPosition(0.0f, 360.0f);
@@ -80,18 +84,12 @@ void GamePlay::Init()
     m_pine2.scale(2.0f, 1.5f);
     m_pine2.setPosition(0.0f, 425.0f);
 
-       // Floor Setup
+    // Floor Setup
     m_floor.setTexture(m_context->m_assets->getTexture(FLOOR));
-    m_floor.setTextureRect(sf::IntRect(100, 128, 16, 16));
-    m_floor.setScale(5.f, 4.f);
-
-    // TODO: Figure out a better way for the loop condition.
-    //  What if you decided to increase the window size?
-    for (int i = 0; i < 24; i++)
-    {
-        m_floor.setPosition(i * 62.f, m_context->m_window->getSize().y - 64);
-        m_floors.push_back(m_floor);
-    }
+    m_floor.setTextureRect(
+        sf::IntRect(0, 0, m_context->m_window->getSize().x, 40));
+    m_floor.setScale(1.6f, 1.6f);
+    m_floor.setPosition(0.0f, m_context->m_window->getSize().y - 60);
 
     // Dino Setup
     m_dinoRect = sf::IntRect(0, 0, 24, 24);
@@ -99,24 +97,57 @@ void GamePlay::Init()
     m_dino.setTextureRect(m_dinoRect);
 
     m_dino.scale(4.f, 4.f);
+
+    // Shader Setup
+    m_shaderFloor.loadFromMemory(
+        "uniform float offset;"
+
+        "void main() {"
+        "    gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * "
+        "gl_Vertex;"
+        "    gl_TexCoord[0] = gl_TextureMatrix[0] * gl_MultiTexCoord0;"
+        "    gl_TexCoord[0].x = gl_TexCoord[0].x + offset;" // magic
+        "    gl_FrontColor = gl_Color;"
+        "}",
+        sf::Shader::Vertex);
+
+    m_shaderCloud.loadFromMemory(
+        "uniform float offset;"
+
+        "void main() {"
+        "    gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * "
+        "gl_Vertex;"
+        "    gl_TexCoord[0] = gl_TextureMatrix[0] * gl_MultiTexCoord0;"
+        "    gl_TexCoord[0].x = gl_TexCoord[0].x + offset;" // magic
+        "    gl_FrontColor = gl_Color;"
+        "}",
+        sf::Shader::Vertex);
 }
 void GamePlay::Update(sf::Time deltaTime)
 {
     if (!m_isPaused)
     {
         //  Jumping Mechanics
-        if (y < m_context->m_window->getSize().y - m_floor.getGlobalBounds().height - (22 * 4)) // If you are above ground
+        if (y < m_context->m_window->getSize().y -
+                    m_floor.getLocalBounds().height -
+                    (25 * 4)) // If you are above ground
         {
             velocityY += gravity; // Add gravity
             m_isJumping = true;
         }
-        else if (y > m_context->m_window->getSize().y - m_floor.getGlobalBounds().height - (22 * 4)) // If you are below ground
-            y = m_context->m_window->getSize().y - m_floor.getGlobalBounds().height - (22 * 4);      // That's not supposed to happen, put him back up
+        else if (y > m_context->m_window->getSize().y -
+                         m_floor.getLocalBounds().height -
+                         (25 * 4)) // If you are below ground
+            y = m_context->m_window->getSize().y -
+                m_floor.getLocalBounds().height -
+                (25 * 4); // That's not supposed to happen, put him back up
 
-        if (y == m_context->m_window->getSize().y - m_floor.getGlobalBounds().height - (22 * 4))
+        if (y == m_context->m_window->getSize().y -
+                     m_floor.getLocalBounds().height - (25 * 4))
             m_isJumping = false;
 
-        // This is useless for now, could be used for a better jump mechanic later
+        // This is useless for now, could be used for a better jump mechanic
+        // later
         velocityY += accelerationY;
         m_dino.setPosition(x, y);
         y += velocityY;
@@ -141,38 +172,34 @@ void GamePlay::Update(sf::Time deltaTime)
 
         if (m_obstacle.getPosition().x < -m_obstacle.getGlobalBounds().width)
         {
-            m_obstacle.setPosition(m_context->m_window->getSize().x + m_obstacle.getGlobalBounds().width, m_context->m_window->getSize().y - 64 - 110);
-            m_obstacle.setTexture(m_context->m_assets->getTexture(OBSTACLE_1 + rand() % 5));
+            m_obstacle.setPosition(m_context->m_window->getSize().x +
+                                       m_obstacle.getGlobalBounds().width,
+                                   m_context->m_window->getSize().y - 110);
+            // rdno = rand() % (b-a+1) + a -> Formula for generating a random
+            // number between a limit
+            m_obstacle.setTexture(
+                m_context->m_assets->getTexture(OBSTACLE_1 + rand() % 2));
         }
         m_obstacle.move(-m_gameSpeed, 0.f);
 
-        // Random Obstacle Spawning and moving towards the left
-        // for(int i = 0; i < 5; i++)
-        // {
-        //     m_obstacles[i].move(-6.f,0.f);
-
-        //     if(m_obstacles[i].getPosition().x < -m_obstacles[i].getGlobalBounds().width)
-        //     {
-        //         m_obstacles[i].setPosition(m_context->m_window->getSize().x +250 ,m_context->m_window->getSize().y-64-110);
-        //     }
-        // }
-
         // Move the floors
-        for (int i = 0; i < 24; i++)
-        {
-            m_floors[i].move(-m_gameSpeed, 0.f);
-            if (m_floors[i].getPosition().x < -m_floors[i].getGlobalBounds().width)
-            {
-                m_floors[i].setPosition(m_context->m_window->getSize().x + m_floors[i].getGlobalBounds().width, m_context->m_window->getSize().y - 64);
-            }
-        }
+
+        // m_floor.move(-m_gameSpeed, 0.f);
+        // if (m_floor.getPosition().x < -m_floor.getGlobalBounds().width)
+        // {
+        //     m_floor.setPosition(m_context->m_window->getSize().x +
+        //     m_floor.getGlobalBounds().width, m_context->m_window->getSize().y
+        //     - 64);
+        // }
 
         //  Collision Detection
         for (int i = 0; i < 5; i++)
         {
-            if (m_dino.getGlobalBounds().intersects(m_obstacle.getGlobalBounds()))
+            if (m_dino.getGlobalBounds().intersects(
+                    m_obstacle.getGlobalBounds()))
             {
-                m_context->m_state->AddState(std::make_unique<GameOver>(m_context), false);
+                m_context->m_state->AddState(
+                    std::make_unique<GameOver>(m_context), false);
                 m_isPaused = true;
             }
         }
@@ -193,6 +220,10 @@ void GamePlay::Update(sf::Time deltaTime)
             m_dino.setTextureRect(m_dinoRect);
             clock.restart();
         }
+
+        // moving the floors
+        m_shaderFloor.setUniform("offset",
+                                 offset += deltaTime.asSeconds() / m_gameSpeed);
     }
 }
 void GamePlay::ProcessInput()
@@ -210,7 +241,8 @@ void GamePlay::ProcessInput()
         }
         else if (event.type == sf::Event::KeyPressed)
         {
-            if (event.key.code == sf::Keyboard::Space || event.key.code == sf::Keyboard::Up)
+            if (event.key.code == sf::Keyboard::Space ||
+                event.key.code == sf::Keyboard::Up)
             {
                 if (!m_isJumping)
                 {
@@ -223,7 +255,8 @@ void GamePlay::ProcessInput()
             }
             if (event.key.code == sf::Keyboard::Escape)
             {
-                m_context->m_state->AddState(std::make_unique<PauseGame>(m_context));
+                m_context->m_state->AddState(
+                    std::make_unique<PauseGame>(m_context));
                 m_isPaused = true;
             }
         }
@@ -243,10 +276,12 @@ void GamePlay::Draw()
 
     m_context->m_window->draw(m_dino);
 
-    for (auto& floor : m_floors)
-    {
-        m_context->m_window->draw(floor);
-    }
+    m_context->m_window->draw(m_floor, &m_shaderFloor);
+
+    // for (auto& floor : m_floors)
+    // {
+    //     m_context->m_window->draw(floor);
+    // }
     m_context->m_window->draw(m_obstacle);
     m_context->m_window->draw(m_scoreText);
 

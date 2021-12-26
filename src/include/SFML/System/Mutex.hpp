@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -31,12 +32,11 @@
 #include <SFML/System/Export.hpp>
 #include <SFML/System/NonCopyable.hpp>
 
-
 namespace sf
 {
 namespace priv
 {
-    class MutexImpl;
+class MutexImpl;
 }
 
 ////////////////////////////////////////////////////////////
@@ -47,7 +47,6 @@ namespace priv
 class SFML_SYSTEM_API Mutex : NonCopyable
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -81,7 +80,6 @@ public:
     void unlock();
 
 private:
-
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
@@ -90,9 +88,7 @@ private:
 
 } // namespace sf
 
-
 #endif // SFML_MUTEX_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::Mutex
@@ -115,16 +111,16 @@ private:
 ///
 /// void thread1()
 /// {
-///     mutex.lock(); // this call will block the thread if the mutex is already locked by thread2
-///     database.write(...);
-///     mutex.unlock(); // if thread2 was waiting, it will now be unblocked
+///     mutex.lock(); // this call will block the thread if the mutex is already
+///     locked by thread2 database.write(...); mutex.unlock(); // if thread2 was
+///     waiting, it will now be unblocked
 /// }
 ///
 /// void thread2()
 /// {
-///     mutex.lock(); // this call will block the thread if the mutex is already locked by thread1
-///     database.write(...);
-///     mutex.unlock(); // if thread1 was waiting, it will now be unblocked
+///     mutex.lock(); // this call will block the thread if the mutex is already
+///     locked by thread1 database.write(...); mutex.unlock(); // if thread1 was
+///     waiting, it will now be unblocked
 /// }
 /// \endcode
 ///

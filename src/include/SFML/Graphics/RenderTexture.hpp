@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -29,16 +30,15 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Graphics/Export.hpp>
-#include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
+#include <SFML/Graphics/Texture.hpp>
 #include <SFML/Window/ContextSettings.hpp>
-
 
 namespace sf
 {
 namespace priv
 {
-    class RenderTextureImpl;
+class RenderTextureImpl;
 }
 
 ////////////////////////////////////////////////////////////
@@ -48,7 +48,6 @@ namespace priv
 class SFML_GRAPHICS_API RenderTexture : public RenderTarget
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -79,14 +78,17 @@ public:
     ///
     /// \param width       Width of the render-texture
     /// \param height      Height of the render-texture
-    /// \param depthBuffer Do you want this render-texture to have a depth buffer?
+    /// \param depthBuffer Do you want this render-texture to have a depth
+    /// buffer?
     ///
     /// \return True if creation has been successful
     ///
-    /// \deprecated Use create(unsigned int, unsigned int, const ContextSettings&) instead.
+    /// \deprecated Use create(unsigned int, unsigned int, const
+    /// ContextSettings&) instead.
     ///
     ////////////////////////////////////////////////////////////
-    SFML_DEPRECATED bool create(unsigned int width, unsigned int height, bool depthBuffer);
+    SFML_DEPRECATED bool create(unsigned int width, unsigned int height,
+                                bool depthBuffer);
 
     ////////////////////////////////////////////////////////////
     /// \brief Create the render-texture
@@ -101,12 +103,14 @@ public:
     ///
     /// \param width    Width of the render-texture
     /// \param height   Height of the render-texture
-    /// \param settings Additional settings for the underlying OpenGL texture and context
+    /// \param settings Additional settings for the underlying OpenGL texture
+    /// and context
     ///
     /// \return True if creation has been successful
     ///
     ////////////////////////////////////////////////////////////
-    bool create(unsigned int width, unsigned int height, const ContextSettings& settings = ContextSettings());
+    bool create(unsigned int width, unsigned int height,
+                const ContextSettings& settings = ContextSettings());
 
     ////////////////////////////////////////////////////////////
     /// \brief Get the maximum anti-aliasing level supported by the system
@@ -234,19 +238,17 @@ public:
     const Texture& getTexture() const;
 
 private:
-
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    priv::RenderTextureImpl* m_impl;    ///< Platform/hardware specific implementation
-    Texture                  m_texture; ///< Target texture to draw on
+    priv::RenderTextureImpl*
+        m_impl;        ///< Platform/hardware specific implementation
+    Texture m_texture; ///< Target texture to draw on
 };
 
 } // namespace sf
 
-
 #endif // SFML_RENDERTEXTURE_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::RenderTexture
@@ -259,8 +261,8 @@ private:
 /// texture rather than being show in a window.
 ///
 /// Rendering to a texture can be useful in a variety of situations:
-/// \li precomputing a complex static texture (like a level's background from multiple tiles)
-/// \li applying post-effects to the whole scene with shaders
+/// \li precomputing a complex static texture (like a level's background from
+/// multiple tiles) \li applying post-effects to the whole scene with shaders
 /// \li creating a sprite from a 3D object rendered with OpenGL
 /// \li etc.
 ///

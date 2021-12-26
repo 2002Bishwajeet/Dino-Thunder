@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -28,16 +29,15 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Window/Export.hpp>
 #include <SFML/System/NonCopyable.hpp>
-
+#include <SFML/Window/Export.hpp>
 
 namespace sf
 {
 
 class Context;
 
-typedef void(*ContextDestroyCallback)(void*);
+typedef void (*ContextDestroyCallback)(void*);
 
 ////////////////////////////////////////////////////////////
 /// \brief Base class for classes that require an OpenGL context
@@ -46,7 +46,6 @@ typedef void(*ContextDestroyCallback)(void*);
 class SFML_WINDOW_API GlResource
 {
 protected:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -70,10 +69,12 @@ protected:
     /// \param arg      Argument to pass when calling the function
     ///
     ////////////////////////////////////////////////////////////
-    static void registerContextDestroyCallback(ContextDestroyCallback callback, void* arg);
+    static void registerContextDestroyCallback(ContextDestroyCallback callback,
+                                               void* arg);
 
     ////////////////////////////////////////////////////////////
-    /// \brief RAII helper class to temporarily lock an available context for use
+    /// \brief RAII helper class to temporarily lock an available context for
+    /// use
     ///
     ////////////////////////////////////////////////////////////
     class SFML_WINDOW_API TransientContextLock : NonCopyable
@@ -94,7 +95,6 @@ protected:
 };
 
 } // namespace sf
-
 
 #endif // SFML_GLRESOURCE_HPP
 

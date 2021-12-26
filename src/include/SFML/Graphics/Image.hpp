@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -28,12 +29,11 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Graphics/Export.hpp>
 #include <SFML/Graphics/Color.hpp>
+#include <SFML/Graphics/Export.hpp>
 #include <SFML/Graphics/Rect.hpp>
 #include <string>
 #include <vector>
-
 
 namespace sf
 {
@@ -46,7 +46,6 @@ class InputStream;
 class SFML_GRAPHICS_API Image
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -69,7 +68,8 @@ public:
     /// \param color  Fill color
     ///
     ////////////////////////////////////////////////////////////
-    void create(unsigned int width, unsigned int height, const Color& color = Color(0, 0, 0));
+    void create(unsigned int width, unsigned int height,
+                const Color& color = Color(0, 0, 0));
 
     ////////////////////////////////////////////////////////////
     /// \brief Create the image from an array of pixels
@@ -193,10 +193,13 @@ public:
     /// \param destX      X coordinate of the destination position
     /// \param destY      Y coordinate of the destination position
     /// \param sourceRect Sub-rectangle of the source image to copy
-    /// \param applyAlpha Should the copy take into account the source transparency?
+    /// \param applyAlpha Should the copy take into account the source
+    /// transparency?
     ///
     ////////////////////////////////////////////////////////////
-    void copy(const Image& source, unsigned int destX, unsigned int destY, const IntRect& sourceRect = IntRect(0, 0, 0, 0), bool applyAlpha = false);
+    void copy(const Image& source, unsigned int destX, unsigned int destY,
+              const IntRect& sourceRect = IntRect(0, 0, 0, 0),
+              bool applyAlpha = false);
 
     ////////////////////////////////////////////////////////////
     /// \brief Change the color of a pixel
@@ -259,19 +262,16 @@ public:
     void flipVertically();
 
 private:
-
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    Vector2u           m_size;   ///< Image size
+    Vector2u m_size;             ///< Image size
     std::vector<Uint8> m_pixels; ///< Pixels of the image
 };
 
 } // namespace sf
 
-
 #endif // SFML_IMAGE_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::Image

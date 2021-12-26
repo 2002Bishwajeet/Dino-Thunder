@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -29,11 +30,10 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Graphics/Export.hpp>
-#include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/Image.hpp>
+#include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Window/Window.hpp>
 #include <string>
-
 
 namespace sf
 {
@@ -44,7 +44,6 @@ namespace sf
 class SFML_GRAPHICS_API RenderWindow : public Window, public RenderTarget
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -67,13 +66,16 @@ public:
     /// depth-buffer bits, etc. You shouldn't care about these
     /// parameters for a regular usage of the graphics module.
     ///
-    /// \param mode     Video mode to use (defines the width, height and depth of the rendering area of the window)
-    /// \param title    Title of the window
-    /// \param style    %Window style, a bitwise OR combination of sf::Style enumerators
-    /// \param settings Additional settings for the underlying OpenGL context
+    /// \param mode     Video mode to use (defines the width, height and depth
+    /// of the rendering area of the window) \param title    Title of the window
+    /// \param style    %Window style, a bitwise OR combination of sf::Style
+    /// enumerators \param settings Additional settings for the underlying
+    /// OpenGL context
     ///
     ////////////////////////////////////////////////////////////
-    RenderWindow(VideoMode mode, const String& title, Uint32 style = Style::Default, const ContextSettings& settings = ContextSettings());
+    RenderWindow(VideoMode mode, const String& title,
+                 Uint32 style = Style::Default,
+                 const ContextSettings& settings = ContextSettings());
 
     ////////////////////////////////////////////////////////////
     /// \brief Construct the window from an existing control
@@ -87,11 +89,13 @@ public:
     /// parameters for a regular usage of the graphics module.
     ///
     /// \param handle   Platform-specific handle of the control (\a HWND on
-    ///                 Windows, \a %Window on Linux/FreeBSD, \a NSWindow on OS X)
+    ///                 Windows, \a %Window on Linux/FreeBSD, \a NSWindow on OS
+    ///                 X)
     /// \param settings Additional settings for the underlying OpenGL context
     ///
     ////////////////////////////////////////////////////////////
-    explicit RenderWindow(WindowHandle handle, const ContextSettings& settings = ContextSettings());
+    explicit RenderWindow(WindowHandle handle,
+                          const ContextSettings& settings = ContextSettings());
 
     ////////////////////////////////////////////////////////////
     /// \brief Destructor
@@ -158,7 +162,6 @@ public:
     SFML_DEPRECATED Image capture() const;
 
 protected:
-
     ////////////////////////////////////////////////////////////
     /// \brief Function called after the window has been created
     ///
@@ -181,9 +184,7 @@ protected:
 
 } // namespace sf
 
-
 #endif // SFML_RENDERWINDOW_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::RenderWindow

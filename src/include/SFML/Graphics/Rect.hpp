@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -31,7 +32,6 @@
 #include <SFML/System/Vector2.hpp>
 #include <algorithm>
 
-
 namespace sf
 {
 ////////////////////////////////////////////////////////////
@@ -42,7 +42,6 @@ template <typename T>
 class Rect
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -173,7 +172,7 @@ public:
 ///
 ////////////////////////////////////////////////////////////
 template <typename T>
-bool operator ==(const Rect<T>& left, const Rect<T>& right);
+bool operator==(const Rect<T>& left, const Rect<T>& right);
 
 ////////////////////////////////////////////////////////////
 /// \relates Rect
@@ -188,19 +187,17 @@ bool operator ==(const Rect<T>& left, const Rect<T>& right);
 ///
 ////////////////////////////////////////////////////////////
 template <typename T>
-bool operator !=(const Rect<T>& left, const Rect<T>& right);
+bool operator!=(const Rect<T>& left, const Rect<T>& right);
 
 #include <SFML/Graphics/Rect.inl>
 
 // Create typedefs for the most common types
-typedef Rect<int>   IntRect;
+typedef Rect<int> IntRect;
 typedef Rect<float> FloatRect;
 
 } // namespace sf
 
-
 #endif // SFML_RECT_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::Rect
@@ -219,7 +216,8 @@ typedef Rect<float> FloatRect;
 ///
 /// sf::Rect uses the usual rules for its boundaries:
 /// \li The left and top edges are included in the rectangle's area
-/// \li The right (left + width) and bottom (top + height) edges are excluded from the rectangle's area
+/// \li The right (left + width) and bottom (top + height) edges are excluded
+/// from the rectangle's area
 ///
 /// This means that sf::IntRect(0, 0, 1, 1) and sf::IntRect(1, 1, 1, 1)
 /// don't intersect.

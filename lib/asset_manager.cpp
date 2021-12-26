@@ -1,19 +1,17 @@
 #include <asset_manager.hpp>
 
-engine::AssetManager::AssetManager()
-{
-}
+engine::AssetManager::AssetManager() {}
 
-engine::AssetManager::~AssetManager()
-{
-}
+engine::AssetManager::~AssetManager() {}
 
-void engine::AssetManager::loadTexture(int id, const std::string& filename, bool wantRepeated)
+void engine::AssetManager::loadTexture(int id, const std::string& filename,
+                                       bool wantRepeated)
 {
-    //  At first we create a variable of type sf::Texture and then we load the Texture from the file.
-    //  If the Texture is loaded successfully, we store it in the map using the id as a key.
-    //  Std::unique_ptr is used to ensure that the memory is freed when the object is destroyed.
-    //  std::move is used to move the unique_ptr into the map.
+    //  At first we create a variable of type sf::Texture and then we load the
+    //  Texture from the file. If the Texture is loaded successfully, we store
+    //  it in the map using the id as a key. Std::unique_ptr is used to ensure
+    //  that the memory is freed when the object is destroyed. std::move is used
+    //  to move the unique_ptr into the map.
     auto texture = std::make_unique<sf::Texture>();
 
     if (texture->loadFromFile(filename))
@@ -28,10 +26,11 @@ void engine::AssetManager::loadTexture(int id, const std::string& filename, bool
 }
 void engine::AssetManager::loadFont(int id, const std::string& filename)
 {
-    //  At first we create a variable of type sf::Font and then we load the font from the file.
-    //  If the font is loaded successfully, we store it in the map using the id as a key.
-    //  Std::unique_ptr is used to ensure that the memory is freed when the object is destroyed.
-    //  std::move is used to move the unique_ptr into the map.
+    //  At first we create a variable of type sf::Font and then we load the font
+    //  from the file. If the font is loaded successfully, we store it in the
+    //  map using the id as a key. Std::unique_ptr is used to ensure that the
+    //  memory is freed when the object is destroyed. std::move is used to move
+    //  the unique_ptr into the map.
     auto font = std::make_unique<sf::Font>();
 
     if (font->loadFromFile(filename))
@@ -42,10 +41,12 @@ void engine::AssetManager::loadFont(int id, const std::string& filename)
 
 void engine::AssetManager::loadSound(int id, const std::string& filename)
 {
-    //  At first we create a variable of type sf::SoundBuffer and then we load the SoundBuffer from the file.
-    //  If the SoundBuffer is loaded successfully, we store it in the map using the id as a key.
-    //  Std::unique_ptr is used to ensure that the memory is freed when the object is destroyed.
-    //  std::move is used to move the unique_ptr into the map.
+    //  At first we create a variable of type sf::SoundBuffer and then we load
+    //  the SoundBuffer from the file. If the SoundBuffer is loaded
+    //  successfully, we store it in the map using the id as a key.
+    //  Std::unique_ptr is used to ensure that the memory is freed when the
+    //  object is destroyed. std::move is used to move the unique_ptr into the
+    //  map.
     auto sound = std::make_unique<sf::SoundBuffer>();
 
     if (sound->loadFromFile(filename))

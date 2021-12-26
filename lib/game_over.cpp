@@ -4,21 +4,18 @@
 #include <SFML/Window/Event.hpp>
 
 GameOver::GameOver(std::shared_ptr<Context>& context)
-    : m_context(context)
-    , m_isRetryButtonSelected(true)
-    , m_isRetryButtonPressed(false)
-    , m_isExitButtonSelected(false)
-    , m_isExitButtonPressed(false)
+    : m_context(context), m_isRetryButtonSelected(true),
+      m_isRetryButtonPressed(false), m_isExitButtonSelected(false),
+      m_isExitButtonPressed(false)
 {
 }
 
-GameOver::~GameOver()
-{
-}
+GameOver::~GameOver() {}
 
 void GameOver::Init()
 {
-    m_context->m_assets->loadSound(GAME_OVER_SOUND, "assets/sounds/game_over.ogg");
+    m_context->m_assets->loadSound(GAME_OVER_SOUND,
+                                   "assets/sounds/game_over.ogg");
 
     m_gameOverSound.setBuffer(m_context->m_assets->getSound(GAME_OVER_SOUND));
 
@@ -30,22 +27,28 @@ void GameOver::Init()
     m_gameOverTitle.setFont(m_context->m_assets->getFont(MAIN_FONT));
     m_gameOverTitle.setString("Game Over");
     m_gameOverTitle.setFillColor(sf::Color(245, 171, 53, 255));
-    m_gameOverTitle.setOrigin(m_gameOverTitle.getLocalBounds().width / 2, m_gameOverTitle.getLocalBounds().height / 2);
-    m_gameOverTitle.setPosition(m_context->m_window->getSize().x / 2 - 177.f, m_context->m_window->getSize().y / 2 - 200.f);
+    m_gameOverTitle.setOrigin(m_gameOverTitle.getLocalBounds().width / 2,
+                              m_gameOverTitle.getLocalBounds().height / 2);
+    m_gameOverTitle.setPosition(m_context->m_window->getSize().x / 2 - 177.f,
+                                m_context->m_window->getSize().y / 2 - 200.f);
     m_gameOverTitle.setCharacterSize(100);
 
     // Play Button
     m_retryButton.setFont(m_context->m_assets->getFont(MAIN_FONT));
     m_retryButton.setString("Retry");
-    m_retryButton.setOrigin(m_retryButton.getLocalBounds().width / 2, m_retryButton.getLocalBounds().height / 2);
-    m_retryButton.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2);
+    m_retryButton.setOrigin(m_retryButton.getLocalBounds().width / 2,
+                            m_retryButton.getLocalBounds().height / 2);
+    m_retryButton.setPosition(m_context->m_window->getSize().x / 2,
+                              m_context->m_window->getSize().y / 2);
     m_retryButton.setCharacterSize(50);
 
     // Exit Button
     m_exitButton.setFont(m_context->m_assets->getFont(MAIN_FONT));
     m_exitButton.setString("Exit");
-    m_exitButton.setOrigin(m_exitButton.getLocalBounds().width / 2, m_exitButton.getLocalBounds().height / 2);
-    m_exitButton.setPosition(m_context->m_window->getSize().x / 2, m_context->m_window->getSize().y / 2 + 100.f);
+    m_exitButton.setOrigin(m_exitButton.getLocalBounds().width / 2,
+                           m_exitButton.getLocalBounds().height / 2);
+    m_exitButton.setPosition(m_context->m_window->getSize().x / 2,
+                             m_context->m_window->getSize().y / 2 + 100.f);
     m_exitButton.setCharacterSize(50);
 }
 
@@ -64,7 +67,8 @@ void GameOver::Update(sf::Time deltaTime)
 
     if (m_isRetryButtonPressed)
     {
-        m_context->m_state->AddState(std::make_unique<GamePlay>(m_context), true);
+        m_context->m_state->AddState(std::make_unique<GamePlay>(m_context),
+                                     true);
     }
     else if (m_isExitButtonPressed)
     {
@@ -85,44 +89,44 @@ void GameOver::ProcessInput()
         {
             switch (event.key.code)
             {
-            case sf::Keyboard::Up:
-            {
-                if (!m_isRetryButtonSelected)
+                case sf::Keyboard::Up:
                 {
-                    m_isRetryButtonSelected = true;
-                    m_isExitButtonSelected = false;
+                    if (!m_isRetryButtonSelected)
+                    {
+                        m_isRetryButtonSelected = true;
+                        m_isExitButtonSelected = false;
+                    }
+                    break;
                 }
-                break;
-            }
-            case sf::Keyboard::Down:
-            {
-                if (!m_isExitButtonSelected)
+                case sf::Keyboard::Down:
                 {
-                    m_isRetryButtonSelected = false;
-                    m_isExitButtonSelected = true;
+                    if (!m_isExitButtonSelected)
+                    {
+                        m_isRetryButtonSelected = false;
+                        m_isExitButtonSelected = true;
+                    }
+                    break;
                 }
-                break;
-            }
-            case sf::Keyboard::Return:
-            {
-                m_isRetryButtonPressed = false;
-                m_isExitButtonPressed = false;
+                case sf::Keyboard::Return:
+                {
+                    m_isRetryButtonPressed = false;
+                    m_isExitButtonPressed = false;
 
-                if (m_isRetryButtonSelected)
-                {
-                    m_isRetryButtonPressed = true;
-                }
-                else
-                {
-                    m_isExitButtonPressed = true;
-                }
+                    if (m_isRetryButtonSelected)
+                    {
+                        m_isRetryButtonPressed = true;
+                    }
+                    else
+                    {
+                        m_isExitButtonPressed = true;
+                    }
 
-                break;
-            }
-            default:
-            {
-                break;
-            }
+                    break;
+                }
+                default:
+                {
+                    break;
+                }
             }
         }
     }

@@ -4,11 +4,12 @@
 // Copyright (C) 2007-2018 Laurent Gomila (laurent@sfml-dev.org)
 //
 // This software is provided 'as-is', without any express or implied warranty.
-// In no event will the authors be held liable for any damages arising from the use of this software.
+// In no event will the authors be held liable for any damages arising from the
+// use of this software.
 //
 // Permission is granted to anyone to use this software for any purpose,
-// including commercial applications, and to alter it and redistribute it freely,
-// subject to the following restrictions:
+// including commercial applications, and to alter it and redistribute it
+// freely, subject to the following restrictions:
 //
 // 1. The origin of this software must not be misrepresented;
 //    you must not claim that you wrote the original software.
@@ -32,7 +33,6 @@
 #include <SFML/Graphics/Shape.hpp>
 #include <vector>
 
-
 namespace sf
 {
 ////////////////////////////////////////////////////////////
@@ -42,7 +42,6 @@ namespace sf
 class SFML_GRAPHICS_API ConvexShape : public Shape
 {
 public:
-
     ////////////////////////////////////////////////////////////
     /// \brief Default constructor
     ///
@@ -82,8 +81,8 @@ public:
     /// number of points. The result is undefined if \a index is out
     /// of the valid range.
     ///
-    /// \param index Index of the point to change, in range [0 .. getPointCount() - 1]
-    /// \param point New position of the point
+    /// \param index Index of the point to change, in range [0 ..
+    /// getPointCount() - 1] \param point New position of the point
     ///
     /// \see getPoint
     ///
@@ -98,7 +97,8 @@ public:
     /// not taken into account.
     /// The result is undefined if \a index is out of the valid range.
     ///
-    /// \param index Index of the point to get, in range [0 .. getPointCount() - 1]
+    /// \param index Index of the point to get, in range [0 .. getPointCount() -
+    /// 1]
     ///
     /// \return Position of the index-th point of the polygon
     ///
@@ -108,7 +108,6 @@ public:
     virtual Vector2f getPoint(std::size_t index) const;
 
 private:
-
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
@@ -117,9 +116,7 @@ private:
 
 } // namespace sf
 
-
 #endif // SFML_CONVEXSHAPE_HPP
-
 
 ////////////////////////////////////////////////////////////
 /// \class sf::ConvexShape

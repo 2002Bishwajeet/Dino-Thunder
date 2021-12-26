@@ -1,14 +1,15 @@
 #pragma once
 
-#include "State.hpp"
 #include "Game.hpp"
-#include <memory>
-#include <SFML/Graphics/Sprite.hpp>
-#include <SFML/Audio/Sound.hpp>
+#include "State.hpp"
 #include <SFML/Audio/Music.hpp>
+#include <SFML/Audio/Sound.hpp>
+#include <SFML/Graphics/Shader.hpp>
+#include <SFML/Graphics/Sprite.hpp>
 #include <SFML/Graphics/Text.hpp>
-#include <vector>
 #include <array>
+#include <memory>
+#include <vector>
 
 class GamePlay : public engine::State
 {
@@ -20,14 +21,18 @@ private:
     sf::Sprite m_mountains;
     sf::Sprite m_skyCloud;
     sf::Sprite m_cloud;
+    sf::Shader m_shaderCloud;
+
     sf::Sprite m_pine1;
     sf::Sprite m_pine2;
 
     sf::Sprite m_floor;
+    sf::Shader m_shaderFloor;
+    float offset = 0.f;
+
     sf::Sprite m_dino;
     sf::Music m_gameMusic;
     sf::Sound m_jumpSound;
-    std::vector<sf::Sprite> m_floors;
     sf::Sprite m_obstacle;
     sf::IntRect m_dinoRect;
     sf::Clock clock;

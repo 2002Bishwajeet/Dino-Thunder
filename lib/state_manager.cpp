@@ -1,16 +1,13 @@
 #include <state_manager.hpp>
 
-// When a state manager is called we keep the add, remove and replace values to False by default
+// When a state manager is called we keep the add, remove and replace values to
+// False by default
 engine::StateManager::StateManager()
-    : m_add(false)
-    , m_remove(false)
-    , m_replace(false)
+    : m_add(false), m_remove(false), m_replace(false)
 {
 }
 
-engine::StateManager::~StateManager()
-{
-}
+engine::StateManager::~StateManager() {}
 
 // Definition of the add function
 void engine::StateManager::AddState(std::unique_ptr<State> state, bool replace)
@@ -19,7 +16,8 @@ void engine::StateManager::AddState(std::unique_ptr<State> state, bool replace)
     m_add = true;
 
     // std::move is used to indicate that an object t may be "moved from",
-    //  i.e. allowing the efficient transfer of resources from t to another object.
+    //  i.e. allowing the efficient transfer of resources from t to another
+    //  object.
     m_newState = std::move(state);
 
     // If the replace value is true we set the replace value to true
@@ -33,7 +31,8 @@ void engine::StateManager::Popcurrent()
 void engine::StateManager::ProcessStateChange()
 {
     //  This function is used to process current state Stack
-    //  Before performing anything we check if the remove value is true & sthe stack is not empty
+    //  Before performing anything we check if the remove value is true & sthe
+    //  stack is not empty
     if (m_remove && !m_stateStack.empty())
     {
         m_stateStack.pop();
