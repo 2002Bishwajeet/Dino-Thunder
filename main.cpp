@@ -1,5 +1,4 @@
 #include "game.hpp"
-//  Avoid using namespace at all
 
 int main()
 {
