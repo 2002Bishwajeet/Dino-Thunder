@@ -21,7 +21,7 @@ void GamePlay::Init()
     //  Loading Assets for the game
     m_context->m_assets->loadTexture(BACKGROUND, "assets/sprites/background/layers/parallax-mountain.png");
     m_context->m_assets->loadTexture(FLOOR, "assets/sprites/floor/Wasteland-Files.png");
-    m_context->m_assets->loadTexture(DINO, "assets/sprites/Dino/sheets/DinoSprites-tard.png");
+    m_context->m_assets->loadTexture(DINO, "assets/sprites/Dino/sheets/DinoSprites-doux.png");
     m_context->m_assets->loadTexture(OBSTACLE_1, "assets/sprites/obstacles/winter_tree_1.png");
     m_context->m_assets->loadTexture(OBSTACLE_2, "assets/sprites/obstacles/winter_tree_2.png");
     m_context->m_assets->loadTexture(OBSTACLE_3, "assets/sprites/obstacles/winter_tree_3.png");
