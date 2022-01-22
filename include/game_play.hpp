@@ -18,17 +18,25 @@ private:
 
     // Background
     sf::Sprite m_sky;
-    sf::Sprite m_mountains;
-    sf::Sprite m_skyCloud;
+
     sf::Sprite m_cloud;
     sf::Shader m_shaderCloud;
+    float cloud_offset = 0.f;
+
+    sf::Sprite m_mountains;
+    sf::Shader m_shaderMountain;
+    float mountain_offset = 0.f;
 
     sf::Sprite m_pine1;
+    sf::Shader m_shaderPine1;
+    float pine1_offset = 0.f;
+
     sf::Sprite m_pine2;
+    sf::Shader m_shaderPine2;
+    float pine2_offset = 0.f;
 
     sf::Sprite m_floor;
-    sf::Shader m_shaderFloor;
-    float offset = 0.f;
+
 
     sf::Sprite m_dino;
     sf::Music m_gameMusic;

@@ -15,16 +15,14 @@ void GamePlay::Init()
 {
     //  Loading Assets for the game
     m_context->m_assets->loadTexture(SKY, "assets/sprites/background/sky.png");
-    m_context->m_assets->loadTexture(SKY_CLOUD,
-                                     "assets/sprites/background/sky_cloud.png");
-    m_context->m_assets->loadTexture(PINE_1,
-                                     "assets/sprites/background/pine1.png");
-    m_context->m_assets->loadTexture(PINE_2,
-                                     "assets/sprites/background/pine2.png");
-    m_context->m_assets->loadTexture(MOUNTAINS,
-                                     "assets/sprites/background/mountain2.png");
-    m_context->m_assets->loadTexture(CLOUD,
-                                     "assets/sprites/background/cloud.png");
+    m_context->m_assets->loadTexture(
+        PINE_1, "assets/sprites/background/pine1.png", true);
+    m_context->m_assets->loadTexture(
+        PINE_2, "assets/sprites/background/pine2.png", true);
+    m_context->m_assets->loadTexture(
+        MOUNTAINS, "assets/sprites/background/mountain2.png", true);
+    m_context->m_assets->loadTexture(
+        CLOUD, "assets/sprites/background/cloud.png", true);
 
     m_context->m_assets->loadTexture(FLOOR, "assets/sprites/floor/floor.png",
                                      true);
@@ -67,7 +65,7 @@ void GamePlay::Init()
 
     // Clouds Setup
     m_cloud.setTexture(m_context->m_assets->getTexture(CLOUD));
-    m_cloud.scale(2.0f, 1.0f);
+    m_cloud.scale(2.1f, 1.3f);
     m_cloud.setPosition(0.0f, 50.0f);
 
     // Mountains Setup
@@ -98,8 +96,7 @@ void GamePlay::Init()
 
     m_dino.scale(4.f, 4.f);
 
-    // Shader Setup
-    m_shaderFloor.loadFromMemory(
+    m_shaderCloud.loadFromMemory(
         "uniform float offset;"
 
         "void main() {"
@@ -111,14 +108,38 @@ void GamePlay::Init()
         "}",
         sf::Shader::Vertex);
 
-    m_shaderCloud.loadFromMemory(
-        "uniform float offset;"
+    m_shaderMountain.loadFromMemory(
+        "uniform float offset1;"
 
         "void main() {"
         "    gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * "
         "gl_Vertex;"
         "    gl_TexCoord[0] = gl_TextureMatrix[0] * gl_MultiTexCoord0;"
-        "    gl_TexCoord[0].x = gl_TexCoord[0].x + offset;" // magic
+        "    gl_TexCoord[0].x = gl_TexCoord[0].x + offset1;" // magic
+        "    gl_FrontColor = gl_Color;"
+        "}",
+        sf::Shader::Vertex);
+
+    m_shaderPine1.loadFromMemory(
+        "uniform float offset2;"
+
+        "void main() {"
+        "    gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * "
+        "gl_Vertex;"
+        "    gl_TexCoord[0] = gl_TextureMatrix[0] * gl_MultiTexCoord0;"
+        "    gl_TexCoord[0].x = gl_TexCoord[0].x + offset2;" // magic
+        "    gl_FrontColor = gl_Color;"
+        "}",
+        sf::Shader::Vertex);
+
+    m_shaderPine2.loadFromMemory(
+        "uniform float offset3;"
+
+        "void main() {"
+        "    gl_Position = gl_ProjectionMatrix * gl_ModelViewMatrix * "
+        "gl_Vertex;"
+        "    gl_TexCoord[0] = gl_TextureMatrix[0] * gl_MultiTexCoord0;"
+        "    gl_TexCoord[0].x = gl_TexCoord[0].x + offset3;" // magic
         "    gl_FrontColor = gl_Color;"
         "}",
         sf::Shader::Vertex);
@@ -221,9 +242,15 @@ void GamePlay::Update(sf::Time deltaTime)
             clock.restart();
         }
 
-        // moving the floors
-        m_shaderFloor.setUniform("offset",
-                                 offset += deltaTime.asSeconds() / m_gameSpeed);
+        // Moving the clouds
+        m_shaderCloud.setUniform("offset",
+                                 cloud_offset += deltaTime.asSeconds() / 80);
+        m_shaderMountain.setUniform("offset1", mountain_offset +=
+                                               deltaTime.asSeconds() / 40);
+        m_shaderPine1.setUniform("offset2",
+                                 pine1_offset += deltaTime.asSeconds() / 25);
+        m_shaderPine2.setUniform("offset3",
+                                 pine2_offset += deltaTime.asSeconds() / 10);
     }
 }
 void GamePlay::ProcessInput()
@@ -268,15 +295,14 @@ void GamePlay::Draw()
 
     // Drawing Background
     m_context->m_window->draw(m_sky);
-    m_context->m_window->draw(m_skyCloud);
-    m_context->m_window->draw(m_cloud);
-    m_context->m_window->draw(m_mountains);
-    m_context->m_window->draw(m_pine1);
-    m_context->m_window->draw(m_pine2);
+    m_context->m_window->draw(m_cloud, &m_shaderCloud);
+    m_context->m_window->draw(m_mountains, &m_shaderMountain);
+    m_context->m_window->draw(m_pine1, &m_shaderPine1);
+    m_context->m_window->draw(m_pine2, &m_shaderPine2);
 
     m_context->m_window->draw(m_dino);
 
-    m_context->m_window->draw(m_floor, &m_shaderFloor);
+    m_context->m_window->draw(m_floor);
 
     // for (auto& floor : m_floors)
     // {
