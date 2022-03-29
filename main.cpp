@@ -1,6 +1,4 @@
 #include "game.hpp"
-#include <SFML/Graphics.hpp>
-//  Avoid using namespace at all
 
 int main()
 {
