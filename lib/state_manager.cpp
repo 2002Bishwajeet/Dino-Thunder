@@ -31,7 +31,7 @@ void engine::StateManager::Popcurrent()
 void engine::StateManager::ProcessStateChange()
 {
     //  This function is used to process current state Stack
-    //  Before performing anything we check if the remove value is true & sthe
+    //  Before performing anything we check if the remove value is true & the
     //  stack is not empty
     if (m_remove && !m_stateStack.empty())
     {

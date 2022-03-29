@@ -33,7 +33,6 @@ enum AssetID
 //  Context Struct
 //  Holds all the data needed to run the game
 //  Hold assetManager State manager and Rendering Window
-
 //  We will pass an object to each of the states so that they can access the
 //  assets and draw on the window
 struct Context
