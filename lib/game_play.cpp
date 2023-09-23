@@ -321,5 +321,5 @@ void GamePlay::Pause()
 void GamePlay::Start()
 {
     m_isPaused = false;
-    //  m_gameMusic.play();
+    m_gameMusic.play();
 }
