@@ -25,11 +25,11 @@ compile:
 
 # TODO: Find a method to add all the objects in the bin folder
 	
-	g++ -Isrc/include -Iinclude  -Ilib -c main.cpp $(LIB)/*.cpp 
+	$(CXX) $(CXX_FLAGS) -Isrc/include -I$(INCLUDE) -c main.cpp $(LIB)/*.cpp 
 	
 
 link:
-	$(CXX) main.o game.o pause_game.o asset_manager.o main_menu.o  state_manager.o game_play.o game_over.o -I$(INCLUDE) -Isrc/include -o main -Lsrc/lib $(LIBRARIES)
+	$(CXX) ${CXX_FLAGS} main.o game.o pause_game.o asset_manager.o main_menu.o  state_manager.o game_play.o game_over.o -I$(INCLUDE) -Isrc/include -o $(BIN)/$(EXECUTABLE -L$(LIB) $(LIBRARIES)
 
 clean:
 	-rm $(BIN)/*
